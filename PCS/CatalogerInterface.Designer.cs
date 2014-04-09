@@ -1,6 +1,6 @@
 ﻿namespace PCS
 {
-    partial class Form1
+    partial class CatalogerInterface
     {
         /// <summary>
         /// Required designer variable.

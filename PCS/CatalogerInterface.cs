@@ -10,10 +10,12 @@ using System.Windows.Forms;
 
 namespace PCS
 {
-    public partial class Form1 : Form
+    public partial class CatalogerInterface : Form
     {
-        public Form1()
+        DataCataloger dataCataloger;
+        public CatalogerInterface(DataCataloger dc)
         {
+            dataCataloger = dc;
             InitializeComponent();
         }
 
