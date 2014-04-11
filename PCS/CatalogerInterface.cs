@@ -13,9 +13,11 @@ namespace PCS
     public partial class CatalogerInterface : Form
     {
         DataCataloger dataCataloger;
-        public CatalogerInterface(DataCataloger dc)
+        Login login;
+        public CatalogerInterface(DataCataloger dc, Login login)
         {
             dataCataloger = dc;
+            this.login = login;
             InitializeComponent();
         }
 
@@ -51,5 +53,27 @@ namespace PCS
             panelAccount.Show();
         }
 
+        private void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxPrisonType.SelectedIndex != 0)
+            {
+                labelAddLocation.Hide();
+                textBoxAddLocation.Hide();
+            }
+            else
+            {
+                labelAddLocation.Show();
+                textBoxAddLocation.Show();
+            }
+
+            if(comboBoxPrisonType.SelectedIndex == 2)
+            {
+                labelAddNameNumber.Text = "Number:";
+            }
+            else
+            {
+                labelAddNameNumber.Text = "Name:";
+            }
+        }
     }
 }

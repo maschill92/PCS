@@ -1,6 +1,6 @@
 ﻿namespace PCS
 {
-    partial class CatalogerLogin
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@
             this.loginButton.Location = new System.Drawing.Point(106, 129);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 4;
+            this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_click);
@@ -88,7 +88,7 @@
             this.prompt.Size = new System.Drawing.Size(0, 13);
             this.prompt.TabIndex = 5;
             // 
-            // CatalogerLogin
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,8 +99,11 @@
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CatalogerLogin";
-            this.Text = "CatalogerLogin";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "Login";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

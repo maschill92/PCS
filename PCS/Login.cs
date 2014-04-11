@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace PCS
 {
-    public partial class CatalogerLogin : Form
+    public partial class Login : Form
     {
-        public CatalogerLogin()
+        CatalogerInterface catInterface;
+        public Login()
         {
             InitializeComponent();
         }
@@ -21,14 +22,20 @@ namespace PCS
         {
             if (MySqlManager.Instance.AuthenticateDataCataloger(usernameBox.Text, passwordBox.Text))
             {
-                CatalogerInterface catInterface = new CatalogerInterface(MySqlManager.Instance.GetDataCataloger(usernameBox.Text));
+                prompt.Text = "";
+                catInterface = new CatalogerInterface(MySqlManager.Instance.GetDataCataloger(usernameBox.Text), this);
                 catInterface.Show();
+
                 this.Hide();
             }
             else
             {
                 prompt.Text = "Invalid credentials";
             }
+        }
+        private void catInterface_FormClosed(Object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }
