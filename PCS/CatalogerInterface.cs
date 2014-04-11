@@ -19,5 +19,37 @@ namespace PCS
             InitializeComponent();
         }
 
+        private void buttonMenuPrisoner_Click(object sender, EventArgs e)
+        {
+            panelPrisoner.Show();
+            panelPrison.Hide();
+            panelOffense.Hide();
+            panelAccount.Hide();
+        }
+
+        private void buttonMenuPrison_Click(object sender, EventArgs e)
+        {
+            panelPrisoner.Hide();
+            panelPrison.Show();
+            panelOffense.Hide();
+            panelAccount.Hide();
+        }
+
+        private void buttonMenuOffense_Click(object sender, EventArgs e)
+        {
+            panelPrisoner.Hide();
+            panelPrison.Hide();
+            panelOffense.Show();
+            panelAccount.Hide();
+        }
+
+        private void buttonMenuAccount_Click(object sender, EventArgs e)
+        {
+            panelPrisoner.Hide();
+            panelPrison.Hide();
+            panelOffense.Hide();
+            panelAccount.Show();
+        }
+
     }
 }

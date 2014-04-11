@@ -25,6 +25,7 @@ namespace PCS
             }
             catch (MySqlException ex)
             {
+                Console.WriteLine(ex.ToString());
                 Application.Exit();
             }
         }
