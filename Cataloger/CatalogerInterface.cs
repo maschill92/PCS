@@ -55,22 +55,22 @@ namespace Cataloger
         {
             if (comboBoxPrisonType.SelectedIndex != 0)
             {
-                labelAddLocation.Hide();
-                textBoxAddLocation.Hide();
+                labelPrisonAddLocation.Hide();
+                textBoxPrisonAddLocation.Hide();
             }
             else
             {
-                labelAddLocation.Show();
-                textBoxAddLocation.Show();
+                labelPrisonAddLocation.Show();
+                textBoxPrisonAddLocation.Show();
             }
 
             if(comboBoxPrisonType.SelectedIndex == 2)
             {
-                labelAddNameNumber.Text = "Number:";
+                labelPrisonAddName.Text = "Number:";
             }
             else
             {
-                labelAddNameNumber.Text = "Name:";
+                labelPrisonAddName.Text = "Name:";
             }
         }
     }

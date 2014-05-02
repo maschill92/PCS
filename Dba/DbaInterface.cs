@@ -12,7 +12,7 @@ namespace Dba
 {
     public partial class DbaInterface : Form
     {
-        public DbaInterface()
+        public DbaInterface(String uName)
         {
             InitializeComponent();
         }
