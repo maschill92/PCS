@@ -1,4 +1,4 @@
-﻿namespace PCS
+﻿namespace Cataloger
 {
     partial class CatalogerInterface
     {

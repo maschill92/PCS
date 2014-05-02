@@ -8,16 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PCS
+namespace Cataloger
 {
     public partial class CatalogerInterface : Form
     {
-        DataCataloger dataCataloger;
-        Login login;
-        public CatalogerInterface(DataCataloger dc, Login login)
+        Cataloger cataloger;
+        public CatalogerInterface(String uName)
         {
-            dataCataloger = dc;
-            this.login = login;
+            cataloger = new Cataloger(uName);
             InitializeComponent();
         }
 

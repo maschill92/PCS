@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PCS
+namespace Cataloger
 {
-    public abstract class User
+    public class Cataloger
     {
         public String username;
         public String password;
@@ -15,5 +15,10 @@ namespace PCS
         public String email;
         public String sex;
         public String dateOfBirth;
+
+        public Cataloger(String uName)
+        {
+            // do MySQL Stuff
+        }
     }
 }
