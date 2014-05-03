@@ -29,7 +29,7 @@ namespace Dba
                 lName = reader["lName"].ToString();
                 email = reader["email"].ToString();
                 sex = reader["sex"].ToString();
-                dateOfBirth = reader["dateOfBirth"].ToString();
+                dateOfBirth = DateTime.Parse(reader["dateOfBirth"].ToString()).ToString("yyyy-MM-dd");
             }
             reader.Close();
         }

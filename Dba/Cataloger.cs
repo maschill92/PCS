@@ -27,7 +27,7 @@ namespace Dba
             lName = l;
             email = e;
             sex = s;
-            dateOfBirth = d;
+            dateOfBirth = DateTime.Parse(d).ToString("yyyy-MM-dd");
         }
 
         public static List<Cataloger> Generate()
