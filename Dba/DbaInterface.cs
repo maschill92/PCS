@@ -210,7 +210,7 @@ namespace Dba
 
         private void PopulateDBAList()
         {
-            dbas = Dba.Generate();
+            dbas = Dba.Generate(dbaUser);
         }
 
         private void PanelDBA_VisibleChanged(object sender, EventArgs e)
@@ -307,7 +307,65 @@ namespace Dba
 
         private void ButtonDBASave_Click(object sender, EventArgs e)
         {
-
+            if (TextBoxDBAFName.Text.Equals("") || TextBoxDBALName.Text.Equals("") || TextBoxDBAUsername.Text.Equals("") ||
+                TextBoxDBAPassword.Text.Equals("") || TextBoxDBAEmail.Text.Equals("") ||
+                (RadioButtonDBASexMale.Checked == false && RadioButtonDBASexFemale.Checked == false))
+            {
+                MessageBox.Show("Please fill in all of the fields.");
+            }
+            else
+            {
+                if (!PasswordMeetsRequirements(TextBoxDBAPassword.Text))
+                {
+                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and legth of at least 8.");
+                }
+                else
+                {
+                    string p = TextBoxDBAPassword.Text;
+                    string f = TextBoxDBAFName.Text;
+                    string l = TextBoxDBALName.Text;
+                    string em = TextBoxDBAEmail.Text;
+                    string d = DateTimePickerDBADOB.Value.Date.ToString("yyyy-MM-dd");
+                    string s = "";
+                    if (RadioButtonDBASexMale.Checked == true)
+                    {
+                        s = "M";
+                    }
+                    else
+                    {
+                        s = "F";
+                    }
+                    if (ListBoxDBA.SelectedIndex < 0)
+                    {
+                        string u = TextBoxDBAUsername.Text;
+                        Dba c = new Dba(u, p, f, l, em, s, d);
+                        if (!c.Add())
+                        {
+                            MessageBox.Show("Database Adminsitrator could not be added.");
+                        }
+                        else
+                        {
+                            PopulateDBAList();
+                            ListBoxDBA.DataSource = dbas;
+                            ListBoxDBA.DisplayMember = "fullName";
+                        }
+                    }
+                    else
+                    {
+                        Dba c = dbas.ElementAt(ListBoxDBA.SelectedIndex);
+                        if (!c.Update(p, f, l, em, s, d))
+                        {
+                            MessageBox.Show("Database Administrator could not be updated.");
+                        }
+                        else
+                        {
+                            PopulateDBAList();
+                            ListBoxDBA.DataSource = dbas;
+                            ListBoxDBA.DisplayMember = "fullName";
+                        }
+                    }
+                }
+            }
         }
 
         private void ButtonMenuAccount_Click(object sender, EventArgs e)

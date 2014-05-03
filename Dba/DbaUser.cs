@@ -19,7 +19,7 @@ namespace Dba
 
         public DbaUser(String uName)
         {
-            MySqlDataReader reader = MySqlManager.MySqlManager.Instance.ExecuteReader("select *from dba as d where d.username = '" + uName + "'");
+            MySqlDataReader reader = MySqlManager.MySqlManager.Instance.ExecuteReader("select * from dba as d where d.username = '" + uName + "'");
 
             if (reader.Read())
             {

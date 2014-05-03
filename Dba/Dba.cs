@@ -30,10 +30,10 @@ namespace Dba
             dateOfBirth = d;
         }
 
-        public static List<Dba> Generate()
+        public static List<Dba> Generate(DbaUser user)
         {
             System.Console.WriteLine("Testing\n");
-            MySqlDataReader reader = MySqlManager.MySqlManager.Instance.ExecuteReader("select *from dba");
+            MySqlDataReader reader = MySqlManager.MySqlManager.Instance.ExecuteReader("select d.* from dba as d where d.username not in (select u.username from dba as u where u.username='" + user.username + "')");
             List<Dba> list = new List<Dba>();
             while (reader.Read())
             {
@@ -54,7 +54,7 @@ namespace Dba
 
         public bool Update(String p, String f, String l, String e, String s, String d)
         {
-            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("update cataloger set password='" + p + "', fName='" + f
+            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("update dba set password='" + p + "', fName='" + f
                 + "', lName='" + l + "', email='" + e + "', sex='" + s + "', dateOfBirth='" + d + "' where username='" + username + "'");
         }
 
