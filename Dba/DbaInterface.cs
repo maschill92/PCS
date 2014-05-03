@@ -151,7 +151,7 @@ namespace Dba
             {
                 if (!PasswordMeetsRequirements(TextBoxCatalogerPassword.Text))
                 {
-                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and legth of at least 8.");
+                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and length of at least 8.");
                 }
                 else
                 {
@@ -320,7 +320,7 @@ namespace Dba
             {
                 if (!PasswordMeetsRequirements(TextBoxDBAPassword.Text))
                 {
-                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and legth of at least 8.");
+                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and length of at least 8.");
                 }
                 else
                 {
@@ -425,7 +425,7 @@ namespace Dba
             {
                 if (!PasswordMeetsRequirements(TextBoxAccountPassword.Text))
                 {
-                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and legth of at least 8.");
+                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and length of at least 8.");
                 }
                 else
                 {
@@ -445,7 +445,7 @@ namespace Dba
                     }
                     if (!dbaUser.Update(p, f, l, em, s, d))
                     {
-                        MessageBox.Show("User account could not be added.");
+                        MessageBox.Show("User account could not be updated.");
                     }
                     else
                     {
