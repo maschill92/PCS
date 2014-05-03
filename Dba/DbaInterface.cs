@@ -377,7 +377,78 @@ namespace Dba
 
         private void PanelAccount_VisibleChanged(object sender, EventArgs e)
         {
-            //
+            TextBoxAccountFName.Text = dbaUser.fName;
+            TextBoxAccountLName.Text = dbaUser.lName;
+            TextBoxAccountPassword.Text = "";
+            TextBoxAccountEmail.Text = dbaUser.email;
+            DateTimePickerAccountDOB.Text = dbaUser.dateOfBirth;
+            if (dbaUser.sex.Equals("M"))
+            {
+                RadioButtonAccountSexMale.Checked = true;
+            }
+            else
+            {
+                RadioButtonAccountSexFemale.Checked = true;
+            }
+        }
+
+        private void ButtonAccountReset_Click(object sender, EventArgs e)
+        {
+            TextBoxAccountFName.Text = dbaUser.fName;
+            TextBoxAccountLName.Text = dbaUser.lName;
+            TextBoxAccountPassword.Text = "";
+            TextBoxAccountEmail.Text = dbaUser.email;
+            DateTimePickerAccountDOB.Text = dbaUser.dateOfBirth;
+            if (dbaUser.sex.Equals("M"))
+            {
+                RadioButtonAccountSexMale.Checked = true;
+            }
+            else
+            {
+                RadioButtonAccountSexFemale.Checked = true;
+            }
+        }
+
+        private void ButtonAccountSave_Click(object sender, EventArgs e)
+        {
+            if (TextBoxAccountFName.Text.Equals("") || TextBoxAccountLName.Text.Equals("") ||
+    TextBoxAccountPassword.Text.Equals("") || TextBoxAccountEmail.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill in all of the fields.");
+            }
+            else
+            {
+                if (!PasswordMeetsRequirements(TextBoxAccountPassword.Text))
+                {
+                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and legth of at least 8.");
+                }
+                else
+                {
+                    string f = TextBoxAccountFName.Text;
+                    string l = TextBoxAccountLName.Text;
+                    string p = TextBoxAccountPassword.Text;
+                    string em = TextBoxAccountEmail.Text;
+                    string d = DateTimePickerAccountDOB.Value.Date.ToString("yyyy-MM-dd");
+                    string s = "";
+                    if (RadioButtonAccountSexMale.Checked == true)
+                    {
+                        s = "M";
+                    }
+                    else
+                    {
+                        s = "F";
+                    }
+                    if (!dbaUser.Update(p, f, l, em, s, d))
+                    {
+                        MessageBox.Show("User account could not be added.");
+                    }
+                    else
+                    {
+                        TextBoxAccountPassword.Text = "";
+                        dbaUser = new DbaUser(dbaUser.username);
+                    }
+                }
+            }
         }
 
         private void ButtonMenuLogout_Click(object sender, EventArgs e)
@@ -402,13 +473,5 @@ namespace Dba
             }
             return upper && lower && digit;
         }
-
-
-
-
-
-
-
-
     }
 }

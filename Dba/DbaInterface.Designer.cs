@@ -44,17 +44,8 @@
             this.ButtonDBANew = new System.Windows.Forms.Button();
             this.ListBoxDBA = new System.Windows.Forms.ListBox();
             this.PanelAccount = new System.Windows.Forms.Panel();
-            this.LabelAccountError = new System.Windows.Forms.Label();
             this.ButtonAccountSave = new System.Windows.Forms.Button();
             this.ButtonAccountReset = new System.Windows.Forms.Button();
-            this.LabelAccountConfirmPassword = new System.Windows.Forms.Label();
-            this.LabelAccountPassword = new System.Windows.Forms.Label();
-            this.LabelAccountLName = new System.Windows.Forms.Label();
-            this.LabelAccountFName = new System.Windows.Forms.Label();
-            this.TextBoxAccountConfirmPassword = new System.Windows.Forms.TextBox();
-            this.TextBoxAccountPassword = new System.Windows.Forms.TextBox();
-            this.TextBoxAccountLName = new System.Windows.Forms.TextBox();
-            this.TextBoxAccountFName = new System.Windows.Forms.TextBox();
             this.LabelCatalogerLName = new System.Windows.Forms.Label();
             this.LabelDBAName = new System.Windows.Forms.Label();
             this.PanelMenu = new System.Windows.Forms.Panel();
@@ -91,12 +82,27 @@
             this.LabelDBAUsername = new System.Windows.Forms.Label();
             this.LabelDBALName = new System.Windows.Forms.Label();
             this.LabelDBAFName = new System.Windows.Forms.Label();
+            this.TextBoxAccountEmail = new System.Windows.Forms.TextBox();
+            this.LabelAccountEmail = new System.Windows.Forms.Label();
+            this.DateTimePickerAccountDOB = new System.Windows.Forms.DateTimePicker();
+            this.LabelAccountDOB = new System.Windows.Forms.Label();
+            this.LabelAccountSex = new System.Windows.Forms.Label();
+            this.GroupBoxAccountSex = new System.Windows.Forms.GroupBox();
+            this.RadioButtonAccountSexFemale = new System.Windows.Forms.RadioButton();
+            this.RadioButtonAccountSexMale = new System.Windows.Forms.RadioButton();
+            this.TextBoxAccountPassword = new System.Windows.Forms.TextBox();
+            this.TextBoxAccountLName = new System.Windows.Forms.TextBox();
+            this.TextBoxAccountFName = new System.Windows.Forms.TextBox();
+            this.LabelAccountPassword = new System.Windows.Forms.Label();
+            this.LabelAccountLName = new System.Windows.Forms.Label();
+            this.LabelAccountFName = new System.Windows.Forms.Label();
             this.PanelAccount.SuspendLayout();
             this.PanelMenu.SuspendLayout();
             this.PanelCataloger.SuspendLayout();
             this.GroupBoxCatalogerSex.SuspendLayout();
             this.PanelDBA.SuspendLayout();
             this.GroupBoxDBASex.SuspendLayout();
+            this.GroupBoxAccountSex.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonDBASave
@@ -237,117 +243,45 @@
             // 
             // PanelAccount
             // 
-            this.PanelAccount.Controls.Add(this.LabelAccountError);
-            this.PanelAccount.Controls.Add(this.ButtonAccountSave);
-            this.PanelAccount.Controls.Add(this.ButtonAccountReset);
-            this.PanelAccount.Controls.Add(this.LabelAccountConfirmPassword);
-            this.PanelAccount.Controls.Add(this.LabelAccountPassword);
-            this.PanelAccount.Controls.Add(this.LabelAccountLName);
-            this.PanelAccount.Controls.Add(this.LabelAccountFName);
-            this.PanelAccount.Controls.Add(this.TextBoxAccountConfirmPassword);
+            this.PanelAccount.Controls.Add(this.TextBoxAccountEmail);
+            this.PanelAccount.Controls.Add(this.LabelAccountEmail);
+            this.PanelAccount.Controls.Add(this.DateTimePickerAccountDOB);
+            this.PanelAccount.Controls.Add(this.LabelAccountDOB);
+            this.PanelAccount.Controls.Add(this.LabelAccountSex);
+            this.PanelAccount.Controls.Add(this.GroupBoxAccountSex);
             this.PanelAccount.Controls.Add(this.TextBoxAccountPassword);
             this.PanelAccount.Controls.Add(this.TextBoxAccountLName);
             this.PanelAccount.Controls.Add(this.TextBoxAccountFName);
+            this.PanelAccount.Controls.Add(this.LabelAccountPassword);
+            this.PanelAccount.Controls.Add(this.LabelAccountLName);
+            this.PanelAccount.Controls.Add(this.LabelAccountFName);
+            this.PanelAccount.Controls.Add(this.ButtonAccountSave);
+            this.PanelAccount.Controls.Add(this.ButtonAccountReset);
             this.PanelAccount.Location = new System.Drawing.Point(160, 14);
             this.PanelAccount.Name = "PanelAccount";
             this.PanelAccount.Size = new System.Drawing.Size(650, 500);
             this.PanelAccount.TabIndex = 33;
             this.PanelAccount.Visible = false;
             // 
-            // LabelAccountError
-            // 
-            this.LabelAccountError.AutoSize = true;
-            this.LabelAccountError.ForeColor = System.Drawing.Color.Red;
-            this.LabelAccountError.Location = new System.Drawing.Point(143, 294);
-            this.LabelAccountError.Name = "LabelAccountError";
-            this.LabelAccountError.Size = new System.Drawing.Size(0, 13);
-            this.LabelAccountError.TabIndex = 10;
-            // 
             // ButtonAccountSave
             // 
-            this.ButtonAccountSave.Location = new System.Drawing.Point(386, 254);
+            this.ButtonAccountSave.Location = new System.Drawing.Point(358, 359);
             this.ButtonAccountSave.Name = "ButtonAccountSave";
             this.ButtonAccountSave.Size = new System.Drawing.Size(75, 23);
             this.ButtonAccountSave.TabIndex = 9;
             this.ButtonAccountSave.Text = "Save";
             this.ButtonAccountSave.UseVisualStyleBackColor = true;
+            this.ButtonAccountSave.Click += new System.EventHandler(this.ButtonAccountSave_Click);
             // 
             // ButtonAccountReset
             // 
-            this.ButtonAccountReset.Location = new System.Drawing.Point(240, 255);
+            this.ButtonAccountReset.Location = new System.Drawing.Point(241, 359);
             this.ButtonAccountReset.Name = "ButtonAccountReset";
             this.ButtonAccountReset.Size = new System.Drawing.Size(75, 23);
             this.ButtonAccountReset.TabIndex = 8;
             this.ButtonAccountReset.Text = "Reset";
             this.ButtonAccountReset.UseVisualStyleBackColor = true;
-            // 
-            // LabelAccountConfirmPassword
-            // 
-            this.LabelAccountConfirmPassword.AutoSize = true;
-            this.LabelAccountConfirmPassword.Location = new System.Drawing.Point(140, 232);
-            this.LabelAccountConfirmPassword.Name = "LabelAccountConfirmPassword";
-            this.LabelAccountConfirmPassword.Size = new System.Drawing.Size(94, 13);
-            this.LabelAccountConfirmPassword.TabIndex = 7;
-            this.LabelAccountConfirmPassword.Text = "Confirm Password:";
-            // 
-            // LabelAccountPassword
-            // 
-            this.LabelAccountPassword.AutoSize = true;
-            this.LabelAccountPassword.Location = new System.Drawing.Point(178, 206);
-            this.LabelAccountPassword.Name = "LabelAccountPassword";
-            this.LabelAccountPassword.Size = new System.Drawing.Size(56, 13);
-            this.LabelAccountPassword.TabIndex = 6;
-            this.LabelAccountPassword.Text = "Password:";
-            // 
-            // LabelAccountLName
-            // 
-            this.LabelAccountLName.AutoSize = true;
-            this.LabelAccountLName.Location = new System.Drawing.Point(173, 180);
-            this.LabelAccountLName.Name = "LabelAccountLName";
-            this.LabelAccountLName.Size = new System.Drawing.Size(61, 13);
-            this.LabelAccountLName.TabIndex = 5;
-            this.LabelAccountLName.Text = "Last Name:";
-            // 
-            // LabelAccountFName
-            // 
-            this.LabelAccountFName.AutoSize = true;
-            this.LabelAccountFName.Location = new System.Drawing.Point(174, 154);
-            this.LabelAccountFName.Name = "LabelAccountFName";
-            this.LabelAccountFName.Size = new System.Drawing.Size(60, 13);
-            this.LabelAccountFName.TabIndex = 4;
-            this.LabelAccountFName.Text = "First Name:";
-            // 
-            // TextBoxAccountConfirmPassword
-            // 
-            this.TextBoxAccountConfirmPassword.Location = new System.Drawing.Point(240, 229);
-            this.TextBoxAccountConfirmPassword.Name = "TextBoxAccountConfirmPassword";
-            this.TextBoxAccountConfirmPassword.PasswordChar = '*';
-            this.TextBoxAccountConfirmPassword.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxAccountConfirmPassword.TabIndex = 3;
-            this.TextBoxAccountConfirmPassword.UseSystemPasswordChar = true;
-            // 
-            // TextBoxAccountPassword
-            // 
-            this.TextBoxAccountPassword.Location = new System.Drawing.Point(240, 203);
-            this.TextBoxAccountPassword.Name = "TextBoxAccountPassword";
-            this.TextBoxAccountPassword.PasswordChar = '*';
-            this.TextBoxAccountPassword.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxAccountPassword.TabIndex = 2;
-            this.TextBoxAccountPassword.UseSystemPasswordChar = true;
-            // 
-            // TextBoxAccountLName
-            // 
-            this.TextBoxAccountLName.Location = new System.Drawing.Point(240, 177);
-            this.TextBoxAccountLName.Name = "TextBoxAccountLName";
-            this.TextBoxAccountLName.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxAccountLName.TabIndex = 1;
-            // 
-            // TextBoxAccountFName
-            // 
-            this.TextBoxAccountFName.Location = new System.Drawing.Point(240, 151);
-            this.TextBoxAccountFName.Name = "TextBoxAccountFName";
-            this.TextBoxAccountFName.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxAccountFName.TabIndex = 0;
+            this.ButtonAccountReset.Click += new System.EventHandler(this.ButtonAccountReset_Click);
             // 
             // LabelCatalogerLName
             // 
@@ -471,7 +405,7 @@
             // 
             this.DateTimePickerCatalogerDOB.Location = new System.Drawing.Point(332, 254);
             this.DateTimePickerCatalogerDOB.Name = "DateTimePickerCatalogerDOB";
-            this.DateTimePickerCatalogerDOB.Size = new System.Drawing.Size(200, 20);
+            this.DateTimePickerCatalogerDOB.Size = new System.Drawing.Size(191, 20);
             this.DateTimePickerCatalogerDOB.TabIndex = 18;
             // 
             // LabelCatalogerDOB
@@ -599,7 +533,7 @@
             // 
             this.DateTimePickerDBADOB.Location = new System.Drawing.Point(332, 254);
             this.DateTimePickerDBADOB.Name = "DateTimePickerDBADOB";
-            this.DateTimePickerDBADOB.Size = new System.Drawing.Size(200, 20);
+            this.DateTimePickerDBADOB.Size = new System.Drawing.Size(191, 20);
             this.DateTimePickerDBADOB.TabIndex = 39;
             // 
             // LabelDBADOB
@@ -716,14 +650,135 @@
             this.LabelDBAFName.TabIndex = 28;
             this.LabelDBAFName.Text = "First Name:";
             // 
+            // TextBoxAccountEmail
+            // 
+            this.TextBoxAccountEmail.Location = new System.Drawing.Point(262, 223);
+            this.TextBoxAccountEmail.Name = "TextBoxAccountEmail";
+            this.TextBoxAccountEmail.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxAccountEmail.TabIndex = 55;
+            // 
+            // LabelAccountEmail
+            // 
+            this.LabelAccountEmail.AutoSize = true;
+            this.LabelAccountEmail.Location = new System.Drawing.Point(181, 230);
+            this.LabelAccountEmail.Name = "LabelAccountEmail";
+            this.LabelAccountEmail.Size = new System.Drawing.Size(76, 13);
+            this.LabelAccountEmail.TabIndex = 54;
+            this.LabelAccountEmail.Text = "Email Address:";
+            // 
+            // DateTimePickerAccountDOB
+            // 
+            this.DateTimePickerAccountDOB.Location = new System.Drawing.Point(262, 252);
+            this.DateTimePickerAccountDOB.Name = "DateTimePickerAccountDOB";
+            this.DateTimePickerAccountDOB.Size = new System.Drawing.Size(191, 20);
+            this.DateTimePickerAccountDOB.TabIndex = 53;
+            // 
+            // LabelAccountDOB
+            // 
+            this.LabelAccountDOB.AutoSize = true;
+            this.LabelAccountDOB.Location = new System.Drawing.Point(187, 253);
+            this.LabelAccountDOB.Name = "LabelAccountDOB";
+            this.LabelAccountDOB.Size = new System.Drawing.Size(69, 13);
+            this.LabelAccountDOB.TabIndex = 52;
+            this.LabelAccountDOB.Text = "Date of Birth:";
+            // 
+            // LabelAccountSex
+            // 
+            this.LabelAccountSex.AutoSize = true;
+            this.LabelAccountSex.Location = new System.Drawing.Point(228, 295);
+            this.LabelAccountSex.Name = "LabelAccountSex";
+            this.LabelAccountSex.Size = new System.Drawing.Size(28, 13);
+            this.LabelAccountSex.TabIndex = 51;
+            this.LabelAccountSex.Text = "Sex:";
+            // 
+            // GroupBoxAccountSex
+            // 
+            this.GroupBoxAccountSex.Controls.Add(this.RadioButtonAccountSexFemale);
+            this.GroupBoxAccountSex.Controls.Add(this.RadioButtonAccountSexMale);
+            this.GroupBoxAccountSex.Location = new System.Drawing.Point(262, 278);
+            this.GroupBoxAccountSex.Name = "GroupBoxAccountSex";
+            this.GroupBoxAccountSex.Size = new System.Drawing.Size(75, 56);
+            this.GroupBoxAccountSex.TabIndex = 50;
+            this.GroupBoxAccountSex.TabStop = false;
+            // 
+            // RadioButtonAccountSexFemale
+            // 
+            this.RadioButtonAccountSexFemale.AutoSize = true;
+            this.RadioButtonAccountSexFemale.Location = new System.Drawing.Point(0, 29);
+            this.RadioButtonAccountSexFemale.Name = "RadioButtonAccountSexFemale";
+            this.RadioButtonAccountSexFemale.Size = new System.Drawing.Size(59, 17);
+            this.RadioButtonAccountSexFemale.TabIndex = 1;
+            this.RadioButtonAccountSexFemale.TabStop = true;
+            this.RadioButtonAccountSexFemale.Text = "Female";
+            this.RadioButtonAccountSexFemale.UseVisualStyleBackColor = true;
+            // 
+            // RadioButtonAccountSexMale
+            // 
+            this.RadioButtonAccountSexMale.AutoSize = true;
+            this.RadioButtonAccountSexMale.Location = new System.Drawing.Point(0, 7);
+            this.RadioButtonAccountSexMale.Name = "RadioButtonAccountSexMale";
+            this.RadioButtonAccountSexMale.Size = new System.Drawing.Size(48, 17);
+            this.RadioButtonAccountSexMale.TabIndex = 0;
+            this.RadioButtonAccountSexMale.TabStop = true;
+            this.RadioButtonAccountSexMale.Text = "Male";
+            this.RadioButtonAccountSexMale.UseVisualStyleBackColor = true;
+            // 
+            // TextBoxAccountPassword
+            // 
+            this.TextBoxAccountPassword.Location = new System.Drawing.Point(262, 198);
+            this.TextBoxAccountPassword.Name = "TextBoxAccountPassword";
+            this.TextBoxAccountPassword.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxAccountPassword.TabIndex = 49;
+            // 
+            // TextBoxAccountLName
+            // 
+            this.TextBoxAccountLName.Location = new System.Drawing.Point(262, 171);
+            this.TextBoxAccountLName.Name = "TextBoxAccountLName";
+            this.TextBoxAccountLName.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxAccountLName.TabIndex = 47;
+            // 
+            // TextBoxAccountFName
+            // 
+            this.TextBoxAccountFName.Location = new System.Drawing.Point(260, 145);
+            this.TextBoxAccountFName.Name = "TextBoxAccountFName";
+            this.TextBoxAccountFName.Size = new System.Drawing.Size(193, 20);
+            this.TextBoxAccountFName.TabIndex = 46;
+            // 
+            // LabelAccountPassword
+            // 
+            this.LabelAccountPassword.AutoSize = true;
+            this.LabelAccountPassword.Location = new System.Drawing.Point(200, 204);
+            this.LabelAccountPassword.Name = "LabelAccountPassword";
+            this.LabelAccountPassword.Size = new System.Drawing.Size(56, 13);
+            this.LabelAccountPassword.TabIndex = 45;
+            this.LabelAccountPassword.Text = "Password:";
+            // 
+            // LabelAccountLName
+            // 
+            this.LabelAccountLName.AutoSize = true;
+            this.LabelAccountLName.Location = new System.Drawing.Point(195, 177);
+            this.LabelAccountLName.Name = "LabelAccountLName";
+            this.LabelAccountLName.Size = new System.Drawing.Size(61, 13);
+            this.LabelAccountLName.TabIndex = 43;
+            this.LabelAccountLName.Text = "Last Name:";
+            // 
+            // LabelAccountFName
+            // 
+            this.LabelAccountFName.AutoSize = true;
+            this.LabelAccountFName.Location = new System.Drawing.Point(199, 151);
+            this.LabelAccountFName.Name = "LabelAccountFName";
+            this.LabelAccountFName.Size = new System.Drawing.Size(60, 13);
+            this.LabelAccountFName.TabIndex = 42;
+            this.LabelAccountFName.Text = "First Name:";
+            // 
             // DbaInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 531);
-            this.Controls.Add(this.PanelDBA);
-            this.Controls.Add(this.PanelCataloger);
             this.Controls.Add(this.PanelAccount);
+            this.Controls.Add(this.PanelCataloger);
+            this.Controls.Add(this.PanelDBA);
             this.Controls.Add(this.PanelMenu);
             this.Name = "DbaInterface";
             this.Text = "DbaInterface";
@@ -738,6 +793,8 @@
             this.PanelDBA.PerformLayout();
             this.GroupBoxDBASex.ResumeLayout(false);
             this.GroupBoxDBASex.PerformLayout();
+            this.GroupBoxAccountSex.ResumeLayout(false);
+            this.GroupBoxAccountSex.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -760,17 +817,8 @@
         private System.Windows.Forms.Button ButtonDBANew;
         private System.Windows.Forms.ListBox ListBoxDBA;
         private System.Windows.Forms.Panel PanelAccount;
-        private System.Windows.Forms.Label LabelAccountError;
         private System.Windows.Forms.Button ButtonAccountSave;
         private System.Windows.Forms.Button ButtonAccountReset;
-        private System.Windows.Forms.Label LabelAccountConfirmPassword;
-        private System.Windows.Forms.Label LabelAccountPassword;
-        private System.Windows.Forms.Label LabelAccountLName;
-        private System.Windows.Forms.Label LabelAccountFName;
-        private System.Windows.Forms.TextBox TextBoxAccountConfirmPassword;
-        private System.Windows.Forms.TextBox TextBoxAccountPassword;
-        private System.Windows.Forms.TextBox TextBoxAccountLName;
-        private System.Windows.Forms.TextBox TextBoxAccountFName;
         private System.Windows.Forms.Label LabelCatalogerLName;
         private System.Windows.Forms.Label LabelDBAName;
         private System.Windows.Forms.Panel PanelMenu;
@@ -807,5 +855,19 @@
         private System.Windows.Forms.Label LabelDBAUsername;
         private System.Windows.Forms.Label LabelDBALName;
         private System.Windows.Forms.Label LabelDBAFName;
+        private System.Windows.Forms.TextBox TextBoxAccountEmail;
+        private System.Windows.Forms.Label LabelAccountEmail;
+        private System.Windows.Forms.DateTimePicker DateTimePickerAccountDOB;
+        private System.Windows.Forms.Label LabelAccountDOB;
+        private System.Windows.Forms.Label LabelAccountSex;
+        private System.Windows.Forms.GroupBox GroupBoxAccountSex;
+        private System.Windows.Forms.RadioButton RadioButtonAccountSexFemale;
+        private System.Windows.Forms.RadioButton RadioButtonAccountSexMale;
+        private System.Windows.Forms.TextBox TextBoxAccountPassword;
+        private System.Windows.Forms.TextBox TextBoxAccountLName;
+        private System.Windows.Forms.TextBox TextBoxAccountFName;
+        private System.Windows.Forms.Label LabelAccountPassword;
+        private System.Windows.Forms.Label LabelAccountLName;
+        private System.Windows.Forms.Label LabelAccountFName;
     }
 }

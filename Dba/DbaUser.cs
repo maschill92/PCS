@@ -36,8 +36,8 @@ namespace Dba
 
         public bool Update(String p, String f, String l, String e, String s, String d)
         {
-            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("update dba set password = '" + p + "', fName = '" + f
-                + "', lName = '" + l + "', email = '" + e + "', sex = '" + s + "', dateOfBirth '" + d + "' where id = '" + username + "'");
+            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("update dba set password='" + p + "', fName='" + f
+                + "', lName='" + l + "', email='" + e + "', sex='" + s + "', dateOfBirth='" + d + "' where username='" + this.username + "'");
         }
     }
 }
