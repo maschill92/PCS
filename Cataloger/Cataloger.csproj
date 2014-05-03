@@ -70,10 +70,21 @@
       <DependentUpon>CatalogerInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Cataloger.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="CellBlock.cs" />
+    <Compile Include="Offense.cs" />
+    <Compile Include="Prison.cs" />
+    <Compile Include="Prisoner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CatalogerInterface.resx">
       <DependentUpon>CatalogerInterface.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MySqlManager\MySqlManager.csproj">
+      <Project>{a2dbf7e3-786f-4a86-a67c-457bb99fb404}</Project>
+      <Name>MySqlManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

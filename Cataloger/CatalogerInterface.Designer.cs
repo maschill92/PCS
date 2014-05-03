@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("System");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("System");
             this.buttonMenuPrisoner = new System.Windows.Forms.Button();
             this.buttonMenuPrison = new System.Windows.Forms.Button();
             this.buttonMenuOffense = new System.Windows.Forms.Button();
@@ -580,6 +580,7 @@
             this.panelPrisoner.Name = "panelPrisoner";
             this.panelPrisoner.Size = new System.Drawing.Size(845, 496);
             this.panelPrisoner.TabIndex = 8;
+            this.panelPrisoner.Visible = false;
             // 
             // panelMain
             // 
@@ -600,6 +601,7 @@
             this.panelOffense.Name = "panelOffense";
             this.panelOffense.Size = new System.Drawing.Size(845, 496);
             this.panelOffense.TabIndex = 0;
+            this.panelOffense.Visible = false;
             // 
             // tabControlOffense
             // 
@@ -893,6 +895,7 @@
             this.panelPrison.Name = "panelPrison";
             this.panelPrison.Size = new System.Drawing.Size(845, 496);
             this.panelPrison.TabIndex = 11;
+            this.panelPrison.Visible = false;
             // 
             // tabControlPrison
             // 
@@ -1184,10 +1187,10 @@
             // 
             this.treeViewPrison.Location = new System.Drawing.Point(4, 4);
             this.treeViewPrison.Name = "treeViewPrison";
-            treeNode1.Name = "systemNode";
-            treeNode1.Text = "System";
+            treeNode3.Name = "systemNode";
+            treeNode3.Text = "System";
             this.treeViewPrison.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode3});
             this.treeViewPrison.Size = new System.Drawing.Size(193, 425);
             this.treeViewPrison.TabIndex = 0;
             // 
@@ -1322,6 +1325,7 @@
             this.panelAccount.Name = "panelAccount";
             this.panelAccount.Size = new System.Drawing.Size(845, 496);
             this.panelAccount.TabIndex = 0;
+            this.panelAccount.Visible = false;
             // 
             // label24
             // 
