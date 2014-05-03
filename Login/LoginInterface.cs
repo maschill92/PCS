@@ -47,6 +47,8 @@ namespace Login
             {
                 MessageBox.Show("Login information is incorrect.");
             }
+            textBoxUsername.Text = "";
+            textBoxPassword.Text = "";
         }
 
         void SubFormClosing(object sender, EventArgs e)
