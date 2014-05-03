@@ -43,6 +43,10 @@ namespace Login
                     throw new Exception("Incorrect User Type selected.");
                 }
             }
+            else
+            {
+                MessageBox.Show("Login information is incorrect.");
+            }
         }
 
         void SubFormClosing(object sender, EventArgs e)
