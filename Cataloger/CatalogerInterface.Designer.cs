@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("System");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("System");
             this.buttonMenuPrisoner = new System.Windows.Forms.Button();
             this.buttonMenuPrison = new System.Windows.Forms.Button();
             this.buttonMenuOffense = new System.Windows.Forms.Button();
@@ -50,8 +50,7 @@
             this.textBoxPrisonerCellName = new System.Windows.Forms.TextBox();
             this.buttonPrisonerSearch = new System.Windows.Forms.Button();
             this.buttonPrisonerDelete = new System.Windows.Forms.Button();
-            this.buttonPrisonerEdit = new System.Windows.Forms.Button();
-            this.buttonPrisonerAdd = new System.Windows.Forms.Button();
+            this.buttonPrisonerNew = new System.Windows.Forms.Button();
             this.tabPrisonerAddEdit = new System.Windows.Forms.TabPage();
             this.textBoxPrisonerAddFname = new System.Windows.Forms.TextBox();
             this.textBoxPrisonerAddLname = new System.Windows.Forms.TextBox();
@@ -251,8 +250,7 @@
             this.tabPrisonerSearch.Controls.Add(this.textBoxPrisonerCellName);
             this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerSearch);
             this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerDelete);
-            this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerEdit);
-            this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerAdd);
+            this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerNew);
             this.tabPrisonerSearch.Location = new System.Drawing.Point(4, 22);
             this.tabPrisonerSearch.Name = "tabPrisonerSearch";
             this.tabPrisonerSearch.Padding = new System.Windows.Forms.Padding(3);
@@ -270,6 +268,7 @@
             this.prisonName,
             this.cellBlockName,
             this.cellNumber});
+            this.listViewPrisonerSearch.FullRowSelect = true;
             this.listViewPrisonerSearch.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewPrisonerSearch.Location = new System.Drawing.Point(20, 67);
             this.listViewPrisonerSearch.MultiSelect = false;
@@ -363,30 +362,22 @@
             // 
             // buttonPrisonerDelete
             // 
-            this.buttonPrisonerDelete.Location = new System.Drawing.Point(581, 441);
+            this.buttonPrisonerDelete.Location = new System.Drawing.Point(662, 441);
             this.buttonPrisonerDelete.Name = "buttonPrisonerDelete";
             this.buttonPrisonerDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonPrisonerDelete.TabIndex = 6;
             this.buttonPrisonerDelete.Text = "Delete";
             this.buttonPrisonerDelete.UseVisualStyleBackColor = true;
             // 
-            // buttonPrisonerEdit
+            // buttonPrisonerNew
             // 
-            this.buttonPrisonerEdit.Location = new System.Drawing.Point(662, 441);
-            this.buttonPrisonerEdit.Name = "buttonPrisonerEdit";
-            this.buttonPrisonerEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonPrisonerEdit.TabIndex = 8;
-            this.buttonPrisonerEdit.Text = "Edit";
-            this.buttonPrisonerEdit.UseVisualStyleBackColor = true;
-            // 
-            // buttonPrisonerAdd
-            // 
-            this.buttonPrisonerAdd.Location = new System.Drawing.Point(743, 441);
-            this.buttonPrisonerAdd.Name = "buttonPrisonerAdd";
-            this.buttonPrisonerAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonPrisonerAdd.TabIndex = 7;
-            this.buttonPrisonerAdd.Text = "Add";
-            this.buttonPrisonerAdd.UseVisualStyleBackColor = true;
+            this.buttonPrisonerNew.Location = new System.Drawing.Point(743, 441);
+            this.buttonPrisonerNew.Name = "buttonPrisonerNew";
+            this.buttonPrisonerNew.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrisonerNew.TabIndex = 7;
+            this.buttonPrisonerNew.Text = "New";
+            this.buttonPrisonerNew.UseVisualStyleBackColor = true;
+            this.buttonPrisonerNew.Click += new System.EventHandler(this.buttonPrisonerNew_Click);
             // 
             // tabPrisonerAddEdit
             // 
@@ -460,6 +451,7 @@
             // 
             // comboBoxPrisonerAddPrison
             // 
+            this.comboBoxPrisonerAddPrison.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrisonerAddPrison.FormattingEnabled = true;
             this.comboBoxPrisonerAddPrison.Location = new System.Drawing.Point(97, 240);
             this.comboBoxPrisonerAddPrison.Name = "comboBoxPrisonerAddPrison";
@@ -468,6 +460,7 @@
             // 
             // comboBoxPrisonerAddBlock
             // 
+            this.comboBoxPrisonerAddBlock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrisonerAddBlock.FormattingEnabled = true;
             this.comboBoxPrisonerAddBlock.Location = new System.Drawing.Point(344, 240);
             this.comboBoxPrisonerAddBlock.Name = "comboBoxPrisonerAddBlock";
@@ -476,6 +469,7 @@
             // 
             // comboBoxPrisonerAddCell
             // 
+            this.comboBoxPrisonerAddCell.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrisonerAddCell.FormattingEnabled = true;
             this.comboBoxPrisonerAddCell.Location = new System.Drawing.Point(561, 240);
             this.comboBoxPrisonerAddCell.Name = "comboBoxPrisonerAddCell";
@@ -1189,10 +1183,10 @@
             // 
             this.treeViewPrison.Location = new System.Drawing.Point(4, 4);
             this.treeViewPrison.Name = "treeViewPrison";
-            treeNode4.Name = "systemNode";
-            treeNode4.Text = "System";
+            treeNode5.Name = "systemNode";
+            treeNode5.Text = "System";
             this.treeViewPrison.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode5});
             this.treeViewPrison.Size = new System.Drawing.Size(193, 425);
             this.treeViewPrison.TabIndex = 0;
             // 
@@ -1526,8 +1520,7 @@
         private System.Windows.Forms.TabPage tabPrisonerSearch;
         private System.Windows.Forms.TabPage tabPrisonerAddEdit;
         private System.Windows.Forms.Button buttonPrisonerSearch;
-        private System.Windows.Forms.Button buttonPrisonerEdit;
-        private System.Windows.Forms.Button buttonPrisonerAdd;
+        private System.Windows.Forms.Button buttonPrisonerNew;
         private System.Windows.Forms.Button buttonPrisonerDelete;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;

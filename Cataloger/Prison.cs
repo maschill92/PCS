@@ -8,8 +8,8 @@ namespace Cataloger
 {
     class Prison
     {
-        public int id;
-        public String name;
+        public int id { get; set; }
+        public String name { get; set; }
         public String location;
         public String description;
         public List<CellBlock> blocks;

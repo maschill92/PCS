@@ -32,11 +32,20 @@ namespace Cataloger
             this.panelOffense.VisibleChanged += new System.EventHandler(this.panelOffense_VisibleChanged);
             this.panelAccount.VisibleChanged += new System.EventHandler(this.panelAccount_VisibleChanged);
             this.comboBoxPrisonType.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrisonType_SelectedIndexChanged);
+            this.listViewPrisonerSearch.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(this.listViewPrisonerSearch_ItemSelectionChanged);
+
+            comboBoxPrisonerAddPrison.DisplayMember = "name";
+            comboBoxPrisonerAddPrison.ValueMember = "id";
+            comboBoxPrisonerAddBlock.DisplayMember = "name";
+            comboBoxPrisonerAddBlock.ValueMember = "id";
+            comboBoxPrisonerAddCell.DisplayMember = "name";
+            comboBoxPrisonerAddCell.ValueMember = "id";
         }
 
         void RefreshData()
         {
             prisons = Prison.GenerateAll();
+            comboBoxPrisonerAddPrison.DataSource = prisons;
         }
 
         #region Menu Button Click Events
@@ -134,6 +143,21 @@ namespace Cataloger
                 }
             }
         }
+
+        void listViewPrisonerSearch_ItemSelectionChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("listViewPrisonerSearch_ItemSelectionChanged");
+            System.Diagnostics.Debug.WriteLine(listViewPrisonerSearch.SelectedItems.Count.ToString());
+            if (listViewPrisonerSearch.SelectedItems.Count == 0)
+            {
+                buttonPrisonerNew.Text = "New";
+            }
+            else
+            {
+                buttonPrisonerNew.Text = "Edit";
+            }
+        }
+
         #endregion
 
         #region Prison
@@ -144,6 +168,71 @@ namespace Cataloger
                 return;
             }
             System.Diagnostics.Debug.WriteLine("panelPrison visible");
+        }
+
+        private void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxPrisonType.SelectedIndex != 0)
+            {
+                labelPrisonAddLocation.Hide();
+                textBoxPrisonAddLocation.Hide();
+            }
+            else
+            {
+                labelPrisonAddLocation.Show();
+                textBoxPrisonAddLocation.Show();
+            }
+        }
+
+        private void buttonPrisonerSearch_Click(object sender, EventArgs e)
+        {
+            PopulatePrisonerListView();
+        }
+
+        private void buttonPrisonerNew_Click(object sender, EventArgs e)
+        {
+            if (buttonPrisonerNew.Text.Equals("New"))
+            {
+                textBoxPrisonerAddFname.Text = String.Empty;
+                textBoxPrisonerAddLname.Text = String.Empty;
+                datePickerAddPrisonerDob.Text = String.Empty;
+                radioButtonMale.Checked = false;
+                radioButtonFemale.Checked = false;
+                comboBoxPrisonerAddCell.DataSource = null;
+                comboBoxPrisonerAddBlock.DataSource = null;
+            }
+            else
+            {
+                int prisonerId = Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text);
+                foreach(Prisoner p in prisoners)
+                {
+                    if (p.id == prisonerId)
+                    {
+                        textBoxPrisonerAddFname.Text = p.fName;
+                        textBoxPrisonerAddLname.Text = p.lName;
+                        datePickerAddPrisonerDob.Text = p.dateOfBirth;
+                        if (p.sex.Equals("M"))
+                        {
+                            radioButtonAccountMale.Checked = true;
+                        }
+                        else
+                        {
+                            radioButtonAccountFemale.Checked = true;
+                        }
+
+                        comboBoxPrisonerAddBlock.DataSource = p.cell.block.prison.blocks;
+                        comboBoxPrisonerAddBlock.SelectedValue = p.cell.block.id;
+                        comboBoxPrisonerAddCell.DataSource = p.cell.block.cells;
+                        comboBoxPrisonerAddCell.SelectedValue = p.cell.id;
+                        break;
+                    }
+                }
+            }
+            tabControlPrisoner.SelectedTab = tabPrisonerAddEdit;
+            comboBoxPrisonerAddBlock.DisplayMember = "name";
+            comboBoxPrisonerAddBlock.ValueMember = "id";
+            comboBoxPrisonerAddCell.DisplayMember = "name";
+            comboBoxPrisonerAddCell.ValueMember = "id";
         }
         #endregion
 
@@ -169,23 +258,5 @@ namespace Cataloger
         }
         #endregion
 
-        private void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxPrisonType.SelectedIndex != 0)
-            {
-                labelPrisonAddLocation.Hide();
-                textBoxPrisonAddLocation.Hide();
-            }
-            else
-            {
-                labelPrisonAddLocation.Show();
-                textBoxPrisonAddLocation.Show();
-            }
-        }
-
-        private void buttonPrisonerSearch_Click(object sender, EventArgs e)
-        {
-            PopulatePrisonerListView();
-        }
     }
 }
