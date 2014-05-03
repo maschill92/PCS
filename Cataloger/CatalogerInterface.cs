@@ -33,6 +33,9 @@ namespace Cataloger
             this.panelAccount.VisibleChanged += new System.EventHandler(this.panelAccount_VisibleChanged);
             this.comboBoxPrisonType.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrisonType_SelectedIndexChanged);
             this.listViewPrisonerSearch.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(this.listViewPrisonerSearch_ItemSelectionChanged);
+            this.tabControlPrisoner.TabIndexChanged += new System.EventHandler(this.tabControlPrisoner_TabIndexChanged);
+            this.comboBoxPrisonerAddPrison.SelectedValueChanged += new System.EventHandler(this.comboBoxPrisonerAddPrison_SelectedValueChanged);
+            this.comboBoxPrisonerAddBlock.SelectedValueChanged += new System.EventHandler(this.comboBoxPrisonerAddBlock_SelectedValueChanged);
 
             comboBoxPrisonerAddPrison.DisplayMember = "name";
             comboBoxPrisonerAddPrison.ValueMember = "id";
@@ -151,36 +154,22 @@ namespace Cataloger
             if (listViewPrisonerSearch.SelectedItems.Count == 0)
             {
                 buttonPrisonerNew.Text = "New";
+                buttonPrisonerAddAdd.Text = "Add";
             }
             else
             {
                 buttonPrisonerNew.Text = "Edit";
+                buttonPrisonerAddAdd.Text = "Save";
             }
         }
 
-        #endregion
-
-        #region Prison
-        void panelPrison_VisibleChanged(object sender, EventArgs e)
+        void tabControlPrisoner_TabIndexChanged(object sender, EventArgs e)
         {
-            if (!panelPrison.Visible)
+            if (tabControlPrisoner.SelectedTab == tabPrisonerSearch)
             {
-                return;
-            }
-            System.Diagnostics.Debug.WriteLine("panelPrison visible");
-        }
-
-        private void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxPrisonType.SelectedIndex != 0)
-            {
-                labelPrisonAddLocation.Hide();
-                textBoxPrisonAddLocation.Hide();
-            }
-            else
-            {
-                labelPrisonAddLocation.Show();
-                textBoxPrisonAddLocation.Show();
+                listViewPrisonerSearch.SelectedItems.Clear();
+                buttonPrisonerNew.Text = "New";
+                buttonPrisonerAddAdd.Text = "Add";
             }
         }
 
@@ -204,7 +193,7 @@ namespace Cataloger
             else
             {
                 int prisonerId = Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text);
-                foreach(Prisoner p in prisoners)
+                foreach (Prisoner p in prisoners)
                 {
                     if (p.id == prisonerId)
                     {
@@ -233,6 +222,44 @@ namespace Cataloger
             comboBoxPrisonerAddBlock.ValueMember = "id";
             comboBoxPrisonerAddCell.DisplayMember = "name";
             comboBoxPrisonerAddCell.ValueMember = "id";
+        }
+
+        void comboBoxPrisonerAddPrison_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Prison p =  (Prison)comboBoxPrisonerAddPrison.SelectedItem;
+            if (p == null) return;
+            comboBoxPrisonerAddBlock.DataSource = p.blocks;
+        }
+        void comboBoxPrisonerAddBlock_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CellBlock cb = (CellBlock)comboBoxPrisonerAddBlock.SelectedItem;
+            if (cb == null) return;
+            comboBoxPrisonerAddCell.DataSource = cb.cells;
+        }
+        #endregion
+
+        #region Prison
+        void panelPrison_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!panelPrison.Visible)
+            {
+                return;
+            }
+            System.Diagnostics.Debug.WriteLine("panelPrison visible");
+        }
+
+        private void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxPrisonType.SelectedIndex != 0)
+            {
+                labelPrisonAddLocation.Hide();
+                textBoxPrisonAddLocation.Hide();
+            }
+            else
+            {
+                labelPrisonAddLocation.Show();
+                textBoxPrisonAddLocation.Show();
+            }
         }
         #endregion
 
