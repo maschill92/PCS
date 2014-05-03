@@ -185,8 +185,8 @@ namespace Cataloger
                 textBoxPrisonerAddFname.Text = String.Empty;
                 textBoxPrisonerAddLname.Text = String.Empty;
                 datePickerAddPrisonerDob.Text = String.Empty;
-                radioButtonMale.Checked = false;
-                radioButtonFemale.Checked = false;
+                radioButtonPrisonerAddMale.Checked = false;
+                radioButtonPrisonerAddFemale.Checked = false;
                 comboBoxPrisonerAddCell.DataSource = null;
                 comboBoxPrisonerAddBlock.DataSource = null;
             }
@@ -202,11 +202,11 @@ namespace Cataloger
                         datePickerAddPrisonerDob.Text = p.dateOfBirth;
                         if (p.sex.Equals("M"))
                         {
-                            radioButtonAccountMale.Checked = true;
+                            radioButtonPrisonerAddMale.Checked = true;
                         }
                         else
                         {
-                            radioButtonAccountFemale.Checked = true;
+                            radioButtonPrisonerAddFemale.Checked = true;
                         }
 
                         comboBoxPrisonerAddBlock.DataSource = p.cell.block.prison.blocks;
