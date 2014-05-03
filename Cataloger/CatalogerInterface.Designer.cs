@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("System");
             this.buttonMenuPrisoner = new System.Windows.Forms.Button();
             this.buttonMenuPrison = new System.Windows.Forms.Button();
             this.buttonMenuOffense = new System.Windows.Forms.Button();
@@ -164,7 +163,7 @@
             this.labelPrisonAddName = new System.Windows.Forms.Label();
             this.labelSelectType = new System.Windows.Forms.Label();
             this.textBoxPrisonAddDescription = new System.Windows.Forms.TextBox();
-            this.textBoxPrisonAddType = new System.Windows.Forms.TextBox();
+            this.comboBoxPrisonType = new System.Windows.Forms.ComboBox();
             this.tabControlPrisoner.SuspendLayout();
             this.tabPrisonerSearch.SuspendLayout();
             this.tabPrisonerAddEdit.SuspendLayout();
@@ -269,6 +268,7 @@
             this.cellBlockName,
             this.cellNumber});
             this.listViewPrisonerSearch.FullRowSelect = true;
+            this.listViewPrisonerSearch.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewPrisonerSearch.Location = new System.Drawing.Point(20, 67);
             this.listViewPrisonerSearch.MultiSelect = false;
             this.listViewPrisonerSearch.Name = "listViewPrisonerSearch";
@@ -368,7 +368,6 @@
             this.buttonPrisonerDelete.TabIndex = 6;
             this.buttonPrisonerDelete.Text = "Delete";
             this.buttonPrisonerDelete.UseVisualStyleBackColor = true;
-            this.buttonPrisonerDelete.Click += new System.EventHandler(this.buttonPrisonerDelete_Click);
             // 
             // buttonPrisonerNew
             // 
@@ -1088,9 +1087,9 @@
             // 
             // panelPrisonDetailsParent
             // 
-            this.panelPrisonDetailsParent.Controls.Add(this.panelPrisonPrisonDetails);
-            this.panelPrisonDetailsParent.Controls.Add(this.panelPrisonCellDetails);
             this.panelPrisonDetailsParent.Controls.Add(this.panelPrisonCellBlockDetails);
+            this.panelPrisonDetailsParent.Controls.Add(this.panelPrisonCellDetails);
+            this.panelPrisonDetailsParent.Controls.Add(this.panelPrisonPrisonDetails);
             this.panelPrisonDetailsParent.Location = new System.Drawing.Point(216, 32);
             this.panelPrisonDetailsParent.Name = "panelPrisonDetailsParent";
             this.panelPrisonDetailsParent.Size = new System.Drawing.Size(615, 432);
@@ -1121,6 +1120,7 @@
             this.buttonDeletePrison.TabIndex = 8;
             this.buttonDeletePrison.Text = "Delete";
             this.buttonDeletePrison.UseVisualStyleBackColor = true;
+            this.buttonDeletePrison.Click += new System.EventHandler(this.buttonDeletePrison_Click);
             // 
             // buttonResetPrison
             // 
@@ -1130,6 +1130,7 @@
             this.buttonResetPrison.TabIndex = 7;
             this.buttonResetPrison.Text = "Reset";
             this.buttonResetPrison.UseVisualStyleBackColor = true;
+            this.buttonResetPrison.Click += new System.EventHandler(this.buttonResetPrison_Click);
             // 
             // buttonSavePrison
             // 
@@ -1139,6 +1140,7 @@
             this.buttonSavePrison.TabIndex = 6;
             this.buttonSavePrison.Text = "Save";
             this.buttonSavePrison.UseVisualStyleBackColor = true;
+            this.buttonSavePrison.Click += new System.EventHandler(this.buttonSavePrison_Click);
             // 
             // textBoxPrisonDescription
             // 
@@ -1212,6 +1214,7 @@
             this.buttonDeleteCell.TabIndex = 11;
             this.buttonDeleteCell.Text = "Delete";
             this.buttonDeleteCell.UseVisualStyleBackColor = true;
+            this.buttonDeleteCell.Click += new System.EventHandler(this.buttonDeleteCell_Click);
             // 
             // buttonResetCell
             // 
@@ -1221,6 +1224,7 @@
             this.buttonResetCell.TabIndex = 10;
             this.buttonResetCell.Text = "Reset";
             this.buttonResetCell.UseVisualStyleBackColor = true;
+            this.buttonResetCell.Click += new System.EventHandler(this.buttonResetCell_Click);
             // 
             // buttonSaveCell
             // 
@@ -1230,6 +1234,7 @@
             this.buttonSaveCell.TabIndex = 9;
             this.buttonSaveCell.Text = "Save";
             this.buttonSaveCell.UseVisualStyleBackColor = true;
+            this.buttonSaveCell.Click += new System.EventHandler(this.buttonSaveCell_Click);
             // 
             // textBoxCellDescription
             // 
@@ -1287,6 +1292,7 @@
             this.buttonDeleteCellBlock.TabIndex = 18;
             this.buttonDeleteCellBlock.Text = "Delete";
             this.buttonDeleteCellBlock.UseVisualStyleBackColor = true;
+            this.buttonDeleteCellBlock.Click += new System.EventHandler(this.buttonDeleteCellBlock_Click);
             // 
             // buttonResetCellBlock
             // 
@@ -1296,6 +1302,7 @@
             this.buttonResetCellBlock.TabIndex = 17;
             this.buttonResetCellBlock.Text = "Reset";
             this.buttonResetCellBlock.UseVisualStyleBackColor = true;
+            this.buttonResetCellBlock.Click += new System.EventHandler(this.buttonResetCellBlock_Click);
             // 
             // buttonSaveCellBlock
             // 
@@ -1305,6 +1312,7 @@
             this.buttonSaveCellBlock.TabIndex = 16;
             this.buttonSaveCellBlock.Text = "Save";
             this.buttonSaveCellBlock.UseVisualStyleBackColor = true;
+            this.buttonSaveCellBlock.Click += new System.EventHandler(this.buttonSaveCellBlock_Click);
             // 
             // textBoxCellBlockDetails
             // 
@@ -1351,10 +1359,6 @@
             // 
             this.treeViewPrison.Location = new System.Drawing.Point(4, 4);
             this.treeViewPrison.Name = "treeViewPrison";
-            treeNode1.Name = "systemNode";
-            treeNode1.Text = "System";
-            this.treeViewPrison.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
             this.treeViewPrison.Size = new System.Drawing.Size(193, 425);
             this.treeViewPrison.TabIndex = 0;
             // 
@@ -1376,13 +1380,13 @@
             // 
             // tabPrisonAdd
             // 
-            this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddType);
             this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddDescription);
             this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddLocation);
             this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddName);
             this.tabPrisonAdd.Controls.Add(this.label17);
             this.tabPrisonAdd.Controls.Add(this.labelPrisonAddLocation);
             this.tabPrisonAdd.Controls.Add(this.labelPrisonAddName);
+            this.tabPrisonAdd.Controls.Add(this.comboBoxPrisonType);
             this.tabPrisonAdd.Controls.Add(this.labelSelectType);
             this.tabPrisonAdd.Location = new System.Drawing.Point(4, 22);
             this.tabPrisonAdd.Name = "tabPrisonAdd";
@@ -1451,12 +1455,18 @@
             this.textBoxPrisonAddDescription.Size = new System.Drawing.Size(480, 158);
             this.textBoxPrisonAddDescription.TabIndex = 11;
             // 
-            // textBoxPrisonAddType
+            // comboBoxPrisonType
             // 
-            this.textBoxPrisonAddType.Location = new System.Drawing.Point(95, 42);
-            this.textBoxPrisonAddType.Name = "textBoxPrisonAddType";
-            this.textBoxPrisonAddType.Size = new System.Drawing.Size(204, 20);
-            this.textBoxPrisonAddType.TabIndex = 12;
+            this.comboBoxPrisonType.FormattingEnabled = true;
+            this.comboBoxPrisonType.Items.AddRange(new object[] {
+            "Prison",
+            "Cell Block",
+            "Cell"});
+            this.comboBoxPrisonType.Location = new System.Drawing.Point(95, 42);
+            this.comboBoxPrisonType.Name = "comboBoxPrisonType";
+            this.comboBoxPrisonType.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPrisonType.TabIndex = 1;
+            this.comboBoxPrisonType.Text = "Prison";
             // 
             // CatalogerInterface
             // 
@@ -1641,8 +1651,8 @@
         private System.Windows.Forms.Label LabelAccountFName;
         private System.Windows.Forms.Button ButtonAccountSave;
         private System.Windows.Forms.Button ButtonAccountReset;
-        private System.Windows.Forms.TextBox textBoxPrisonAddType;
         private System.Windows.Forms.TextBox textBoxPrisonAddDescription;
+        private System.Windows.Forms.ComboBox comboBoxPrisonType;
     }
 }
 

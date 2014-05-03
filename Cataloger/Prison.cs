@@ -42,5 +42,19 @@ namespace Cataloger
             }
             return list;
         }
+
+        public bool Update(String name, String location, String description)
+        {
+            String str = "update prison set name='" + name + "', location='" + location + ", description='" + description + "' where id='" + this.id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
+
+        public bool Delete()
+        {
+            String str = "delete from prison where id='" + this.id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
     }
 }
