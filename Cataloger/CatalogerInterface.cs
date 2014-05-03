@@ -14,9 +14,12 @@ namespace Cataloger
     {
         Cataloger cataloger;
         List<Prison> prisons;
+        List<Prisoner> prisoners;
         public CatalogerInterface(String uName)
         {
             cataloger = new Cataloger(uName);
+            prisons = new List<Prison>();
+            prisoners = new List<Prisoner>();
             InitializeComponent();
             InitializeAdditional();
             panelPrisoner.Visible = true;
@@ -28,6 +31,7 @@ namespace Cataloger
             this.panelPrison.VisibleChanged += new System.EventHandler(this.panelPrison_VisibleChanged);
             this.panelOffense.VisibleChanged += new System.EventHandler(this.panelOffense_VisibleChanged);
             this.panelAccount.VisibleChanged += new System.EventHandler(this.panelAccount_VisibleChanged);
+            this.comboBoxPrisonType.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrisonType_SelectedIndexChanged);
         }
 
         void RefreshData()
@@ -90,9 +94,46 @@ namespace Cataloger
             }
             System.Diagnostics.Debug.WriteLine("panelPrisoner visible");
             RefreshData();
+            PopulatePrisonerListView();
         }
 
-
+        void PopulatePrisonerListView()
+        {
+            String id = textBoxPrisonerId.Text.ToLower();
+            String fName = textBoxPrisonerFname.Text.ToLower();
+            String lName = textBoxPrisonerLname.Text.ToLower();
+            String pName = textBoxPrisonerPrisonName.Text.ToLower();
+            String bName = textBoxPrisonerBlockName.Text.ToLower();
+            String cName = textBoxPrisonerCellName.Text.ToLower();
+            prisoners.Clear();
+            listViewPrisonerSearch.Items.Clear();
+            foreach(Prison p in prisons)
+            {
+                if (!p.name.ToLower().Contains(pName)) continue;
+                foreach(CellBlock b in p.blocks)
+                {
+                    if (!b.name.ToLower().Contains(bName)) continue;
+                    foreach(Cell c in b.cells)
+                    {
+                        if (!c.name.ToLower().Contains(cName)) continue;
+                        foreach(Prisoner pr in c.prisoners)
+                        {
+                            if (pr.id.ToString().Contains(id) && pr.fName.ToLower().Contains(fName) && pr.lName.ToLower().Contains(lName))
+                            {
+                                prisoners.Add(pr);
+                                ListViewItem item = new ListViewItem(pr.id.ToString());
+                                item.SubItems.Add(pr.fName);
+                                item.SubItems.Add(pr.lName);
+                                item.SubItems.Add(p.name);
+                                item.SubItems.Add(b.name);
+                                item.SubItems.Add(c.name);
+                                listViewPrisonerSearch.Items.Add(item);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Prison
@@ -127,7 +168,7 @@ namespace Cataloger
             System.Diagnostics.Debug.WriteLine("panelAccount visible");
         }
         #endregion
-        
+
         private void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxPrisonType.SelectedIndex != 0)
@@ -140,6 +181,11 @@ namespace Cataloger
                 labelPrisonAddLocation.Show();
                 textBoxPrisonAddLocation.Show();
             }
+        }
+
+        private void buttonPrisonerSearch_Click(object sender, EventArgs e)
+        {
+            PopulatePrisonerListView();
         }
     }
 }

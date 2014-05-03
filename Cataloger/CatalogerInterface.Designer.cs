@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("System");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("System");
             this.buttonMenuPrisoner = new System.Windows.Forms.Button();
             this.buttonMenuPrison = new System.Windows.Forms.Button();
             this.buttonMenuOffense = new System.Windows.Forms.Button();
@@ -47,29 +47,29 @@
             this.textBoxPrisonerLname = new System.Windows.Forms.TextBox();
             this.textBoxPrisonerPrisonName = new System.Windows.Forms.TextBox();
             this.textBoxPrisonerBlockName = new System.Windows.Forms.TextBox();
-            this.textBoxPrisonerCell = new System.Windows.Forms.TextBox();
+            this.textBoxPrisonerCellName = new System.Windows.Forms.TextBox();
             this.buttonPrisonerSearch = new System.Windows.Forms.Button();
             this.buttonPrisonerDelete = new System.Windows.Forms.Button();
             this.buttonPrisonerEdit = new System.Windows.Forms.Button();
             this.buttonPrisonerAdd = new System.Windows.Forms.Button();
             this.tabPrisonerAddEdit = new System.Windows.Forms.TabPage();
-            this.comboBoxPrisonerAddBlock = new System.Windows.Forms.ComboBox();
-            this.comboBoxPrisonerAddCell = new System.Windows.Forms.ComboBox();
+            this.textBoxPrisonerAddFname = new System.Windows.Forms.TextBox();
+            this.textBoxPrisonerAddLname = new System.Windows.Forms.TextBox();
+            this.datePickerAddPrisonerDob = new System.Windows.Forms.DateTimePicker();
             this.radioButtonMale = new System.Windows.Forms.RadioButton();
             this.radioButtonFemale = new System.Windows.Forms.RadioButton();
-            this.datePickerAddPrisonerDob = new System.Windows.Forms.DateTimePicker();
             this.comboBoxPrisonerAddPrison = new System.Windows.Forms.ComboBox();
+            this.comboBoxPrisonerAddBlock = new System.Windows.Forms.ComboBox();
+            this.comboBoxPrisonerAddCell = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonPrisonerAddAdd = new System.Windows.Forms.Button();
             this.buttonPrisonerAddReset = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxPrisonerAddLname = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxPrisonerAddFname = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelPrisoner = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
@@ -248,7 +248,7 @@
             this.tabPrisonerSearch.Controls.Add(this.textBoxPrisonerLname);
             this.tabPrisonerSearch.Controls.Add(this.textBoxPrisonerPrisonName);
             this.tabPrisonerSearch.Controls.Add(this.textBoxPrisonerBlockName);
-            this.tabPrisonerSearch.Controls.Add(this.textBoxPrisonerCell);
+            this.tabPrisonerSearch.Controls.Add(this.textBoxPrisonerCellName);
             this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerSearch);
             this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerDelete);
             this.tabPrisonerSearch.Controls.Add(this.buttonPrisonerEdit);
@@ -270,6 +270,7 @@
             this.prisonName,
             this.cellBlockName,
             this.cellNumber});
+            this.listViewPrisonerSearch.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewPrisonerSearch.Location = new System.Drawing.Point(20, 67);
             this.listViewPrisonerSearch.MultiSelect = false;
             this.listViewPrisonerSearch.Name = "listViewPrisonerSearch";
@@ -343,12 +344,12 @@
             this.textBoxPrisonerBlockName.Size = new System.Drawing.Size(128, 20);
             this.textBoxPrisonerBlockName.TabIndex = 15;
             // 
-            // textBoxPrisonerCell
+            // textBoxPrisonerCellName
             // 
-            this.textBoxPrisonerCell.Location = new System.Drawing.Point(690, 41);
-            this.textBoxPrisonerCell.Name = "textBoxPrisonerCell";
-            this.textBoxPrisonerCell.Size = new System.Drawing.Size(128, 20);
-            this.textBoxPrisonerCell.TabIndex = 16;
+            this.textBoxPrisonerCellName.Location = new System.Drawing.Point(690, 41);
+            this.textBoxPrisonerCellName.Name = "textBoxPrisonerCellName";
+            this.textBoxPrisonerCellName.Size = new System.Drawing.Size(128, 20);
+            this.textBoxPrisonerCellName.TabIndex = 16;
             // 
             // buttonPrisonerSearch
             // 
@@ -358,6 +359,7 @@
             this.buttonPrisonerSearch.TabIndex = 9;
             this.buttonPrisonerSearch.Text = "Search";
             this.buttonPrisonerSearch.UseVisualStyleBackColor = true;
+            this.buttonPrisonerSearch.Click += new System.EventHandler(this.buttonPrisonerSearch_Click);
             // 
             // buttonPrisonerDelete
             // 
@@ -413,21 +415,26 @@
             this.tabPrisonerAddEdit.Text = "Add/Edit";
             this.tabPrisonerAddEdit.UseVisualStyleBackColor = true;
             // 
-            // comboBoxPrisonerAddBlock
+            // textBoxPrisonerAddFname
             // 
-            this.comboBoxPrisonerAddBlock.FormattingEnabled = true;
-            this.comboBoxPrisonerAddBlock.Location = new System.Drawing.Point(344, 240);
-            this.comboBoxPrisonerAddBlock.Name = "comboBoxPrisonerAddBlock";
-            this.comboBoxPrisonerAddBlock.Size = new System.Drawing.Size(145, 21);
-            this.comboBoxPrisonerAddBlock.TabIndex = 19;
+            this.textBoxPrisonerAddFname.Location = new System.Drawing.Point(120, 57);
+            this.textBoxPrisonerAddFname.Name = "textBoxPrisonerAddFname";
+            this.textBoxPrisonerAddFname.Size = new System.Drawing.Size(218, 20);
+            this.textBoxPrisonerAddFname.TabIndex = 1;
             // 
-            // comboBoxPrisonerAddCell
+            // textBoxPrisonerAddLname
             // 
-            this.comboBoxPrisonerAddCell.FormattingEnabled = true;
-            this.comboBoxPrisonerAddCell.Location = new System.Drawing.Point(561, 240);
-            this.comboBoxPrisonerAddCell.Name = "comboBoxPrisonerAddCell";
-            this.comboBoxPrisonerAddCell.Size = new System.Drawing.Size(145, 21);
-            this.comboBoxPrisonerAddCell.TabIndex = 18;
+            this.textBoxPrisonerAddLname.Location = new System.Drawing.Point(120, 101);
+            this.textBoxPrisonerAddLname.Name = "textBoxPrisonerAddLname";
+            this.textBoxPrisonerAddLname.Size = new System.Drawing.Size(218, 20);
+            this.textBoxPrisonerAddLname.TabIndex = 3;
+            // 
+            // datePickerAddPrisonerDob
+            // 
+            this.datePickerAddPrisonerDob.Location = new System.Drawing.Point(485, 54);
+            this.datePickerAddPrisonerDob.Name = "datePickerAddPrisonerDob";
+            this.datePickerAddPrisonerDob.Size = new System.Drawing.Size(218, 20);
+            this.datePickerAddPrisonerDob.TabIndex = 15;
             // 
             // radioButtonMale
             // 
@@ -451,13 +458,6 @@
             this.radioButtonFemale.Text = "Female";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
             // 
-            // datePickerAddPrisonerDob
-            // 
-            this.datePickerAddPrisonerDob.Location = new System.Drawing.Point(485, 54);
-            this.datePickerAddPrisonerDob.Name = "datePickerAddPrisonerDob";
-            this.datePickerAddPrisonerDob.Size = new System.Drawing.Size(218, 20);
-            this.datePickerAddPrisonerDob.TabIndex = 15;
-            // 
             // comboBoxPrisonerAddPrison
             // 
             this.comboBoxPrisonerAddPrison.FormattingEnabled = true;
@@ -465,6 +465,22 @@
             this.comboBoxPrisonerAddPrison.Name = "comboBoxPrisonerAddPrison";
             this.comboBoxPrisonerAddPrison.Size = new System.Drawing.Size(145, 21);
             this.comboBoxPrisonerAddPrison.TabIndex = 14;
+            // 
+            // comboBoxPrisonerAddBlock
+            // 
+            this.comboBoxPrisonerAddBlock.FormattingEnabled = true;
+            this.comboBoxPrisonerAddBlock.Location = new System.Drawing.Point(344, 240);
+            this.comboBoxPrisonerAddBlock.Name = "comboBoxPrisonerAddBlock";
+            this.comboBoxPrisonerAddBlock.Size = new System.Drawing.Size(145, 21);
+            this.comboBoxPrisonerAddBlock.TabIndex = 19;
+            // 
+            // comboBoxPrisonerAddCell
+            // 
+            this.comboBoxPrisonerAddCell.FormattingEnabled = true;
+            this.comboBoxPrisonerAddCell.Location = new System.Drawing.Point(561, 240);
+            this.comboBoxPrisonerAddCell.Name = "comboBoxPrisonerAddCell";
+            this.comboBoxPrisonerAddCell.Size = new System.Drawing.Size(145, 21);
+            this.comboBoxPrisonerAddCell.TabIndex = 18;
             // 
             // label7
             // 
@@ -502,6 +518,33 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Sex:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(408, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Date Of Birth:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(53, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Last Name:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(54, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "First Name:";
+            // 
             // buttonPrisonerAddAdd
             // 
             this.buttonPrisonerAddAdd.Location = new System.Drawing.Point(756, 441);
@@ -519,47 +562,6 @@
             this.buttonPrisonerAddReset.TabIndex = 9;
             this.buttonPrisonerAddReset.Text = "Reset";
             this.buttonPrisonerAddReset.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(408, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Date Of Birth:";
-            // 
-            // textBoxPrisonerAddLname
-            // 
-            this.textBoxPrisonerAddLname.Location = new System.Drawing.Point(120, 101);
-            this.textBoxPrisonerAddLname.Name = "textBoxPrisonerAddLname";
-            this.textBoxPrisonerAddLname.Size = new System.Drawing.Size(218, 20);
-            this.textBoxPrisonerAddLname.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Last Name:";
-            // 
-            // textBoxPrisonerAddFname
-            // 
-            this.textBoxPrisonerAddFname.Location = new System.Drawing.Point(120, 57);
-            this.textBoxPrisonerAddFname.Name = "textBoxPrisonerAddFname";
-            this.textBoxPrisonerAddFname.Size = new System.Drawing.Size(218, 20);
-            this.textBoxPrisonerAddFname.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "First Name:";
             // 
             // panelMenu
             // 
@@ -1187,10 +1189,10 @@
             // 
             this.treeViewPrison.Location = new System.Drawing.Point(4, 4);
             this.treeViewPrison.Name = "treeViewPrison";
-            treeNode3.Name = "systemNode";
-            treeNode3.Text = "System";
+            treeNode4.Name = "systemNode";
+            treeNode4.Text = "System";
             this.treeViewPrison.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode4});
             this.treeViewPrison.Size = new System.Drawing.Size(193, 425);
             this.treeViewPrison.TabIndex = 0;
             // 
@@ -1290,7 +1292,6 @@
             this.comboBoxPrisonType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPrisonType.TabIndex = 1;
             this.comboBoxPrisonType.Text = "Prison";
-            this.comboBoxPrisonType.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrisonType_SelectedIndexChanged);
             // 
             // labelSelectType
             // 
@@ -1550,7 +1551,7 @@
         private System.Windows.Forms.TextBox textBoxPrisonerLname;
         private System.Windows.Forms.TextBox textBoxPrisonerPrisonName;
         private System.Windows.Forms.TextBox textBoxPrisonerBlockName;
-        private System.Windows.Forms.TextBox textBoxPrisonerCell;
+        private System.Windows.Forms.TextBox textBoxPrisonerCellName;
         private System.Windows.Forms.DateTimePicker datePickerAddPrisonerDob;
         private System.Windows.Forms.ComboBox comboBoxPrisonerAddPrison;
         private System.Windows.Forms.ListView listViewPrisonerSearch;
