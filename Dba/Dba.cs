@@ -47,15 +47,15 @@ namespace Dba
 
         public bool Add()
         {
-            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("insert into dba (username, password, lName, fName, email, sex, dateOfBirth) values ('" +
+            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("insert into dba (username, password, fName, lName, email, sex, dateOfBirth) values ('" +
                 username + "', '" + password + "', '" + fName + "', '" + lName + "', '" + email +
                 "', '" + sex + "', '" + dateOfBirth + "')");
         }
 
         public bool Update(String p, String f, String l, String e, String s, String d)
         {
-            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("update dba set password = '" + p + "', fName = '" + f
-                + "', lName = '" + l + "', email = '" + e + "', sex = '" + s + "', dateOfBirth '" + d + "' where id = '" + username + "'");
+            return MySqlManager.MySqlManager.Instance.ExecuteNonQuery("update cataloger set password='" + p + "', fName='" + f
+                + "', lName='" + l + "', email='" + e + "', sex='" + s + "', dateOfBirth='" + d + "' where username='" + username + "'");
         }
 
         public bool Delete()
