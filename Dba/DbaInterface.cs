@@ -29,6 +29,7 @@ namespace Dba
         {
             this.PanelCataloger.VisibleChanged += new System.EventHandler(this.PanelCataloger_VisibleChanged);
             this.ListBoxCataloger.SelectedIndexChanged += new System.EventHandler(this.ListBoxCataloger_SelectedIndexChanged);
+            this.ListBoxDBA.SelectedIndexChanged += new System.EventHandler(ListBoxDBA_SelectedIndexChanged);
             this.PanelDBA.VisibleChanged += new System.EventHandler(this.PanelDBA_VisibleChanged);
             this.PanelAccount.VisibleChanged += new System.EventHandler(this.PanelAccount_VisibleChanged);
         }
@@ -94,7 +95,6 @@ namespace Dba
         private void ButtonCatalogerNew_Click(object sender, EventArgs e)
         {
             ListBoxCataloger.SelectedIndex = -1;
-
         }
 
         private void ButtonCatalogerReset_Click(object sender, EventArgs e)
@@ -220,6 +220,96 @@ namespace Dba
             ListBoxDBA.DisplayMember = "fullName";
         }
 
+        private void ListBoxDBA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListBoxDBA.SelectedIndex > -1)
+            {
+                Dba d = dbas.ElementAt(ListBoxDBA.SelectedIndex);
+                TextBoxDBAFName.Text = d.fName;
+                TextBoxDBALName.Text = d.lName;
+                TextBoxDBAUsername.Text = d.username;
+                TextBoxDBAPassword.Text = d.password;
+                TextBoxDBAEmail.Text = d.email;
+                DateTimePickerDBADOB.Text = d.dateOfBirth;
+                if (d.sex.Equals("M"))
+                {
+                    RadioButtonDBASexMale.Checked = true;
+                }
+                else
+                {
+                    RadioButtonDBASexFemale.Checked = true;
+                }
+                ButtonDBASave.Text = "Save";
+                ButtonDBADelete.Enabled = true;
+                TextBoxDBAUsername.Enabled = false;
+            }
+            else
+            {
+                TextBoxDBAFName.Text = "";
+                TextBoxDBALName.Text = "";
+                TextBoxDBAUsername.Text = "";
+                TextBoxDBAPassword.Text = "";
+                TextBoxDBAEmail.Text = "";
+                DateTimePickerDBADOB.Text = "";
+                RadioButtonDBASexMale.Checked = false;
+                RadioButtonDBASexFemale.Checked = false;
+                ButtonDBASave.Text = "Add";
+                ButtonDBADelete.Enabled = true;
+                TextBoxDBAUsername.Enabled = true;
+            }
+        }
+
+        private void ButtonDBANew_Click(object sender, EventArgs e)
+        {
+            ListBoxDBA.SelectedIndex = -1;
+        }
+
+        private void ButtonDBAReset_Click(object sender, EventArgs e)
+        {
+            if (ListBoxDBA.SelectedIndex < 0)
+            {
+                TextBoxDBAFName.Text = "";
+                TextBoxDBALName.Text = "";
+                TextBoxDBAUsername.Text = "";
+                TextBoxDBAPassword.Text = "";
+                TextBoxDBAEmail.Text = "";
+                DateTimePickerDBADOB.Text = "";
+                RadioButtonDBASexMale.Checked = false;
+                RadioButtonDBASexFemale.Checked = false;
+            }
+            else
+            {
+                Dba d = dbas.ElementAt(ListBoxDBA.SelectedIndex);
+                TextBoxDBAFName.Text = d.fName;
+                TextBoxDBALName.Text = d.lName;
+                TextBoxDBAUsername.Text = d.username;
+                TextBoxDBAPassword.Text = d.password;
+                TextBoxDBAEmail.Text = d.email;
+                DateTimePickerDBADOB.Text = d.dateOfBirth;
+                if (d.sex.Equals("M"))
+                {
+                    RadioButtonDBASexMale.Checked = true;
+                }
+                else
+                {
+                    RadioButtonDBASexFemale.Checked = true;
+                }
+            }
+        }
+
+        private void ButtonDBADelete_Click(object sender, EventArgs e)
+        {
+            dbas.ElementAt(ListBoxDBA.SelectedIndex).Delete();
+            PopulateDBAList();
+            ListBoxDBA.DataSource = dbas;
+            ListBoxDBA.DisplayMember = "fullName";
+        }
+
+        private void ButtonDBASave_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ButtonMenuAccount_Click(object sender, EventArgs e)
         {
             PanelCataloger.Visible = false;
@@ -254,5 +344,13 @@ namespace Dba
             }
             return upper && lower && digit;
         }
+
+
+
+
+
+
+
+
     }
 }

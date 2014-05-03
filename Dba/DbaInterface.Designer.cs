@@ -107,6 +107,7 @@
             this.ButtonDBASave.TabIndex = 26;
             this.ButtonDBASave.Text = "Save";
             this.ButtonDBASave.UseVisualStyleBackColor = true;
+            this.ButtonDBASave.Click += new System.EventHandler(this.ButtonDBASave_Click);
             // 
             // ButtonCatalogerNew
             // 
@@ -196,6 +197,7 @@
             this.ButtonDBADelete.TabIndex = 25;
             this.ButtonDBADelete.Text = "Delete";
             this.ButtonDBADelete.UseVisualStyleBackColor = true;
+            this.ButtonDBADelete.Click += new System.EventHandler(this.ButtonDBADelete_Click);
             // 
             // ButtonDBAReset
             // 
@@ -205,6 +207,7 @@
             this.ButtonDBAReset.TabIndex = 24;
             this.ButtonDBAReset.Text = "Reset";
             this.ButtonDBAReset.UseVisualStyleBackColor = true;
+            this.ButtonDBAReset.Click += new System.EventHandler(this.ButtonDBAReset_Click);
             // 
             // TextBoxCatalogerLName
             // 
@@ -222,6 +225,7 @@
             this.ButtonDBANew.TabIndex = 27;
             this.ButtonDBANew.Text = "New";
             this.ButtonDBANew.UseVisualStyleBackColor = true;
+            this.ButtonDBANew.Click += new System.EventHandler(this.ButtonDBANew_Click);
             // 
             // ListBoxDBA
             // 
@@ -717,8 +721,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 531);
-            this.Controls.Add(this.PanelCataloger);
             this.Controls.Add(this.PanelDBA);
+            this.Controls.Add(this.PanelCataloger);
             this.Controls.Add(this.PanelAccount);
             this.Controls.Add(this.PanelMenu);
             this.Name = "DbaInterface";
