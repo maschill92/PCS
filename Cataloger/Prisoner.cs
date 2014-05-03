@@ -46,5 +46,26 @@ namespace Cataloger
             }
             return list;
         }
+
+        public static bool Delete(int id)
+        {
+            String str = "delete from prisoner where id='" + id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
+
+        public static bool Add(String f, String l, String doB, String sex, int cellId)
+        {
+            String str = "insert into prisoner(fName, lName, dateOfBirth, sex, cellId) values ('" + f + "', '" + l + "', '" + doB + "', '" + sex + "', '" + cellId.ToString() + "')";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
+
+        public static bool Update(int id, String f, String l, String doB, String sex, int cellId)
+        {
+            String str = "update prisoner set fName='" + f + "', lName='" + l + "', dateOfBirth='" + doB + "', sex='" + sex + "', cellId='" + cellId + "' where id='" + id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
     }
 }

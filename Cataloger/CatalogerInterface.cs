@@ -109,6 +109,17 @@ namespace Cataloger
             PopulatePrisonerListView();
         }
 
+        void ResetPrisonerSearch()
+        {
+            RefreshData();
+            textBoxPrisonerId.Text = String.Empty;
+            textBoxPrisonerFname.Text = String.Empty;
+            textBoxPrisonerLname.Text = String.Empty;
+            textBoxPrisonerPrisonName.Text = String.Empty;
+            textBoxPrisonerBlockName.Text = String.Empty;
+            textBoxPrisonerCellName.Text = String.Empty;
+        }
+
         void PopulatePrisonerListView()
         {
             String id = textBoxPrisonerId.Text.ToLower();
@@ -208,7 +219,7 @@ namespace Cataloger
                         {
                             radioButtonPrisonerAddFemale.Checked = true;
                         }
-
+                        comboBoxPrisonerAddPrison.SelectedValue = p.cell.block.prison.id;
                         comboBoxPrisonerAddBlock.DataSource = p.cell.block.prison.blocks;
                         comboBoxPrisonerAddBlock.SelectedValue = p.cell.block.id;
                         comboBoxPrisonerAddCell.DataSource = p.cell.block.cells;
@@ -229,12 +240,83 @@ namespace Cataloger
             Prison p = (Prison)comboBoxPrisonerAddPrison.SelectedItem;
             if (p == null) return;
             comboBoxPrisonerAddBlock.DataSource = p.blocks;
+            comboBoxPrisonerAddBlock.DisplayMember = "name";
+            comboBoxPrisonerAddBlock.ValueMember = "id";
         }
         void comboBoxPrisonerAddBlock_SelectedValueChanged(object sender, EventArgs e)
         {
             CellBlock cb = (CellBlock)comboBoxPrisonerAddBlock.SelectedItem;
             if (cb == null) return;
             comboBoxPrisonerAddCell.DataSource = cb.cells;
+            comboBoxPrisonerAddCell.DisplayMember = "name";
+            comboBoxPrisonerAddCell.ValueMember = "id";
+        }
+
+        private void buttonPrisonerAddAdd_Click(object sender, EventArgs e)
+        {
+            if (listViewPrisonerSearch.SelectedItems.Count == 0)
+            {
+                //if (textBoxPrisonerFname.Text.Length == 0 || textBoxPrisonerLname.Text.Length == 0 || (!radioButtonPrisonerAddMale.Checked && !radioButtonPrisonerAddFemale.Checked)
+                //    || comboBoxPrisonerAddPrison.SelectedItem == null || comboBoxPrisonerAddBlock.SelectedItem == null || comboBoxPrisonerAddCell.SelectedItem == null)
+                //{
+                //    MessageBox.Show("All fields are required.");
+                //    return;
+                //}
+                Prisoner.Add(textBoxPrisonerAddFname.Text, textBoxPrisonerAddLname.Text, datePickerAddPrisonerDob.Value.Date.ToString("yyyy-MM-dd"), (radioButtonPrisonerAddMale.Checked) ? "M":"F", Convert.ToInt32(comboBoxPrisonerAddCell.SelectedValue));
+                tabControlPrisoner.SelectedTab = tabPrisonerSearch;
+            }
+            else if (listViewPrisonerSearch.SelectedItems.Count == 1)
+            {
+                int prisonerId = Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text);
+                Prisoner.Update(prisonerId, textBoxPrisonerAddFname.Text, textBoxPrisonerAddLname.Text, datePickerAddPrisonerDob.Value.Date.ToString("yyyy-MM-dd"), (radioButtonPrisonerAddMale.Checked) ? "M" : "F", Convert.ToInt32(comboBoxPrisonerAddCell.SelectedValue));
+                tabControlPrisoner.SelectedTab = tabPrisonerSearch;
+            }
+            else throw new Exception("How'd you do that?!");
+            RefreshData();
+            PopulatePrisonerListView();
+
+        }
+
+        private void buttonPrisonerAddReset_Click(object sender, EventArgs e)
+        {
+            if (listViewPrisonerSearch.SelectedItems.Count == 0)
+            {
+                textBoxPrisonerAddFname.Text = String.Empty;
+                textBoxPrisonerAddLname.Text = String.Empty;
+                datePickerAddPrisonerDob.Text = String.Empty;
+                radioButtonPrisonerAddMale.Checked = false;
+                radioButtonPrisonerAddFemale.Checked = false;
+                comboBoxPrisonerAddCell.DataSource = null;
+                comboBoxPrisonerAddBlock.DataSource = null;
+            }
+            else if (listViewPrisonerSearch.SelectedItems.Count == 1)
+            {
+                int prisonerId = Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text);
+                foreach(Prisoner p in prisoners)
+                {
+                    if (p.id == prisonerId)
+                    {
+                        textBoxPrisonerAddFname.Text = p.fName;
+                        textBoxPrisonerAddLname.Text = p.lName;
+                        datePickerAddPrisonerDob.Text = p.dateOfBirth;
+                        if (p.sex.Equals("M"))
+                        {
+                            radioButtonPrisonerAddMale.Checked = true;
+                        }
+                        else
+                        {
+                            radioButtonPrisonerAddFemale.Checked = true;
+                        }
+                        comboBoxPrisonerAddPrison.SelectedValue = p.cell.block.prison.id;
+                        comboBoxPrisonerAddBlock.DataSource = p.cell.block.prison.blocks;
+                        comboBoxPrisonerAddBlock.SelectedValue = p.cell.block.id;
+                        comboBoxPrisonerAddCell.DataSource = p.cell.block.cells;
+                        comboBoxPrisonerAddCell.SelectedValue = p.cell.id;
+                        break;
+                    }
+                }
+            }
+            else throw new Exception("How'd you do that?!");
         }
         #endregion
 
@@ -261,6 +343,23 @@ namespace Cataloger
                 textBoxPrisonAddLocation.Show();
             }
         }
+        private void buttonPrisonerDelete_Click(object sender, EventArgs e)
+        {
+            if (listViewPrisonerSearch.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            int prisonerId = Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text);
+            foreach(Prisoner p in prisoners)
+            {
+                if (p.id == prisonerId)
+                {
+                    Prisoner.Delete(p.id);
+                }
+            }
+            RefreshData();
+            PopulatePrisonerListView();
+        }
         #endregion
 
         #region Offense
@@ -282,6 +381,96 @@ namespace Cataloger
                 return;
             }
             System.Diagnostics.Debug.WriteLine("panelAccount visible");
+
+            TextBoxAccountFName.Text = cataloger.fName;
+            TextBoxAccountLName.Text = cataloger.lName;
+            TextBoxAccountPassword.Text = "";
+            TextBoxAccountEmail.Text = cataloger.email;
+            DateTimePickerAccountDOB.Text = cataloger.dateOfBirth;
+            if (cataloger.sex.Equals("M"))
+            {
+                RadioButtonAccountSexMale.Checked = true;
+            }
+            else
+            {
+                RadioButtonAccountSexFemale.Checked = true;
+            }
+        }
+
+        void ButtonAccountReset_Click(object sender, EventArgs e)
+        {
+            TextBoxAccountFName.Text = cataloger.fName;
+            TextBoxAccountLName.Text = cataloger.lName;
+            TextBoxAccountPassword.Text = "";
+            TextBoxAccountEmail.Text = cataloger.email;
+            DateTimePickerAccountDOB.Text = cataloger.dateOfBirth;
+            if (cataloger.sex.Equals("M"))
+            {
+                RadioButtonAccountSexMale.Checked = true;
+            }
+            else
+            {
+                RadioButtonAccountSexFemale.Checked = true;
+            }
+        }
+
+        void ButtonAccountSave_Click(object sender, EventArgs e)
+        {
+            if (TextBoxAccountFName.Text.Equals("") || TextBoxAccountLName.Text.Equals("") ||
+                TextBoxAccountPassword.Text.Equals("") || TextBoxAccountEmail.Text.Equals(""))
+            {
+                MessageBox.Show("Please fill in all of the fields.");
+            }
+            else
+            {
+                if (!PasswordMeetsRequirements(TextBoxAccountPassword.Text))
+                {
+                    MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and length of at least 8.");
+                }
+                else
+                {
+                    string f = TextBoxAccountFName.Text;
+                    string l = TextBoxAccountLName.Text;
+                    string p = TextBoxAccountPassword.Text;
+                    string em = TextBoxAccountEmail.Text;
+                    string d = DateTimePickerAccountDOB.Value.Date.ToString("yyyy-MM-dd");
+                    string s = "";
+                    if (RadioButtonAccountSexMale.Checked == true)
+                    {
+                        s = "M";
+                    }
+                    else
+                    {
+                        s = "F";
+                    }
+                    if (!cataloger.Update(p, f, l, em, s, d))
+                    {
+                        MessageBox.Show("User account could not be updated.");
+                    }
+                    else
+                    {
+                        TextBoxAccountPassword.Text = "";
+                        cataloger = new Cataloger(cataloger.username);
+                    }
+                }
+            }
+        }
+
+        private bool PasswordMeetsRequirements(String pWord)
+        {
+            bool upper = false;
+            bool lower = false;
+            bool digit = false;
+            if (pWord.Length >= 8)
+            {
+                for (int i = 0; i < pWord.Length; i++)
+                {
+                    if (Char.IsUpper(pWord[i])) upper = true;
+                    else if (Char.IsLower(pWord[i])) lower = true;
+                    else if (Char.IsDigit(pWord[i])) digit = true;
+                }
+            }
+            return upper && lower && digit;
         }
         #endregion
 
