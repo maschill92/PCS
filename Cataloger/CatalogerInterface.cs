@@ -41,6 +41,7 @@ namespace Cataloger
             this.panelPrisonCellBlockDetails.VisibleChanged += new System.EventHandler(this.panelPrisonCellBlockDetails_VisibleChanged);
             this.panelPrisonCellDetails.VisibleChanged += new System.EventHandler(this.panelPrisonCellDetails_VisibleChanged);
             this.comboBoxPrisonAddPrison.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrisonAddPrison_SelectedIndexChanged);
+            this.listViewOffenses.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(this.listViewOffenses_ItemSelectionChanged);
 
             comboBoxPrisonerAddPrison.DisplayMember = "name";
             comboBoxPrisonerAddPrison.ValueMember = "id";
@@ -48,12 +49,8 @@ namespace Cataloger
             comboBoxPrisonerAddBlock.ValueMember = "id";
             comboBoxPrisonerAddCell.DisplayMember = "name";
             comboBoxPrisonerAddCell.ValueMember = "id";
-        }
-
-        void RefreshData()
-        {
-            prisons = Prison.GenerateAll();
-            comboBoxPrisonerAddPrison.DataSource = prisons;
+            listBoxOffenseEditPrisoners.DisplayMember = "ListBoxDisplay";
+            listBoxOffenseEditPrisoners.ValueMember = "id";
         }
 
         #region Menu Button Click Events
@@ -100,6 +97,90 @@ namespace Cataloger
             panelPrison.Visible = false;
             panelOffense.Visible = false;
         }
+
+        private void buttonMenuLogout_Click(object sender, EventArgs e)
+        {
+            this.RemoveOwnedForm(this.OwnedForms.ElementAt(0));
+            this.Close();
+        }
+        #endregion
+
+        #region Helpers
+        void RefreshData()
+        {
+            prisoners.Clear();
+            prisons = Prison.GenerateAll();
+            comboBoxPrisonerAddPrison.DataSource = prisons;
+            foreach (Prison p in prisons)
+            {
+                foreach (CellBlock b in p.blocks)
+                {
+                    foreach (Cell c in b.cells)
+                    {
+                        foreach (Prisoner pr in c.prisoners)
+                        {
+                            prisoners.Add(pr);
+                        }
+                    }
+                }
+            }
+        }
+
+        Prison FindPrison(int id)
+        {
+            foreach (Prison p in prisons)
+            {
+                if (p.id == id)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        CellBlock FindCellBlock(int id)
+        {
+            foreach (Prison p in prisons)
+            {
+                foreach (CellBlock b in p.blocks)
+                {
+                    if (b.id == id)
+                    {
+                        return b;
+                    }
+                }
+            }
+            return null;
+        }
+
+        Cell FindCell(int id)
+        {
+            foreach (Prison p in prisons)
+            {
+                foreach (CellBlock b in p.blocks)
+                {
+                    foreach (Cell c in b.cells)
+                    {
+                        if (c.id == id)
+                        {
+                            return c;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+        Offense FindOffense(int id)
+        {
+            foreach(Prisoner p in prisoners)
+            {
+                foreach(Offense o in p.offenses)
+                {
+                    if (o.id == id) return o;
+                }
+            }
+            return null;
+        }
         #endregion
 
         #region Prisoner
@@ -133,7 +214,6 @@ namespace Cataloger
             String pName = textBoxPrisonerPrisonName.Text.ToLower();
             String bName = textBoxPrisonerBlockName.Text.ToLower();
             String cName = textBoxPrisonerCellName.Text.ToLower();
-            prisoners.Clear();
             listViewPrisonerSearch.Items.Clear();
             foreach (Prison p in prisons)
             {
@@ -148,7 +228,6 @@ namespace Cataloger
                         {
                             if (pr.id.ToString().Contains(id) && pr.fName.ToLower().Contains(fName) && pr.lName.ToLower().Contains(lName))
                             {
-                                prisoners.Add(pr);
                                 ListViewItem item = new ListViewItem(pr.id.ToString());
                                 item.SubItems.Add(pr.fName);
                                 item.SubItems.Add(pr.lName);
@@ -191,6 +270,13 @@ namespace Cataloger
 
         private void buttonPrisonerSearch_Click(object sender, EventArgs e)
         {
+            PopulatePrisonerListView();
+        }
+
+        private void buttonPrisonerDelete_Click(object sender, EventArgs e)
+        {
+            Prisoner.Delete(Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text));
+            RefreshData();
             PopulatePrisonerListView();
         }
 
@@ -407,52 +493,6 @@ namespace Cataloger
             textBoxPrisonLocation.Text = prison.location;
             textBoxPrisonDescription.Text = prison.description;
         }
-
-        Prison FindPrison(int id)
-        {
-            foreach (Prison p in prisons)
-            {
-                if (p.id == id)
-                {
-                    return p;
-                }
-            }
-            return null;
-        }
-
-        CellBlock FindCellBlock(int id)
-        {
-            foreach (Prison p in prisons)
-            {
-                foreach (CellBlock b in p.blocks)
-                {
-                    if (b.id == id)
-                    {
-                        return b;
-                    }
-                }
-            }
-            return null;
-        }
-
-        Cell FindCell(int id)
-        {
-            foreach (Prison p in prisons)
-            {
-                foreach (CellBlock b in p.blocks)
-                {
-                    foreach (Cell c in b.cells)
-                    {
-                        if (c.id == id)
-                        {
-                            return c;
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
         void panelPrisonPrisonDetails_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelPrisonPrisonDetails.Visible) return;
@@ -626,7 +666,7 @@ namespace Cataloger
 
         private void buttonPrisonAddAdd_Click(object sender, EventArgs e)
         {
-            if (comboBoxPrisonType.SelectedIndex == 0 && textBoxPrisonLocation.Text.Length == 0)
+            if (comboBoxPrisonType.SelectedIndex == 0 && textBoxPrisonAddLocation.Text.Length == 0)
             {
                 MessageBox.Show("Name and Location fields are required.");
                 return;
@@ -648,10 +688,10 @@ namespace Cataloger
                     Prison.Add(textBoxPrisonAddName.Text, textBoxPrisonAddLocation.Text, textBoxPrisonAddDescription.Text);
                     break;
                 case(1):
-                    CellBlock.Add(textBoxPrisonAddName.Text, textBoxPrisonLocation.Text, ((Prison)comboBoxPrisonAddPrison.SelectedItem).id);
+                    CellBlock.Add(textBoxPrisonAddName.Text, textBoxPrisonAddDescription.Text, ((Prison)comboBoxPrisonAddPrison.SelectedItem).id);
                     break;
                 case(2):
-                    Cell.Add(textBoxPrisonAddName.Text, textBoxPrisonLocation.Text, ((CellBlock)comboBoxPrisonAddCellBlock.SelectedItem).id);
+                    Cell.Add(textBoxPrisonAddName.Text, textBoxPrisonAddDescription.Text, ((CellBlock)comboBoxPrisonAddCellBlock.SelectedItem).id);
                     break;
                 default:
                     break;
@@ -685,7 +725,142 @@ namespace Cataloger
                 return;
             }
             System.Diagnostics.Debug.WriteLine("panelOffense visible");
+            RefreshData();
+            PopulateOffenseListView();
+            listBoxOffenseEditPrisoners.DataSource = prisoners;
         }
+
+        void PopulateOffenseListView()
+        {
+            String pId = textBoxOffenseId.Text.ToLower();
+            String pFname = textBoxOffensePrisonerFname.Text.ToLower();
+            String pLname = textBoxOffensePrisonerLname.Text.ToLower();
+            String type = textBoxOffenseType.Text.ToLower();
+            String loc = textBoxOffenseLocation.Text.ToLower();
+            String date = textBoxOffenseDate.Text.ToLower();
+            listViewOffenses.Items.Clear();
+
+            foreach(Prisoner p in prisoners)
+            {
+                if (!p.id.ToString().ToLower().Contains(pId) || !p.fName.ToLower().Contains(pFname) || !p.lName.ToLower().Contains(pLname)) continue;
+                foreach(Offense o in p.offenses)
+                {
+                    if (!o.type.ToLower().Contains(type) || !o.location.ToLower().Contains(loc) || !o.date.ToLower().Contains(date)) continue;
+                    ListViewItem item = new ListViewItem(o.id.ToString());
+                    item.SubItems.Add(p.fName);
+                    item.SubItems.Add(p.lName);
+                    item.SubItems.Add(o.type);
+                    item.SubItems.Add(o.location);
+                    item.SubItems.Add(o.date);
+                    listViewOffenses.Items.Add(item);
+                }
+            }
+        }
+        void listViewOffenses_ItemSelectionChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("listViewOffenses_ItemSelectionChanged");
+            if (listViewOffenses.SelectedItems.Count == 0)
+            {
+                buttonOffenseNew.Text = "New";
+                buttonOffenseAddAdd.Text = "Add";
+                textBoxOffenseDescription.Text = "";
+            }
+            else
+            {
+                buttonOffenseNew.Text = "Edit";
+                buttonOffenseAddAdd.Text = "Save";
+                textBoxOffenseDescription.Text = FindOffense(Convert.ToInt32(listViewOffenses.SelectedItems[0].Text)).description;
+            }
+        }
+
+        private void buttonOffenseSearch_Click(object sender, EventArgs e)
+        {
+            PopulateOffenseListView();
+        }
+
+        private void buttonOffenseDelete_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("buttonOffenseDelete_Click");
+            if (listViewOffenses.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                Offense.Delete(Convert.ToInt32(listViewOffenses.SelectedItems[0].Text));
+                RefreshData();
+                PopulateOffenseListView();
+            }
+        }
+
+        private void buttonOffenseNew_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("buttonOffenseNew_Click");
+            if (listViewOffenses.SelectedItems.Count == 0)
+            {
+                textBoxOffenseEditLocation.Text = String.Empty;
+                textBoxOffenseEditDescription.Text = String.Empty;
+                textBoxOffenseEditType.Text = String.Empty;
+                datePickerOffenseEditDate.Text = String.Empty;
+            }
+            else
+            {
+                Offense o = FindOffense(Convert.ToInt32(listViewOffenses.SelectedItems[0].Text));
+                if (o == null) return;
+                textBoxOffenseEditLocation.Text = o.location;
+                textBoxOffenseEditDescription.Text = o.description;
+                textBoxOffenseEditType.Text = o.type;
+                datePickerOffenseEditDate.Text = o.date;
+                listBoxOffenseEditPrisoners.SelectedValue = o.prisoner.id;
+            }
+            tabControlOffense.SelectedTab = tabOffenseAddEdit;
+        }
+
+        private void buttonOffenseEditReset_Click(object sender, EventArgs e)
+        {
+            if (buttonOffenseNew.Text.Equals("New"))
+            {
+                textBoxOffenseEditLocation.Text = String.Empty;
+                textBoxOffenseEditDescription.Text = String.Empty;
+                textBoxOffenseEditType.Text = String.Empty;
+                datePickerOffenseEditDate.Text = String.Empty;
+            }
+            else
+            {
+                Offense o = FindOffense(Convert.ToInt32(listViewOffenses.SelectedItems[0].Text));
+                if (o == null) return;
+                textBoxOffenseEditLocation.Text = o.location;
+                textBoxOffenseEditDescription.Text = o.description;
+                textBoxOffenseEditType.Text = o.type;
+                datePickerOffenseEditDate.Text = o.date;
+            }
+        }
+
+        private void buttonOffenseAddAdd_Click(object sender, EventArgs e)
+        {
+            if (listBoxOffenseEditPrisoners.SelectedItem == null || textBoxOffenseEditLocation.Text.Length == 0
+                || textBoxOffenseEditType.Text.Length == 0)
+            {
+                MessageBox.Show("Prisoner, Location, and Type fields are required");
+                return;
+            }
+
+            if (listViewOffenses.SelectedItems.Count == 0)
+            {
+                Offense.Add(textBoxOffenseEditLocation.Text, textBoxOffenseEditType.Text, textBoxOffenseEditDescription.Text,
+                    datePickerOffenseEditDate.Value.Date.ToString("yyy-MM-dd"), ((Prisoner)listBoxOffenseEditPrisoners.SelectedItem).id);
+            }
+            else
+            {
+                Offense.Update(Convert.ToInt32(listViewOffenses.SelectedItems[0].Text),textBoxOffenseEditLocation.Text, textBoxOffenseEditType.Text,
+                    textBoxOffenseEditDescription.Text, datePickerOffenseEditDate.Value.Date.ToString("yyy-MM-dd"), 
+                    ((Prisoner)listBoxOffenseEditPrisoners.SelectedItem).id);
+            }
+            RefreshData();
+            PopulateOffenseListView();
+            tabControlOffense.SelectedTab = tabOffenseSearch;
+        }
+
         #endregion
 
         #region Account
@@ -788,6 +963,5 @@ namespace Cataloger
             return upper && lower && digit;
         }
         #endregion
-
     }
 }

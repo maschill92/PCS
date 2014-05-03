@@ -15,6 +15,10 @@ namespace Cataloger
         public String sex;
         public Cell cell;
         public List<Offense> offenses;
+        public String ListBoxDisplay
+        {
+            get { return id.ToString() + ": " + fName + " " + lName;}
+        }
 
         public Prisoner(int id, String f, String l, String doB, String sex, Cell cell)
         {

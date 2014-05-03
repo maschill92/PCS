@@ -25,9 +25,9 @@ namespace Login
                 if (comboBoxUserType.Text.Equals("Cataloger"))
                 {
                     Cataloger.CatalogerInterface catalogerInterface = new Cataloger.CatalogerInterface(textBoxUsername.Text);
-                    //this.Hide();
-                    //this.Owner = catalogerInterface;
-                    //catalogerInterface.FormClosing += SubFormClosing;
+                    this.Hide();
+                    this.Owner = catalogerInterface;
+                    catalogerInterface.FormClosing += SubFormClosing;
                     catalogerInterface.Show();
                 }
                 else if (comboBoxUserType.Text.Equals("Database Administrator"))

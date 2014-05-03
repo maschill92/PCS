@@ -21,7 +21,7 @@ namespace Cataloger
             this.location = location;
 	        this.type = type;
 	        this.description = description;
-	        this.date = date;
+            this.date = DateTime.Parse(date).ToString("yyyy-MM-dd");
 	        this.prisoner = p;
         }
 
@@ -40,6 +40,29 @@ namespace Cataloger
             }
             rdr.Close();
             return list;
+        }
+
+        public static bool Update(int id, String loc, String type, String description, String date, int prisonerId)
+        {
+            String str = "update offense set location='" + loc + "', type='" + type + "', description='" + description + "', date='" + date + "', prisonerId='" + prisonerId + "' where id='" + id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
+
+        public static bool Add(String loc, String type, String description, String date, int prisonerId)
+        {
+            String str = "insert into offense (location, type, description, date, prisonerId) values ('"
+                + loc + "', '" + type + "', '" + description + "', '" + date + "', '" + prisonerId + "')";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+
+        }
+
+        public static bool Delete(int id)
+        {
+            String str = "delete from offense where id='" + id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
         }
     }
 }
