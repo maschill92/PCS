@@ -45,7 +45,7 @@ namespace Cataloger
 
         public bool Update(String name, String location, String description)
         {
-            String str = "update prison set name='" + name + "', location='" + location + ", description='" + description + "' where id='" + this.id + "'";
+            String str = "update prison set name='" + name + "', location='" + location + "', description='" + description + "' where id='" + this.id + "'";
             bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
             return ret;
         }
@@ -53,6 +53,13 @@ namespace Cataloger
         public bool Delete()
         {
             String str = "delete from prison where id='" + this.id + "'";
+            bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
+            return ret;
+        }
+
+        public static bool Add(String name, String location, String description)
+        {
+            String str = "insert into prison (name, location, description) values ('" + name + "', '" + location + "', '" + description + "')";
             bool ret = MySqlManager.MySqlManager.Instance.ExecuteNonQuery(str);
             return ret;
         }

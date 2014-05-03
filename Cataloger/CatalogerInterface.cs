@@ -40,6 +40,7 @@ namespace Cataloger
             this.panelPrisonPrisonDetails.VisibleChanged += new System.EventHandler(this.panelPrisonPrisonDetails_VisibleChanged);
             this.panelPrisonCellBlockDetails.VisibleChanged += new System.EventHandler(this.panelPrisonCellBlockDetails_VisibleChanged);
             this.panelPrisonCellDetails.VisibleChanged += new System.EventHandler(this.panelPrisonCellDetails_VisibleChanged);
+            this.comboBoxPrisonAddPrison.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrisonAddPrison_SelectedIndexChanged);
 
             comboBoxPrisonerAddPrison.DisplayMember = "name";
             comboBoxPrisonerAddPrison.ValueMember = "id";
@@ -397,7 +398,7 @@ namespace Cataloger
         void PopulateBlockDataPanel(CellBlock block)
         {
             textBoxCellBlockName.Text = block.name;
-            textBoxCellBlockDetails.Text = block.description;
+            textBoxCellBlockDescription.Text = block.description;
         }
 
         void PopulatePrisonDataPanel(Prison prison)
@@ -409,40 +410,33 @@ namespace Cataloger
 
         Prison FindPrison(int id)
         {
-            Prison prison = new Prison(-1, String.Empty, String.Empty, String.Empty);
             foreach (Prison p in prisons)
             {
                 if (p.id == id)
                 {
-                    prison = p;
-                    break;
+                    return p;
                 }
             }
-            if (prison.id == -1) return null;
-            return prison;
+            return null;
         }
 
         CellBlock FindCellBlock(int id)
         {
-            CellBlock block = new CellBlock(-1, String.Empty, String.Empty, null);
             foreach (Prison p in prisons)
             {
                 foreach (CellBlock b in p.blocks)
                 {
                     if (b.id == id)
                     {
-                        block = b;
-                        break;
+                        return b;
                     }
                 }
             }
-            if (block.id == -1) return null;
-            return block;
+            return null;
         }
 
         Cell FindCell(int id)
         {
-            Cell cell = new Cell(-1, String.Empty, String.Empty, null);
             foreach (Prison p in prisons)
             {
                 foreach (CellBlock b in p.blocks)
@@ -451,14 +445,12 @@ namespace Cataloger
                     {
                         if (c.id == id)
                         {
-                            cell = c;
-                            break;
+                            return c;
                         }
                     }
                 }
             }
-            if (cell.id == -1) return null;
-            return cell;
+            return null;
         }
 
         void panelPrisonPrisonDetails_VisibleChanged(object sender, EventArgs e)
@@ -484,65 +476,203 @@ namespace Cataloger
 
         private void buttonSavePrison_Click(object sender, EventArgs e)
         {
+            if (treeViewPrison.SelectedNode == null) return;
             Prison prison = FindPrison(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (prison == null) return;
             prison.Update(textBoxPrisonName.Text, textBoxPrisonLocation.Text, textBoxPrisonDescription.Text);
+            RefreshData();
             PopulatePrisonTreeView();
         }
 
         private void buttonResetPrison_Click(object sender, EventArgs e)
         {
-            PopulatePrisonDataPanel(FindPrison(Convert.ToInt32(treeViewPrison.SelectedNode.Name)));
+            if (treeViewPrison.SelectedNode == null) return;
+            Prison prison = FindPrison(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (prison == null) return;
+            PopulatePrisonDataPanel(prison);
         }
 
         private void buttonDeletePrison_Click(object sender, EventArgs e)
         {
+            if (treeViewPrison.SelectedNode == null) return;
             Prison prison = FindPrison(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (prison == null) return;
+            if (prison.blocks.Count > 0)
+            {
+                MessageBox.Show("There can't be cell blocks in a prison if you wish to delete a prison.");
+                return;
+            }
             prison.Delete();
+            RefreshData();
             PopulatePrisonTreeView();
         }
 
         private void buttonSaveCellBlock_Click(object sender, EventArgs e)
         {
-
+            if (treeViewPrison.SelectedNode == null) return;
+            CellBlock block = FindCellBlock(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (block == null) return;
+            block.Update(textBoxCellBlockName.Text, textBoxCellBlockDescription.Text);
+            RefreshData();
+            PopulatePrisonTreeView();
         }
 
         private void buttonResetCellBlock_Click(object sender, EventArgs e)
         {
-
+            if (treeViewPrison.SelectedNode == null) return;
+            CellBlock block = FindCellBlock(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (block == null) return;
+            PopulateBlockDataPanel(block);
         }
 
         private void buttonDeleteCellBlock_Click(object sender, EventArgs e)
         {
-
+            if (treeViewPrison.SelectedNode == null) return;
+            CellBlock block = FindCellBlock(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (block == null) return;
+            if (block.cells.Count > 0)
+            {
+                MessageBox.Show("There can't be cells in a cell block if you wish to delete a prison.");
+                return;
+            }
+            block.Delete();
+            RefreshData();
+            PopulatePrisonTreeView();
         }
 
         private void buttonSaveCell_Click(object sender, EventArgs e)
         {
-
+            if (treeViewPrison.SelectedNode == null) return;
+            Cell cell = FindCell(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (cell == null) return;
+            cell.Update(textBoxCellName.Text, textBoxCellDescription.Text);
+            RefreshData();
+            PopulatePrisonTreeView();
         }
 
         private void buttonResetCell_Click(object sender, EventArgs e)
         {
-
+            if (treeViewPrison.SelectedNode == null) return;
+            Cell cell = FindCell(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (cell == null) return;
+            PopulateCellDataPanel(cell);
         }
 
         private void buttonDeleteCell_Click(object sender, EventArgs e)
         {
-
+            if (treeViewPrison.SelectedNode == null) return;
+            Cell cell = FindCell(Convert.ToInt32(treeViewPrison.SelectedNode.Name));
+            if (cell == null) return;
+            if (cell.prisoners.Count > 0)
+            {
+                MessageBox.Show("There can't be prisoners in a cell if you wish to delete a prison.");
+                return;
+            }
+            cell.Delete();
+            RefreshData();
+            PopulatePrisonTreeView();
         }
 
         void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxPrisonType.SelectedIndex != 0)
+            switch(comboBoxPrisonType.SelectedIndex)
             {
-                labelPrisonAddLocation.Hide();
-                textBoxPrisonAddLocation.Hide();
+                case (0):
+                    labelPrisonAddLocation.Show();
+                    textBoxPrisonAddLocation.Show();
+                    labelPrisonAddPrison.Hide();
+                    comboBoxPrisonAddPrison.Hide();
+                    labelPrisonAddCellBlock.Hide();
+                    comboBoxPrisonAddCellBlock.Hide();
+                    break;
+                case (1):
+                    labelPrisonAddLocation.Hide();
+                    textBoxPrisonAddLocation.Hide();
+                    labelPrisonAddPrison.Show();
+                    comboBoxPrisonAddPrison.Show();
+                    labelPrisonAddCellBlock.Hide();
+                    comboBoxPrisonAddCellBlock.Hide();
+
+                    comboBoxPrisonAddPrison.DataSource = prisons;
+                    comboBoxPrisonAddPrison.DisplayMember = "name";
+                    comboBoxPrisonAddPrison.ValueMember = "id";
+
+                    break;
+                case (2):
+                    labelPrisonAddLocation.Hide();
+                    textBoxPrisonAddLocation.Hide();
+                    labelPrisonAddPrison.Show();
+                    comboBoxPrisonAddPrison.Show();
+                    labelPrisonAddCellBlock.Show();
+                    comboBoxPrisonAddCellBlock.Show();
+                    
+                    comboBoxPrisonAddPrison.DataSource = prisons;
+                    comboBoxPrisonAddPrison.DisplayMember = "name";
+                    comboBoxPrisonAddPrison.ValueMember = "id";
+                    break;
+                default:
+                    break;
+
+
             }
-            else
+        }
+
+        void comboBoxPrisonAddPrison_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxPrisonAddCellBlock.DataSource = ((Prison)comboBoxPrisonAddPrison.SelectedItem).blocks;
+            comboBoxPrisonAddCellBlock.DisplayMember = "name";
+            comboBoxPrisonAddCellBlock.ValueMember = "id";
+        }
+
+        private void buttonPrisonAddAdd_Click(object sender, EventArgs e)
+        {
+            if (comboBoxPrisonType.SelectedIndex == 0 && textBoxPrisonLocation.Text.Length == 0)
             {
-                labelPrisonAddLocation.Show();
-                textBoxPrisonAddLocation.Show();
+                MessageBox.Show("Name and Location fields are required.");
+                return;
             }
+            if (comboBoxPrisonType.SelectedIndex == 1 && (textBoxPrisonAddName.Text.Length == 0 || comboBoxPrisonAddPrison.SelectedItem == null))
+            {
+                MessageBox.Show("Name and Prison fields are required.");
+                return;
+            }
+            if (comboBoxPrisonType.SelectedIndex == 2 && (textBoxPrisonAddName.Text.Length == 0 || comboBoxPrisonAddPrison.SelectedItem == null || comboBoxPrisonAddCellBlock.SelectedItem == null))
+            {
+                MessageBox.Show("Name, Prison, and Cell Block fields are required.");
+                return;
+            }
+
+            switch(comboBoxPrisonType.SelectedIndex)
+            {
+                case(0):
+                    Prison.Add(textBoxPrisonAddName.Text, textBoxPrisonAddLocation.Text, textBoxPrisonAddDescription.Text);
+                    break;
+                case(1):
+                    CellBlock.Add(textBoxPrisonAddName.Text, textBoxPrisonLocation.Text, ((Prison)comboBoxPrisonAddPrison.SelectedItem).id);
+                    break;
+                case(2):
+                    Cell.Add(textBoxPrisonAddName.Text, textBoxPrisonLocation.Text, ((CellBlock)comboBoxPrisonAddCellBlock.SelectedItem).id);
+                    break;
+                default:
+                    break;
+            }
+            RefreshData();
+            PopulatePrisonTreeView();
+            tabControlPrison.SelectedTab = tabPrisonViewModify;
+            ResetPrisonAddTab();
+        }
+
+        private void buttonPrisonAddClear_Click(object sender, EventArgs e)
+        {
+            ResetPrisonAddTab();
+        }
+
+        void ResetPrisonAddTab()
+        {
+            comboBoxPrisonType.SelectedIndex = 0;
+            textBoxPrisonAddLocation.Text = "";
+            textBoxPrisonAddDescription.Text = "";
+            textBoxPrisonAddName.Text = "";
         }
 
         #endregion
@@ -658,5 +788,6 @@ namespace Cataloger
             return upper && lower && digit;
         }
         #endregion
+
     }
 }

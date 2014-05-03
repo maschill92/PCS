@@ -147,7 +147,7 @@
             this.buttonDeleteCellBlock = new System.Windows.Forms.Button();
             this.buttonResetCellBlock = new System.Windows.Forms.Button();
             this.buttonSaveCellBlock = new System.Windows.Forms.Button();
-            this.textBoxCellBlockDetails = new System.Windows.Forms.TextBox();
+            this.textBoxCellBlockDescription = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxCellBlockName = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -164,6 +164,12 @@
             this.labelSelectType = new System.Windows.Forms.Label();
             this.textBoxPrisonAddDescription = new System.Windows.Forms.TextBox();
             this.comboBoxPrisonType = new System.Windows.Forms.ComboBox();
+            this.buttonPrisonAddAdd = new System.Windows.Forms.Button();
+            this.buttonPrisonAddClear = new System.Windows.Forms.Button();
+            this.labelPrisonAddPrison = new System.Windows.Forms.Label();
+            this.comboBoxPrisonAddPrison = new System.Windows.Forms.ComboBox();
+            this.comboBoxPrisonAddCellBlock = new System.Windows.Forms.ComboBox();
+            this.labelPrisonAddCellBlock = new System.Windows.Forms.Label();
             this.tabControlPrisoner.SuspendLayout();
             this.tabPrisonerSearch.SuspendLayout();
             this.tabPrisonerAddEdit.SuspendLayout();
@@ -1274,7 +1280,7 @@
             this.panelPrisonCellBlockDetails.Controls.Add(this.buttonDeleteCellBlock);
             this.panelPrisonCellBlockDetails.Controls.Add(this.buttonResetCellBlock);
             this.panelPrisonCellBlockDetails.Controls.Add(this.buttonSaveCellBlock);
-            this.panelPrisonCellBlockDetails.Controls.Add(this.textBoxCellBlockDetails);
+            this.panelPrisonCellBlockDetails.Controls.Add(this.textBoxCellBlockDescription);
             this.panelPrisonCellBlockDetails.Controls.Add(this.label14);
             this.panelPrisonCellBlockDetails.Controls.Add(this.textBoxCellBlockName);
             this.panelPrisonCellBlockDetails.Controls.Add(this.label16);
@@ -1314,13 +1320,13 @@
             this.buttonSaveCellBlock.UseVisualStyleBackColor = true;
             this.buttonSaveCellBlock.Click += new System.EventHandler(this.buttonSaveCellBlock_Click);
             // 
-            // textBoxCellBlockDetails
+            // textBoxCellBlockDescription
             // 
-            this.textBoxCellBlockDetails.Location = new System.Drawing.Point(94, 48);
-            this.textBoxCellBlockDetails.Multiline = true;
-            this.textBoxCellBlockDetails.Name = "textBoxCellBlockDetails";
-            this.textBoxCellBlockDetails.Size = new System.Drawing.Size(480, 158);
-            this.textBoxCellBlockDetails.TabIndex = 15;
+            this.textBoxCellBlockDescription.Location = new System.Drawing.Point(94, 48);
+            this.textBoxCellBlockDescription.Multiline = true;
+            this.textBoxCellBlockDescription.Name = "textBoxCellBlockDescription";
+            this.textBoxCellBlockDescription.Size = new System.Drawing.Size(480, 158);
+            this.textBoxCellBlockDescription.TabIndex = 15;
             // 
             // label14
             // 
@@ -1380,6 +1386,12 @@
             // 
             // tabPrisonAdd
             // 
+            this.tabPrisonAdd.Controls.Add(this.comboBoxPrisonAddCellBlock);
+            this.tabPrisonAdd.Controls.Add(this.labelPrisonAddCellBlock);
+            this.tabPrisonAdd.Controls.Add(this.comboBoxPrisonAddPrison);
+            this.tabPrisonAdd.Controls.Add(this.labelPrisonAddPrison);
+            this.tabPrisonAdd.Controls.Add(this.buttonPrisonAddClear);
+            this.tabPrisonAdd.Controls.Add(this.buttonPrisonAddAdd);
             this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddDescription);
             this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddLocation);
             this.tabPrisonAdd.Controls.Add(this.textBoxPrisonAddName);
@@ -1398,14 +1410,14 @@
             // 
             // textBoxPrisonAddLocation
             // 
-            this.textBoxPrisonAddLocation.Location = new System.Drawing.Point(371, 69);
+            this.textBoxPrisonAddLocation.Location = new System.Drawing.Point(452, 138);
             this.textBoxPrisonAddLocation.Name = "textBoxPrisonAddLocation";
             this.textBoxPrisonAddLocation.Size = new System.Drawing.Size(204, 20);
             this.textBoxPrisonAddLocation.TabIndex = 10;
             // 
             // textBoxPrisonAddName
             // 
-            this.textBoxPrisonAddName.Location = new System.Drawing.Point(95, 69);
+            this.textBoxPrisonAddName.Location = new System.Drawing.Point(176, 138);
             this.textBoxPrisonAddName.Name = "textBoxPrisonAddName";
             this.textBoxPrisonAddName.Size = new System.Drawing.Size(204, 20);
             this.textBoxPrisonAddName.TabIndex = 9;
@@ -1413,7 +1425,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(26, 98);
+            this.label17.Location = new System.Drawing.Point(107, 167);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 13);
             this.label17.TabIndex = 8;
@@ -1422,7 +1434,7 @@
             // labelPrisonAddLocation
             // 
             this.labelPrisonAddLocation.AutoSize = true;
-            this.labelPrisonAddLocation.Location = new System.Drawing.Point(315, 72);
+            this.labelPrisonAddLocation.Location = new System.Drawing.Point(395, 141);
             this.labelPrisonAddLocation.Name = "labelPrisonAddLocation";
             this.labelPrisonAddLocation.Size = new System.Drawing.Size(51, 13);
             this.labelPrisonAddLocation.TabIndex = 7;
@@ -1431,7 +1443,7 @@
             // labelPrisonAddName
             // 
             this.labelPrisonAddName.AutoSize = true;
-            this.labelPrisonAddName.Location = new System.Drawing.Point(49, 72);
+            this.labelPrisonAddName.Location = new System.Drawing.Point(130, 141);
             this.labelPrisonAddName.Name = "labelPrisonAddName";
             this.labelPrisonAddName.Size = new System.Drawing.Size(38, 13);
             this.labelPrisonAddName.TabIndex = 6;
@@ -1441,7 +1453,7 @@
             // labelSelectType
             // 
             this.labelSelectType.AutoSize = true;
-            this.labelSelectType.Location = new System.Drawing.Point(55, 45);
+            this.labelSelectType.Location = new System.Drawing.Point(136, 87);
             this.labelSelectType.Name = "labelSelectType";
             this.labelSelectType.Size = new System.Drawing.Size(34, 13);
             this.labelSelectType.TabIndex = 0;
@@ -1449,7 +1461,7 @@
             // 
             // textBoxPrisonAddDescription
             // 
-            this.textBoxPrisonAddDescription.Location = new System.Drawing.Point(95, 95);
+            this.textBoxPrisonAddDescription.Location = new System.Drawing.Point(176, 164);
             this.textBoxPrisonAddDescription.Multiline = true;
             this.textBoxPrisonAddDescription.Name = "textBoxPrisonAddDescription";
             this.textBoxPrisonAddDescription.Size = new System.Drawing.Size(480, 158);
@@ -1457,16 +1469,72 @@
             // 
             // comboBoxPrisonType
             // 
+            this.comboBoxPrisonType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrisonType.FormattingEnabled = true;
             this.comboBoxPrisonType.Items.AddRange(new object[] {
             "Prison",
             "Cell Block",
             "Cell"});
-            this.comboBoxPrisonType.Location = new System.Drawing.Point(95, 42);
+            this.comboBoxPrisonType.Location = new System.Drawing.Point(176, 84);
             this.comboBoxPrisonType.Name = "comboBoxPrisonType";
             this.comboBoxPrisonType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPrisonType.TabIndex = 1;
-            this.comboBoxPrisonType.Text = "Prison";
+            // 
+            // buttonPrisonAddAdd
+            // 
+            this.buttonPrisonAddAdd.Location = new System.Drawing.Point(412, 327);
+            this.buttonPrisonAddAdd.Name = "buttonPrisonAddAdd";
+            this.buttonPrisonAddAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrisonAddAdd.TabIndex = 12;
+            this.buttonPrisonAddAdd.Text = "Add";
+            this.buttonPrisonAddAdd.UseVisualStyleBackColor = true;
+            this.buttonPrisonAddAdd.Click += new System.EventHandler(this.buttonPrisonAddAdd_Click);
+            // 
+            // buttonPrisonAddClear
+            // 
+            this.buttonPrisonAddClear.Location = new System.Drawing.Point(331, 327);
+            this.buttonPrisonAddClear.Name = "buttonPrisonAddClear";
+            this.buttonPrisonAddClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrisonAddClear.TabIndex = 13;
+            this.buttonPrisonAddClear.Text = "Clear";
+            this.buttonPrisonAddClear.UseVisualStyleBackColor = true;
+            this.buttonPrisonAddClear.Click += new System.EventHandler(this.buttonPrisonAddClear_Click);
+            // 
+            // labelPrisonAddPrison
+            // 
+            this.labelPrisonAddPrison.AutoSize = true;
+            this.labelPrisonAddPrison.Location = new System.Drawing.Point(131, 114);
+            this.labelPrisonAddPrison.Name = "labelPrisonAddPrison";
+            this.labelPrisonAddPrison.Size = new System.Drawing.Size(39, 13);
+            this.labelPrisonAddPrison.TabIndex = 14;
+            this.labelPrisonAddPrison.Text = "Prison:";
+            // 
+            // comboBoxPrisonAddPrison
+            // 
+            this.comboBoxPrisonAddPrison.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPrisonAddPrison.FormattingEnabled = true;
+            this.comboBoxPrisonAddPrison.Location = new System.Drawing.Point(176, 111);
+            this.comboBoxPrisonAddPrison.Name = "comboBoxPrisonAddPrison";
+            this.comboBoxPrisonAddPrison.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxPrisonAddPrison.TabIndex = 15;
+            // 
+            // comboBoxPrisonAddCellBlock
+            // 
+            this.comboBoxPrisonAddCellBlock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPrisonAddCellBlock.FormattingEnabled = true;
+            this.comboBoxPrisonAddCellBlock.Location = new System.Drawing.Point(452, 111);
+            this.comboBoxPrisonAddCellBlock.Name = "comboBoxPrisonAddCellBlock";
+            this.comboBoxPrisonAddCellBlock.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxPrisonAddCellBlock.TabIndex = 17;
+            // 
+            // labelPrisonAddCellBlock
+            // 
+            this.labelPrisonAddCellBlock.AutoSize = true;
+            this.labelPrisonAddCellBlock.Location = new System.Drawing.Point(389, 114);
+            this.labelPrisonAddCellBlock.Name = "labelPrisonAddCellBlock";
+            this.labelPrisonAddCellBlock.Size = new System.Drawing.Size(57, 13);
+            this.labelPrisonAddCellBlock.TabIndex = 16;
+            this.labelPrisonAddCellBlock.Text = "Cell Block:";
             // 
             // CatalogerInterface
             // 
@@ -1594,7 +1662,7 @@
         private System.Windows.Forms.Button buttonDeleteCellBlock;
         private System.Windows.Forms.Button buttonResetCellBlock;
         private System.Windows.Forms.Button buttonSaveCellBlock;
-        private System.Windows.Forms.TextBox textBoxCellBlockDetails;
+        private System.Windows.Forms.TextBox textBoxCellBlockDescription;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBoxCellBlockName;
         private System.Windows.Forms.Label label16;
@@ -1653,6 +1721,12 @@
         private System.Windows.Forms.Button ButtonAccountReset;
         private System.Windows.Forms.TextBox textBoxPrisonAddDescription;
         private System.Windows.Forms.ComboBox comboBoxPrisonType;
+        private System.Windows.Forms.Button buttonPrisonAddClear;
+        private System.Windows.Forms.Button buttonPrisonAddAdd;
+        private System.Windows.Forms.ComboBox comboBoxPrisonAddCellBlock;
+        private System.Windows.Forms.Label labelPrisonAddCellBlock;
+        private System.Windows.Forms.ComboBox comboBoxPrisonAddPrison;
+        private System.Windows.Forms.Label labelPrisonAddPrison;
     }
 }
 
