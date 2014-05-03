@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cataloger.cs" />
+    <Compile Include="DbaUser.cs" />
+    <Compile Include="Dba.cs" />
     <Compile Include="DbaInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +67,17 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MySqlManager\MySqlManager.csproj">
+      <Project>{a2dbf7e3-786f-4a86-a67c-457bb99fb404}</Project>
+      <Name>MySqlManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DbaInterface.resx">
+      <DependentUpon>DbaInterface.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

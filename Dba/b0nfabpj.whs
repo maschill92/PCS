@@ -1,0 +1,701 @@
+﻿namespace Dba
+{
+    partial class DbaInterface
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ButtonDBASava = new System.Windows.Forms.Button();
+            this.TextBoxDBAUsername = new System.Windows.Forms.TextBox();
+            this.ButtonCatalogerNew = new System.Windows.Forms.Button();
+            this.button_cataloger_save = new System.Windows.Forms.Button();
+            this.ButtonCatalogerDelete = new System.Windows.Forms.Button();
+            this.ButtonCatalogerReset = new System.Windows.Forms.Button();
+            this.TextboxCatalogerPassword = new System.Windows.Forms.TextBox();
+            this.textBox_dba_lName = new System.Windows.Forms.TextBox();
+            this.TextBoxCatalogerUsername = new System.Windows.Forms.TextBox();
+            this.TextBoxCatalogerFName = new System.Windows.Forms.TextBox();
+            this.LabelCatalogerPassword = new System.Windows.Forms.Label();
+            this.LabelCatalogerUsername = new System.Windows.Forms.Label();
+            this.ButtonDBADelete = new System.Windows.Forms.Button();
+            this.ButtonDBAReset = new System.Windows.Forms.Button();
+            this.textBox_dba_password = new System.Windows.Forms.TextBox();
+            this.textbox_cataloger_lName = new System.Windows.Forms.TextBox();
+            this.button_dba_new = new System.Windows.Forms.Button();
+            this.textBox_dba_fName = new System.Windows.Forms.TextBox();
+            this.label_dba_username = new System.Windows.Forms.Label();
+            this.label_dba_lName = new System.Windows.Forms.Label();
+            this.label_dba_fName = new System.Windows.Forms.Label();
+            this.listBox_dba = new System.Windows.Forms.ListBox();
+            this.panel_account = new System.Windows.Forms.Panel();
+            this.label_account_error = new System.Windows.Forms.Label();
+            this.button_account_save = new System.Windows.Forms.Button();
+            this.button_account_reset = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox_account_confirmPassword = new System.Windows.Forms.TextBox();
+            this.textBox_account_password = new System.Windows.Forms.TextBox();
+            this.textBox_account_lName = new System.Windows.Forms.TextBox();
+            this.textBox_account_fName = new System.Windows.Forms.TextBox();
+            this.label_dba_password = new System.Windows.Forms.Label();
+            this.label_cataloger_lName = new System.Windows.Forms.Label();
+            this.label_dba_name = new System.Windows.Forms.Label();
+            this.panel_menu = new System.Windows.Forms.Panel();
+            this.button_menu_dba = new System.Windows.Forms.Button();
+            this.button_menu_cataloger = new System.Windows.Forms.Button();
+            this.button_menu_logout = new System.Windows.Forms.Button();
+            this.button_menu_account = new System.Windows.Forms.Button();
+            this.panel_cataloger = new System.Windows.Forms.Panel();
+            this.dateTimePicker_cataloger_dob = new System.Windows.Forms.DateTimePicker();
+            this.label_cataloger_dob = new System.Windows.Forms.Label();
+            this.label_cataloger_sex = new System.Windows.Forms.Label();
+            this.groupBox_cataloger_sex = new System.Windows.Forms.GroupBox();
+            this.radioButton_cataloger_sex_female = new System.Windows.Forms.RadioButton();
+            this.radioButton_cataloger_sex_male = new System.Windows.Forms.RadioButton();
+            this.label_cataloger_fName = new System.Windows.Forms.Label();
+            this.label_cataloger_menu = new System.Windows.Forms.Label();
+            this.listBox_cataloger = new System.Windows.Forms.ListBox();
+            this.panel_dba = new System.Windows.Forms.Panel();
+            this.label_cataloger_email = new System.Windows.Forms.Label();
+            this.textBox_cataloger_email = new System.Windows.Forms.TextBox();
+            this.panel_account.SuspendLayout();
+            this.panel_menu.SuspendLayout();
+            this.panel_cataloger.SuspendLayout();
+            this.groupBox_cataloger_sex.SuspendLayout();
+            this.panel_dba.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // button_dba_save
+            // 
+            this.ButtonDBASava.Location = new System.Drawing.Point(488, 276);
+            this.ButtonDBASava.Name = "button_dba_save";
+            this.ButtonDBASava.Size = new System.Drawing.Size(75, 23);
+            this.ButtonDBASava.TabIndex = 26;
+            this.ButtonDBASava.Text = "Save";
+            this.ButtonDBASava.UseVisualStyleBackColor = true;
+            // 
+            // textBox_dba_username
+            // 
+            this.TextBoxDBAUsername.Location = new System.Drawing.Point(338, 209);
+            this.TextBoxDBAUsername.Name = "textBox_dba_username";
+            this.TextBoxDBAUsername.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxDBAUsername.TabIndex = 22;
+            // 
+            // button_cataloger_new
+            // 
+            this.ButtonCatalogerNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonCatalogerNew.Location = new System.Drawing.Point(208, 457);
+            this.ButtonCatalogerNew.Name = "button_cataloger_new";
+            this.ButtonCatalogerNew.Size = new System.Drawing.Size(75, 23);
+            this.ButtonCatalogerNew.TabIndex = 13;
+            this.ButtonCatalogerNew.Text = "New";
+            this.ButtonCatalogerNew.UseVisualStyleBackColor = true;
+            // 
+            // button_cataloger_save
+            // 
+            this.button_cataloger_save.Location = new System.Drawing.Point(569, 457);
+            this.button_cataloger_save.Name = "button_cataloger_save";
+            this.button_cataloger_save.Size = new System.Drawing.Size(75, 23);
+            this.button_cataloger_save.TabIndex = 12;
+            this.button_cataloger_save.Text = "Save";
+            this.button_cataloger_save.UseVisualStyleBackColor = true;
+            // 
+            // button_cataloger_delete
+            // 
+            this.ButtonCatalogerDelete.Location = new System.Drawing.Point(448, 457);
+            this.ButtonCatalogerDelete.Name = "button_cataloger_delete";
+            this.ButtonCatalogerDelete.Size = new System.Drawing.Size(75, 23);
+            this.ButtonCatalogerDelete.TabIndex = 11;
+            this.ButtonCatalogerDelete.Text = "Delete";
+            this.ButtonCatalogerDelete.UseVisualStyleBackColor = true;
+            // 
+            // button_cataloger_reset
+            // 
+            this.ButtonCatalogerReset.Location = new System.Drawing.Point(332, 457);
+            this.ButtonCatalogerReset.Name = "button_cataloger_reset";
+            this.ButtonCatalogerReset.Size = new System.Drawing.Size(75, 23);
+            this.ButtonCatalogerReset.TabIndex = 10;
+            this.ButtonCatalogerReset.Text = "Reset";
+            this.ButtonCatalogerReset.UseVisualStyleBackColor = true;
+            // 
+            // textbox_cataloger_password
+            // 
+            this.TextboxCatalogerPassword.Location = new System.Drawing.Point(332, 200);
+            this.TextboxCatalogerPassword.Name = "textbox_cataloger_password";
+            this.TextboxCatalogerPassword.Size = new System.Drawing.Size(191, 20);
+            this.TextboxCatalogerPassword.TabIndex = 9;
+            // 
+            // textBox_dba_lName
+            // 
+            this.textBox_dba_lName.Location = new System.Drawing.Point(338, 183);
+            this.textBox_dba_lName.Name = "textBox_dba_lName";
+            this.textBox_dba_lName.Size = new System.Drawing.Size(191, 20);
+            this.textBox_dba_lName.TabIndex = 21;
+            // 
+            // textbox_cataloger_username
+            // 
+            this.TextBoxCatalogerUsername.Location = new System.Drawing.Point(332, 174);
+            this.TextBoxCatalogerUsername.Name = "textbox_cataloger_username";
+            this.TextBoxCatalogerUsername.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxCatalogerUsername.TabIndex = 8;
+            // 
+            // textbox_cataloger_fName
+            // 
+            this.TextBoxCatalogerFName.Location = new System.Drawing.Point(332, 124);
+            this.TextBoxCatalogerFName.Name = "textbox_cataloger_fName";
+            this.TextBoxCatalogerFName.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxCatalogerFName.TabIndex = 6;
+            // 
+            // label_cataloger_password
+            // 
+            this.LabelCatalogerPassword.AutoSize = true;
+            this.LabelCatalogerPassword.Location = new System.Drawing.Point(270, 206);
+            this.LabelCatalogerPassword.Name = "label_cataloger_password";
+            this.LabelCatalogerPassword.Size = new System.Drawing.Size(56, 13);
+            this.LabelCatalogerPassword.TabIndex = 5;
+            this.LabelCatalogerPassword.Text = "Password:";
+            // 
+            // label_cataloger_username
+            // 
+            this.LabelCatalogerUsername.AutoSize = true;
+            this.LabelCatalogerUsername.Location = new System.Drawing.Point(268, 180);
+            this.LabelCatalogerUsername.Name = "label_cataloger_username";
+            this.LabelCatalogerUsername.Size = new System.Drawing.Size(58, 13);
+            this.LabelCatalogerUsername.TabIndex = 4;
+            this.LabelCatalogerUsername.Text = "Username:";
+            // 
+            // button_dba_delete
+            // 
+            this.ButtonDBADelete.Location = new System.Drawing.Point(367, 276);
+            this.ButtonDBADelete.Name = "button_dba_delete";
+            this.ButtonDBADelete.Size = new System.Drawing.Size(75, 23);
+            this.ButtonDBADelete.TabIndex = 25;
+            this.ButtonDBADelete.Text = "Delete";
+            this.ButtonDBADelete.UseVisualStyleBackColor = true;
+            // 
+            // button_dba_reset
+            // 
+            this.ButtonDBAReset.Location = new System.Drawing.Point(251, 276);
+            this.ButtonDBAReset.Name = "button_dba_reset";
+            this.ButtonDBAReset.Size = new System.Drawing.Size(75, 23);
+            this.ButtonDBAReset.TabIndex = 24;
+            this.ButtonDBAReset.Text = "Reset";
+            this.ButtonDBAReset.UseVisualStyleBackColor = true;
+            // 
+            // textBox_dba_password
+            // 
+            this.textBox_dba_password.Location = new System.Drawing.Point(338, 235);
+            this.textBox_dba_password.Name = "textBox_dba_password";
+            this.textBox_dba_password.Size = new System.Drawing.Size(191, 20);
+            this.textBox_dba_password.TabIndex = 23;
+            // 
+            // textbox_cataloger_lName
+            // 
+            this.textbox_cataloger_lName.Location = new System.Drawing.Point(332, 148);
+            this.textbox_cataloger_lName.Name = "textbox_cataloger_lName";
+            this.textbox_cataloger_lName.Size = new System.Drawing.Size(191, 20);
+            this.textbox_cataloger_lName.TabIndex = 7;
+            // 
+            // button_dba_new
+            // 
+            this.button_dba_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_dba_new.Location = new System.Drawing.Point(45, 440);
+            this.button_dba_new.Name = "button_dba_new";
+            this.button_dba_new.Size = new System.Drawing.Size(100, 40);
+            this.button_dba_new.TabIndex = 27;
+            this.button_dba_new.Text = "New";
+            this.button_dba_new.UseVisualStyleBackColor = true;
+            // 
+            // textBox_dba_fName
+            // 
+            this.textBox_dba_fName.Location = new System.Drawing.Point(338, 159);
+            this.textBox_dba_fName.Name = "textBox_dba_fName";
+            this.textBox_dba_fName.Size = new System.Drawing.Size(191, 20);
+            this.textBox_dba_fName.TabIndex = 20;
+            // 
+            // label_dba_username
+            // 
+            this.label_dba_username.AutoSize = true;
+            this.label_dba_username.Location = new System.Drawing.Point(274, 212);
+            this.label_dba_username.Name = "label_dba_username";
+            this.label_dba_username.Size = new System.Drawing.Size(58, 13);
+            this.label_dba_username.TabIndex = 18;
+            this.label_dba_username.Text = "Username:";
+            // 
+            // label_dba_lName
+            // 
+            this.label_dba_lName.AutoSize = true;
+            this.label_dba_lName.Location = new System.Drawing.Point(272, 186);
+            this.label_dba_lName.Name = "label_dba_lName";
+            this.label_dba_lName.Size = new System.Drawing.Size(61, 13);
+            this.label_dba_lName.TabIndex = 17;
+            this.label_dba_lName.Text = "Last Name:";
+            // 
+            // label_dba_fName
+            // 
+            this.label_dba_fName.AutoSize = true;
+            this.label_dba_fName.Location = new System.Drawing.Point(272, 162);
+            this.label_dba_fName.Name = "label_dba_fName";
+            this.label_dba_fName.Size = new System.Drawing.Size(60, 13);
+            this.label_dba_fName.TabIndex = 16;
+            this.label_dba_fName.Text = "First Name:";
+            // 
+            // listBox_dba
+            // 
+            this.listBox_dba.FormattingEnabled = true;
+            this.listBox_dba.Location = new System.Drawing.Point(7, 49);
+            this.listBox_dba.Name = "listBox_dba";
+            this.listBox_dba.Size = new System.Drawing.Size(179, 355);
+            this.listBox_dba.TabIndex = 14;
+            // 
+            // panel_account
+            // 
+            this.panel_account.Controls.Add(this.label_account_error);
+            this.panel_account.Controls.Add(this.button_account_save);
+            this.panel_account.Controls.Add(this.button_account_reset);
+            this.panel_account.Controls.Add(this.label11);
+            this.panel_account.Controls.Add(this.label10);
+            this.panel_account.Controls.Add(this.label9);
+            this.panel_account.Controls.Add(this.label8);
+            this.panel_account.Controls.Add(this.textBox_account_confirmPassword);
+            this.panel_account.Controls.Add(this.textBox_account_password);
+            this.panel_account.Controls.Add(this.textBox_account_lName);
+            this.panel_account.Controls.Add(this.textBox_account_fName);
+            this.panel_account.Location = new System.Drawing.Point(160, 14);
+            this.panel_account.Name = "panel_account";
+            this.panel_account.Size = new System.Drawing.Size(650, 500);
+            this.panel_account.TabIndex = 33;
+            this.panel_account.Visible = false;
+            // 
+            // label_account_error
+            // 
+            this.label_account_error.AutoSize = true;
+            this.label_account_error.ForeColor = System.Drawing.Color.Red;
+            this.label_account_error.Location = new System.Drawing.Point(143, 294);
+            this.label_account_error.Name = "label_account_error";
+            this.label_account_error.Size = new System.Drawing.Size(0, 13);
+            this.label_account_error.TabIndex = 10;
+            // 
+            // button_account_save
+            // 
+            this.button_account_save.Location = new System.Drawing.Point(386, 254);
+            this.button_account_save.Name = "button_account_save";
+            this.button_account_save.Size = new System.Drawing.Size(75, 23);
+            this.button_account_save.TabIndex = 9;
+            this.button_account_save.Text = "Save";
+            this.button_account_save.UseVisualStyleBackColor = true;
+            // 
+            // button_account_reset
+            // 
+            this.button_account_reset.Location = new System.Drawing.Point(240, 255);
+            this.button_account_reset.Name = "button_account_reset";
+            this.button_account_reset.Size = new System.Drawing.Size(75, 23);
+            this.button_account_reset.TabIndex = 8;
+            this.button_account_reset.Text = "Reset";
+            this.button_account_reset.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(140, 232);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(94, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Confirm Password:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(178, 206);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Password:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(173, 180);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Last Name:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(174, 154);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "First Name:";
+            // 
+            // textBox_account_confirmPassword
+            // 
+            this.textBox_account_confirmPassword.Location = new System.Drawing.Point(240, 229);
+            this.textBox_account_confirmPassword.Name = "textBox_account_confirmPassword";
+            this.textBox_account_confirmPassword.PasswordChar = '*';
+            this.textBox_account_confirmPassword.Size = new System.Drawing.Size(221, 20);
+            this.textBox_account_confirmPassword.TabIndex = 3;
+            this.textBox_account_confirmPassword.UseSystemPasswordChar = true;
+            // 
+            // textBox_account_password
+            // 
+            this.textBox_account_password.Location = new System.Drawing.Point(240, 203);
+            this.textBox_account_password.Name = "textBox_account_password";
+            this.textBox_account_password.PasswordChar = '*';
+            this.textBox_account_password.Size = new System.Drawing.Size(221, 20);
+            this.textBox_account_password.TabIndex = 2;
+            this.textBox_account_password.UseSystemPasswordChar = true;
+            // 
+            // textBox_account_lName
+            // 
+            this.textBox_account_lName.Location = new System.Drawing.Point(240, 177);
+            this.textBox_account_lName.Name = "textBox_account_lName";
+            this.textBox_account_lName.Size = new System.Drawing.Size(221, 20);
+            this.textBox_account_lName.TabIndex = 1;
+            // 
+            // textBox_account_fName
+            // 
+            this.textBox_account_fName.Location = new System.Drawing.Point(240, 151);
+            this.textBox_account_fName.Name = "textBox_account_fName";
+            this.textBox_account_fName.Size = new System.Drawing.Size(221, 20);
+            this.textBox_account_fName.TabIndex = 0;
+            // 
+            // label_dba_password
+            // 
+            this.label_dba_password.AutoSize = true;
+            this.label_dba_password.Location = new System.Drawing.Point(277, 238);
+            this.label_dba_password.Name = "label_dba_password";
+            this.label_dba_password.Size = new System.Drawing.Size(56, 13);
+            this.label_dba_password.TabIndex = 19;
+            this.label_dba_password.Text = "Password:";
+            // 
+            // label_cataloger_lName
+            // 
+            this.label_cataloger_lName.AutoSize = true;
+            this.label_cataloger_lName.Location = new System.Drawing.Point(265, 155);
+            this.label_cataloger_lName.Name = "label_cataloger_lName";
+            this.label_cataloger_lName.Size = new System.Drawing.Size(61, 13);
+            this.label_cataloger_lName.TabIndex = 3;
+            this.label_cataloger_lName.Text = "Last Name:";
+            // 
+            // label_dba_name
+            // 
+            this.label_dba_name.AutoSize = true;
+            this.label_dba_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_dba_name.Location = new System.Drawing.Point(3, 15);
+            this.label_dba_name.Name = "label_dba_name";
+            this.label_dba_name.Size = new System.Drawing.Size(187, 25);
+            this.label_dba_name.TabIndex = 15;
+            this.label_dba_name.Text = "Database Admins:";
+            // 
+            // panel_menu
+            // 
+            this.panel_menu.Controls.Add(this.button_menu_dba);
+            this.panel_menu.Controls.Add(this.button_menu_cataloger);
+            this.panel_menu.Controls.Add(this.button_menu_logout);
+            this.panel_menu.Controls.Add(this.button_menu_account);
+            this.panel_menu.Location = new System.Drawing.Point(17, 12);
+            this.panel_menu.Name = "panel_menu";
+            this.panel_menu.Size = new System.Drawing.Size(140, 504);
+            this.panel_menu.TabIndex = 29;
+            // 
+            // button_menu_dba
+            // 
+            this.button_menu_dba.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_menu_dba.Location = new System.Drawing.Point(3, 46);
+            this.button_menu_dba.Name = "button_menu_dba";
+            this.button_menu_dba.Size = new System.Drawing.Size(134, 37);
+            this.button_menu_dba.TabIndex = 7;
+            this.button_menu_dba.Text = "DBA";
+            this.button_menu_dba.UseVisualStyleBackColor = true;
+            // 
+            // button_menu_cataloger
+            // 
+            this.button_menu_cataloger.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_menu_cataloger.Location = new System.Drawing.Point(3, 3);
+            this.button_menu_cataloger.Name = "button_menu_cataloger";
+            this.button_menu_cataloger.Size = new System.Drawing.Size(134, 37);
+            this.button_menu_cataloger.TabIndex = 6;
+            this.button_menu_cataloger.Text = "Teacher";
+            this.button_menu_cataloger.UseVisualStyleBackColor = true;
+            // 
+            // button_menu_logout
+            // 
+            this.button_menu_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_menu_logout.Location = new System.Drawing.Point(3, 464);
+            this.button_menu_logout.Name = "button_menu_logout";
+            this.button_menu_logout.Size = new System.Drawing.Size(134, 37);
+            this.button_menu_logout.TabIndex = 4;
+            this.button_menu_logout.Text = "Logout";
+            this.button_menu_logout.UseVisualStyleBackColor = true;
+            // 
+            // button_menu_account
+            // 
+            this.button_menu_account.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_menu_account.Location = new System.Drawing.Point(3, 89);
+            this.button_menu_account.Name = "button_menu_account";
+            this.button_menu_account.Size = new System.Drawing.Size(134, 37);
+            this.button_menu_account.TabIndex = 3;
+            this.button_menu_account.Text = "My Account";
+            this.button_menu_account.UseVisualStyleBackColor = true;
+            // 
+            // panel_cataloger
+            // 
+            this.panel_cataloger.Controls.Add(this.textBox_cataloger_email);
+            this.panel_cataloger.Controls.Add(this.label_cataloger_email);
+            this.panel_cataloger.Controls.Add(this.dateTimePicker_cataloger_dob);
+            this.panel_cataloger.Controls.Add(this.label_cataloger_dob);
+            this.panel_cataloger.Controls.Add(this.label_cataloger_sex);
+            this.panel_cataloger.Controls.Add(this.groupBox_cataloger_sex);
+            this.panel_cataloger.Controls.Add(this.ButtonCatalogerNew);
+            this.panel_cataloger.Controls.Add(this.button_cataloger_save);
+            this.panel_cataloger.Controls.Add(this.ButtonCatalogerDelete);
+            this.panel_cataloger.Controls.Add(this.ButtonCatalogerReset);
+            this.panel_cataloger.Controls.Add(this.TextboxCatalogerPassword);
+            this.panel_cataloger.Controls.Add(this.TextBoxCatalogerUsername);
+            this.panel_cataloger.Controls.Add(this.textbox_cataloger_lName);
+            this.panel_cataloger.Controls.Add(this.TextBoxCatalogerFName);
+            this.panel_cataloger.Controls.Add(this.LabelCatalogerPassword);
+            this.panel_cataloger.Controls.Add(this.LabelCatalogerUsername);
+            this.panel_cataloger.Controls.Add(this.label_cataloger_lName);
+            this.panel_cataloger.Controls.Add(this.label_cataloger_fName);
+            this.panel_cataloger.Controls.Add(this.label_cataloger_menu);
+            this.panel_cataloger.Controls.Add(this.listBox_cataloger);
+            this.panel_cataloger.Location = new System.Drawing.Point(160, 14);
+            this.panel_cataloger.Name = "panel_cataloger";
+            this.panel_cataloger.Size = new System.Drawing.Size(650, 500);
+            this.panel_cataloger.TabIndex = 31;
+            this.panel_cataloger.Visible = false;
+            // 
+            // dateTimePicker_cataloger_dob
+            // 
+            this.dateTimePicker_cataloger_dob.Location = new System.Drawing.Point(332, 261);
+            this.dateTimePicker_cataloger_dob.Name = "dateTimePicker_cataloger_dob";
+            this.dateTimePicker_cataloger_dob.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_cataloger_dob.TabIndex = 18;
+            // 
+            // label_cataloger_dob
+            // 
+            this.label_cataloger_dob.AutoSize = true;
+            this.label_cataloger_dob.Location = new System.Drawing.Point(257, 262);
+            this.label_cataloger_dob.Name = "label_cataloger_dob";
+            this.label_cataloger_dob.Size = new System.Drawing.Size(69, 13);
+            this.label_cataloger_dob.TabIndex = 17;
+            this.label_cataloger_dob.Text = "Date of Birth:";
+            // 
+            // label_cataloger_sex
+            // 
+            this.label_cataloger_sex.AutoSize = true;
+            this.label_cataloger_sex.Location = new System.Drawing.Point(298, 304);
+            this.label_cataloger_sex.Name = "label_cataloger_sex";
+            this.label_cataloger_sex.Size = new System.Drawing.Size(28, 13);
+            this.label_cataloger_sex.TabIndex = 15;
+            this.label_cataloger_sex.Text = "Sex:";
+            // 
+            // groupBox_cataloger_sex
+            // 
+            this.groupBox_cataloger_sex.Controls.Add(this.radioButton_cataloger_sex_female);
+            this.groupBox_cataloger_sex.Controls.Add(this.radioButton_cataloger_sex_male);
+            this.groupBox_cataloger_sex.Location = new System.Drawing.Point(332, 287);
+            this.groupBox_cataloger_sex.Name = "groupBox_cataloger_sex";
+            this.groupBox_cataloger_sex.Size = new System.Drawing.Size(110, 56);
+            this.groupBox_cataloger_sex.TabIndex = 14;
+            this.groupBox_cataloger_sex.TabStop = false;
+            // 
+            // radioButton_cataloger_sex_female
+            // 
+            this.radioButton_cataloger_sex_female.AutoSize = true;
+            this.radioButton_cataloger_sex_female.Location = new System.Drawing.Point(0, 29);
+            this.radioButton_cataloger_sex_female.Name = "radioButton_cataloger_sex_female";
+            this.radioButton_cataloger_sex_female.Size = new System.Drawing.Size(59, 17);
+            this.radioButton_cataloger_sex_female.TabIndex = 1;
+            this.radioButton_cataloger_sex_female.TabStop = true;
+            this.radioButton_cataloger_sex_female.Text = "Female";
+            this.radioButton_cataloger_sex_female.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_cataloger_sex_male
+            // 
+            this.radioButton_cataloger_sex_male.AutoSize = true;
+            this.radioButton_cataloger_sex_male.Location = new System.Drawing.Point(0, 7);
+            this.radioButton_cataloger_sex_male.Name = "radioButton_cataloger_sex_male";
+            this.radioButton_cataloger_sex_male.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_cataloger_sex_male.TabIndex = 0;
+            this.radioButton_cataloger_sex_male.TabStop = true;
+            this.radioButton_cataloger_sex_male.Text = "Male";
+            this.radioButton_cataloger_sex_male.UseVisualStyleBackColor = true;
+            // 
+            // label_cataloger_fName
+            // 
+            this.label_cataloger_fName.AutoSize = true;
+            this.label_cataloger_fName.Location = new System.Drawing.Point(267, 131);
+            this.label_cataloger_fName.Name = "label_cataloger_fName";
+            this.label_cataloger_fName.Size = new System.Drawing.Size(60, 13);
+            this.label_cataloger_fName.TabIndex = 2;
+            this.label_cataloger_fName.Text = "First Name:";
+            // 
+            // label_cataloger_menu
+            // 
+            this.label_cataloger_menu.AutoSize = true;
+            this.label_cataloger_menu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_cataloger_menu.Location = new System.Drawing.Point(10, 15);
+            this.label_cataloger_menu.Name = "label_cataloger_menu";
+            this.label_cataloger_menu.Size = new System.Drawing.Size(173, 25);
+            this.label_cataloger_menu.TabIndex = 1;
+            this.label_cataloger_menu.Text = "Data Catalogers:";
+            // 
+            // listBox_cataloger
+            // 
+            this.listBox_cataloger.FormattingEnabled = true;
+            this.listBox_cataloger.Location = new System.Drawing.Point(7, 49);
+            this.listBox_cataloger.Name = "listBox_cataloger";
+            this.listBox_cataloger.Size = new System.Drawing.Size(179, 433);
+            this.listBox_cataloger.TabIndex = 0;
+            // 
+            // panel_dba
+            // 
+            this.panel_dba.Controls.Add(this.button_dba_new);
+            this.panel_dba.Controls.Add(this.ButtonDBASava);
+            this.panel_dba.Controls.Add(this.ButtonDBADelete);
+            this.panel_dba.Controls.Add(this.ButtonDBAReset);
+            this.panel_dba.Controls.Add(this.textBox_dba_password);
+            this.panel_dba.Controls.Add(this.TextBoxDBAUsername);
+            this.panel_dba.Controls.Add(this.textBox_dba_lName);
+            this.panel_dba.Controls.Add(this.textBox_dba_fName);
+            this.panel_dba.Controls.Add(this.label_dba_password);
+            this.panel_dba.Controls.Add(this.label_dba_username);
+            this.panel_dba.Controls.Add(this.label_dba_lName);
+            this.panel_dba.Controls.Add(this.label_dba_fName);
+            this.panel_dba.Controls.Add(this.label_dba_name);
+            this.panel_dba.Controls.Add(this.listBox_dba);
+            this.panel_dba.Location = new System.Drawing.Point(160, 14);
+            this.panel_dba.Name = "panel_dba";
+            this.panel_dba.Size = new System.Drawing.Size(650, 500);
+            this.panel_dba.TabIndex = 32;
+            this.panel_dba.Visible = false;
+            // 
+            // label_cataloger_email
+            // 
+            this.label_cataloger_email.AutoSize = true;
+            this.label_cataloger_email.Location = new System.Drawing.Point(251, 232);
+            this.label_cataloger_email.Name = "label_cataloger_email";
+            this.label_cataloger_email.Size = new System.Drawing.Size(76, 13);
+            this.label_cataloger_email.TabIndex = 19;
+            this.label_cataloger_email.Text = "Email Address:";
+            // 
+            // textBox_cataloger_email
+            // 
+            this.textBox_cataloger_email.Location = new System.Drawing.Point(332, 225);
+            this.textBox_cataloger_email.Name = "textBox_cataloger_email";
+            this.textBox_cataloger_email.Size = new System.Drawing.Size(191, 20);
+            this.textBox_cataloger_email.TabIndex = 20;
+            // 
+            // DbaInterface
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(826, 531);
+            this.Controls.Add(this.panel_cataloger);
+            this.Controls.Add(this.panel_dba);
+            this.Controls.Add(this.panel_menu);
+            this.Controls.Add(this.panel_account);
+            this.Name = "DbaInterface";
+            this.Text = "DbaInterface";
+            this.panel_account.ResumeLayout(false);
+            this.panel_account.PerformLayout();
+            this.panel_menu.ResumeLayout(false);
+            this.panel_cataloger.ResumeLayout(false);
+            this.panel_cataloger.PerformLayout();
+            this.groupBox_cataloger_sex.ResumeLayout(false);
+            this.groupBox_cataloger_sex.PerformLayout();
+            this.panel_dba.ResumeLayout(false);
+            this.panel_dba.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button ButtonDBASava;
+        private System.Windows.Forms.TextBox TextBoxDBAUsername;
+        private System.Windows.Forms.Button ButtonCatalogerNew;
+        private System.Windows.Forms.Button ButtonCatalogerSave;
+        private System.Windows.Forms.Button ButtonCatalogerDelete;
+        private System.Windows.Forms.Button ButtonCatalogerReset;
+        private System.Windows.Forms.TextBox TextboxCatalogerPassword;
+        private System.Windows.Forms.TextBox TextBoxDBALName;
+        private System.Windows.Forms.TextBox TextBoxCatalogerUsername;
+        private System.Windows.Forms.TextBox TextBoxCatalogerFName;
+        private System.Windows.Forms.Label LabelCatalogerPassword;
+        private System.Windows.Forms.Label LabelCatalogerUsername;
+        private System.Windows.Forms.Button ButtonDBADelete;
+        private System.Windows.Forms.Button ButtonDBAReset;
+        private System.Windows.Forms.TextBox textBox_dba_password;
+        private System.Windows.Forms.TextBox textbox_cataloger_lName;
+        private System.Windows.Forms.Button button_dba_new;
+        private System.Windows.Forms.TextBox textBox_dba_fName;
+        private System.Windows.Forms.Label label_dba_username;
+        private System.Windows.Forms.Label label_dba_lName;
+        private System.Windows.Forms.Label label_dba_fName;
+        private System.Windows.Forms.ListBox listBox_dba;
+        private System.Windows.Forms.Panel panel_account;
+        private System.Windows.Forms.Label label_account_error;
+        private System.Windows.Forms.Button button_account_save;
+        private System.Windows.Forms.Button button_account_reset;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox_account_confirmPassword;
+        private System.Windows.Forms.TextBox textBox_account_password;
+        private System.Windows.Forms.TextBox textBox_account_lName;
+        private System.Windows.Forms.TextBox textBox_account_fName;
+        private System.Windows.Forms.Label label_dba_password;
+        private System.Windows.Forms.Label label_cataloger_lName;
+        private System.Windows.Forms.Label label_dba_name;
+        private System.Windows.Forms.Panel panel_menu;
+        private System.Windows.Forms.Button button_menu_dba;
+        private System.Windows.Forms.Button button_menu_cataloger;
+        private System.Windows.Forms.Button button_menu_logout;
+        private System.Windows.Forms.Button button_menu_account;
+        private System.Windows.Forms.Panel panel_cataloger;
+        private System.Windows.Forms.Label label_cataloger_fName;
+        private System.Windows.Forms.Label label_cataloger_menu;
+        private System.Windows.Forms.ListBox listBox_cataloger;
+        private System.Windows.Forms.Panel panel_dba;
+        private System.Windows.Forms.GroupBox groupBox_cataloger_sex;
+        private System.Windows.Forms.RadioButton radioButton_cataloger_sex_female;
+        private System.Windows.Forms.RadioButton radioButton_cataloger_sex_male;
+        private System.Windows.Forms.Label label_cataloger_sex;
+        private System.Windows.Forms.Label label_cataloger_dob;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_cataloger_dob;
+        private System.Windows.Forms.TextBox textBox_cataloger_email;
+        private System.Windows.Forms.Label label_cataloger_email;
+    }
+}
