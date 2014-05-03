@@ -42,14 +42,9 @@ namespace Dba
             PanelAccount.Visible = false;
         }
 
-        private void PopulateCatalogerList()
-        {
-            catalogers = Cataloger.Generate();
-        }
-
         private void PanelCataloger_VisibleChanged(object sender, EventArgs e)
         {
-            PopulateCatalogerList();
+            catalogers = Cataloger.Generate();
             ListBoxCataloger.DataSource = catalogers;
             ListBoxCataloger.DisplayMember = "fullName";
         }
@@ -134,7 +129,7 @@ namespace Dba
         private void ButtonCatalogerDelete_Click(object sender, EventArgs e)
         {
             catalogers.ElementAt(ListBoxCataloger.SelectedIndex).Delete();
-            PopulateCatalogerList();
+            catalogers = Cataloger.Generate();
             ListBoxCataloger.DataSource = catalogers;
             ListBoxCataloger.DisplayMember = "fullName";
         }
@@ -179,7 +174,7 @@ namespace Dba
                         }
                         else
                         {
-                            PopulateCatalogerList();
+                            catalogers = Cataloger.Generate();
                             ListBoxCataloger.DataSource = catalogers;
                             ListBoxCataloger.DisplayMember = "fullName";
                         }
@@ -193,7 +188,7 @@ namespace Dba
                         }
                         else
                         {
-                            PopulateCatalogerList();
+                            catalogers = Cataloger.Generate();
                             ListBoxCataloger.DataSource = catalogers;
                             ListBoxCataloger.DisplayMember = "fullName";
                         }
@@ -211,14 +206,9 @@ namespace Dba
             PanelAccount.Visible = false;
         }
 
-        private void PopulateDBAList()
-        {
-            dbas = Dba.Generate(dbaUser);
-        }
-
         private void PanelDBA_VisibleChanged(object sender, EventArgs e)
         {
-            PopulateDBAList();
+            dbas = Dba.Generate(dbaUser);
             ListBoxDBA.DataSource = dbas;
             ListBoxDBA.DisplayMember = "fullName";
         }
@@ -303,7 +293,7 @@ namespace Dba
         private void ButtonDBADelete_Click(object sender, EventArgs e)
         {
             dbas.ElementAt(ListBoxDBA.SelectedIndex).Delete();
-            PopulateDBAList();
+            dbas = Dba.Generate(dbaUser);
             ListBoxDBA.DataSource = dbas;
             ListBoxDBA.DisplayMember = "fullName";
         }
@@ -348,7 +338,7 @@ namespace Dba
                         }
                         else
                         {
-                            PopulateDBAList();
+                            dbas = Dba.Generate(dbaUser);
                             ListBoxDBA.DataSource = dbas;
                             ListBoxDBA.DisplayMember = "fullName";
                         }
@@ -362,7 +352,7 @@ namespace Dba
                         }
                         else
                         {
-                            PopulateDBAList();
+                            dbas = Dba.Generate(dbaUser);
                             ListBoxDBA.DataSource = dbas;
                             ListBoxDBA.DisplayMember = "fullName";
                         }
