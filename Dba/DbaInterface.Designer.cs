@@ -275,7 +275,7 @@
             // 
             // ButtonAccountReset
             // 
-            this.ButtonAccountReset.Location = new System.Drawing.Point(241, 359);
+            this.ButtonAccountReset.Location = new System.Drawing.Point(234, 359);
             this.ButtonAccountReset.Name = "ButtonAccountReset";
             this.ButtonAccountReset.Size = new System.Drawing.Size(75, 23);
             this.ButtonAccountReset.TabIndex = 8;
@@ -727,6 +727,7 @@
             // 
             this.TextBoxAccountPassword.Location = new System.Drawing.Point(262, 198);
             this.TextBoxAccountPassword.Name = "TextBoxAccountPassword";
+            this.TextBoxAccountPassword.PasswordChar = '*';
             this.TextBoxAccountPassword.Size = new System.Drawing.Size(191, 20);
             this.TextBoxAccountPassword.TabIndex = 49;
             // 
