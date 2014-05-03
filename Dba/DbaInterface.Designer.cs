@@ -782,7 +782,7 @@
             this.Controls.Add(this.PanelDBA);
             this.Controls.Add(this.PanelMenu);
             this.Name = "DbaInterface";
-            this.Text = "DbaInterface";
+            this.Text = "Prison Cataloging System";
             this.PanelAccount.ResumeLayout(false);
             this.PanelAccount.PerformLayout();
             this.PanelMenu.ResumeLayout(false);

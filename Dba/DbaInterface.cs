@@ -34,6 +34,7 @@ namespace Dba
             this.PanelAccount.VisibleChanged += new System.EventHandler(this.PanelAccount_VisibleChanged);
         }
 
+        #region Cataloger
         private void ButtonMenuCataloger_Click(object sender, EventArgs e)
         {
             PanelCataloger.Visible = true;
@@ -200,7 +201,9 @@ namespace Dba
                 }
             }
         }
+        #endregion
 
+        #region DBA
         private void ButtonMenuDBA_Click(object sender, EventArgs e)
         {
             PanelCataloger.Visible = false;
@@ -367,7 +370,9 @@ namespace Dba
                 }
             }
         }
+        #endregion
 
+        #region Account
         private void ButtonMenuAccount_Click(object sender, EventArgs e)
         {
             PanelCataloger.Visible = false;
@@ -450,6 +455,7 @@ namespace Dba
                 }
             }
         }
+        #endregion
 
         private void ButtonMenuLogout_Click(object sender, EventArgs e)
         {
