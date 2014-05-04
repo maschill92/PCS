@@ -69,6 +69,7 @@
             this.buttonPrisonerAddAdd = new System.Windows.Forms.Button();
             this.buttonPrisonerAddReset = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonMenuLogout = new System.Windows.Forms.Button();
             this.panelPrisoner = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelOffense = new System.Windows.Forms.Panel();
@@ -93,6 +94,9 @@
             this.textBoxOffenseDate = new System.Windows.Forms.TextBox();
             this.buttonOffenseSearch = new System.Windows.Forms.Button();
             this.tabOffenseAddEdit = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listBoxOffenseEditPrisoners = new System.Windows.Forms.ListBox();
+            this.textBoxOffenseEditType = new System.Windows.Forms.TextBox();
             this.buttonOffenseEditReset = new System.Windows.Forms.Button();
             this.buttonOffenseAddAdd = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
@@ -134,8 +138,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panelPrisonTreeView = new System.Windows.Forms.Panel();
             this.treeViewPrison = new System.Windows.Forms.TreeView();
-            this.textboxPrisonSearch = new System.Windows.Forms.TextBox();
-            this.labelSearchPrisons = new System.Windows.Forms.Label();
             this.tabPrisonAdd = new System.Windows.Forms.TabPage();
             this.comboBoxPrisonAddCellBlock = new System.Windows.Forms.ComboBox();
             this.labelPrisonAddCellBlock = new System.Windows.Forms.Label();
@@ -168,10 +170,7 @@
             this.LabelAccountFName = new System.Windows.Forms.Label();
             this.ButtonAccountSave = new System.Windows.Forms.Button();
             this.ButtonAccountReset = new System.Windows.Forms.Button();
-            this.textBoxOffenseEditType = new System.Windows.Forms.TextBox();
-            this.listBoxOffenseEditPrisoners = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.buttonMenuLogout = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControlPrisoner.SuspendLayout();
             this.tabPrisonerSearch.SuspendLayout();
             this.tabPrisonerAddEdit.SuspendLayout();
@@ -580,6 +579,16 @@
             this.panelMenu.Size = new System.Drawing.Size(112, 496);
             this.panelMenu.TabIndex = 7;
             // 
+            // buttonMenuLogout
+            // 
+            this.buttonMenuLogout.Location = new System.Drawing.Point(3, 451);
+            this.buttonMenuLogout.Name = "buttonMenuLogout";
+            this.buttonMenuLogout.Size = new System.Drawing.Size(106, 42);
+            this.buttonMenuLogout.TabIndex = 4;
+            this.buttonMenuLogout.Text = "Logout";
+            this.buttonMenuLogout.UseVisualStyleBackColor = true;
+            this.buttonMenuLogout.Click += new System.EventHandler(this.buttonMenuLogout_Click);
+            // 
             // panelPrisoner
             // 
             this.panelPrisoner.Controls.Add(this.tabControlPrisoner);
@@ -592,8 +601,8 @@
             // 
             // panelMain
             // 
-            this.panelMain.Controls.Add(this.panelOffense);
             this.panelMain.Controls.Add(this.panelPrison);
+            this.panelMain.Controls.Add(this.panelOffense);
             this.panelMain.Controls.Add(this.panelPrisoner);
             this.panelMain.Controls.Add(this.panelAccount);
             this.panelMain.Location = new System.Drawing.Point(131, 12);
@@ -805,6 +814,31 @@
             this.tabOffenseAddEdit.Text = "Add/Edit";
             this.tabOffenseAddEdit.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(55, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 25);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Prisoners";
+            // 
+            // listBoxOffenseEditPrisoners
+            // 
+            this.listBoxOffenseEditPrisoners.FormattingEnabled = true;
+            this.listBoxOffenseEditPrisoners.Location = new System.Drawing.Point(6, 32);
+            this.listBoxOffenseEditPrisoners.Name = "listBoxOffenseEditPrisoners";
+            this.listBoxOffenseEditPrisoners.Size = new System.Drawing.Size(200, 433);
+            this.listBoxOffenseEditPrisoners.TabIndex = 11;
+            // 
+            // textBoxOffenseEditType
+            // 
+            this.textBoxOffenseEditType.Location = new System.Drawing.Point(316, 32);
+            this.textBoxOffenseEditType.Name = "textBoxOffenseEditType";
+            this.textBoxOffenseEditType.Size = new System.Drawing.Size(340, 20);
+            this.textBoxOffenseEditType.TabIndex = 10;
+            // 
             // buttonOffenseEditReset
             // 
             this.buttonOffenseEditReset.Location = new System.Drawing.Point(675, 441);
@@ -906,10 +940,9 @@
             // 
             // tabPrisonViewModify
             // 
+            this.tabPrisonViewModify.Controls.Add(this.label18);
             this.tabPrisonViewModify.Controls.Add(this.panelPrisonDetailsParent);
             this.tabPrisonViewModify.Controls.Add(this.panelPrisonTreeView);
-            this.tabPrisonViewModify.Controls.Add(this.textboxPrisonSearch);
-            this.tabPrisonViewModify.Controls.Add(this.labelSearchPrisons);
             this.tabPrisonViewModify.Location = new System.Drawing.Point(4, 22);
             this.tabPrisonViewModify.Name = "tabPrisonViewModify";
             this.tabPrisonViewModify.Padding = new System.Windows.Forms.Padding(3);
@@ -942,6 +975,7 @@
             this.panelPrisonCellBlockDetails.Name = "panelPrisonCellBlockDetails";
             this.panelPrisonCellBlockDetails.Size = new System.Drawing.Size(615, 432);
             this.panelPrisonCellBlockDetails.TabIndex = 1;
+            this.panelPrisonCellBlockDetails.Visible = false;
             // 
             // buttonDeleteCellBlock
             // 
@@ -1020,6 +1054,7 @@
             this.panelPrisonCellDetails.Name = "panelPrisonCellDetails";
             this.panelPrisonCellDetails.Size = new System.Drawing.Size(615, 432);
             this.panelPrisonCellDetails.TabIndex = 2;
+            this.panelPrisonCellDetails.Visible = false;
             // 
             // buttonDeleteCell
             // 
@@ -1100,6 +1135,7 @@
             this.panelPrisonPrisonDetails.Name = "panelPrisonPrisonDetails";
             this.panelPrisonPrisonDetails.Size = new System.Drawing.Size(615, 432);
             this.panelPrisonPrisonDetails.TabIndex = 0;
+            this.panelPrisonPrisonDetails.Visible = false;
             // 
             // buttonDeletePrison
             // 
@@ -1194,22 +1230,6 @@
             this.treeViewPrison.Name = "treeViewPrison";
             this.treeViewPrison.Size = new System.Drawing.Size(193, 425);
             this.treeViewPrison.TabIndex = 0;
-            // 
-            // textboxPrisonSearch
-            // 
-            this.textboxPrisonSearch.Location = new System.Drawing.Point(89, 6);
-            this.textboxPrisonSearch.Name = "textboxPrisonSearch";
-            this.textboxPrisonSearch.Size = new System.Drawing.Size(120, 20);
-            this.textboxPrisonSearch.TabIndex = 1;
-            // 
-            // labelSearchPrisons
-            // 
-            this.labelSearchPrisons.AutoSize = true;
-            this.labelSearchPrisons.Location = new System.Drawing.Point(6, 9);
-            this.labelSearchPrisons.Name = "labelSearchPrisons";
-            this.labelSearchPrisons.Size = new System.Drawing.Size(81, 13);
-            this.labelSearchPrisons.TabIndex = 0;
-            this.labelSearchPrisons.Text = "Search Prisons:";
             // 
             // tabPrisonAdd
             // 
@@ -1528,40 +1548,15 @@
             this.ButtonAccountReset.UseVisualStyleBackColor = true;
             this.ButtonAccountReset.Click += new System.EventHandler(this.ButtonAccountReset_Click);
             // 
-            // textBoxOffenseEditType
+            // label18
             // 
-            this.textBoxOffenseEditType.Location = new System.Drawing.Point(316, 32);
-            this.textBoxOffenseEditType.Name = "textBoxOffenseEditType";
-            this.textBoxOffenseEditType.Size = new System.Drawing.Size(340, 20);
-            this.textBoxOffenseEditType.TabIndex = 10;
-            // 
-            // listBoxOffenseEditPrisoners
-            // 
-            this.listBoxOffenseEditPrisoners.FormattingEnabled = true;
-            this.listBoxOffenseEditPrisoners.Location = new System.Drawing.Point(6, 32);
-            this.listBoxOffenseEditPrisoners.Name = "listBoxOffenseEditPrisoners";
-            this.listBoxOffenseEditPrisoners.Size = new System.Drawing.Size(200, 433);
-            this.listBoxOffenseEditPrisoners.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(55, 4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 25);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Prisoners";
-            // 
-            // buttonMenuLogout
-            // 
-            this.buttonMenuLogout.Location = new System.Drawing.Point(3, 451);
-            this.buttonMenuLogout.Name = "buttonMenuLogout";
-            this.buttonMenuLogout.Size = new System.Drawing.Size(106, 42);
-            this.buttonMenuLogout.TabIndex = 4;
-            this.buttonMenuLogout.Text = "Logout";
-            this.buttonMenuLogout.UseVisualStyleBackColor = true;
-            this.buttonMenuLogout.Click += new System.EventHandler(this.buttonMenuLogout_Click);
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(58, 4);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(84, 25);
+            this.label18.TabIndex = 13;
+            this.label18.Text = "Prisons";
             // 
             // CatalogerInterface
             // 
@@ -1659,8 +1654,6 @@
         private System.Windows.Forms.TabPage tabPrisonAdd;
         private System.Windows.Forms.Panel panelPrisonTreeView;
         private System.Windows.Forms.TreeView treeViewPrison;
-        private System.Windows.Forms.TextBox textboxPrisonSearch;
-        private System.Windows.Forms.Label labelSearchPrisons;
         private System.Windows.Forms.Panel panelPrisonDetailsParent;
         private System.Windows.Forms.Panel panelPrisonPrisonDetails;
         private System.Windows.Forms.Panel panelPrisonCellDetails;
@@ -1756,6 +1749,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox listBoxOffenseEditPrisoners;
         private System.Windows.Forms.Button buttonMenuLogout;
+        private System.Windows.Forms.Label label18;
     }
 }
 

@@ -110,7 +110,6 @@ namespace Cataloger
         {
             prisoners.Clear();
             prisons = Prison.GenerateAll();
-            comboBoxPrisonerAddPrison.DataSource = prisons;
             foreach (Prison p in prisons)
             {
                 foreach (CellBlock b in p.blocks)
@@ -124,6 +123,10 @@ namespace Cataloger
                     }
                 }
             }
+            comboBoxPrisonerAddPrison.DataSource = prisons;
+            listBoxOffenseEditPrisoners.DataSource = prisoners;
+            listBoxOffenseEditPrisoners.DisplayMember = "ListBoxDisplay";
+            listBoxOffenseEditPrisoners.ValueMember = "id";
         }
 
         Prison FindPrison(int id)
@@ -522,6 +525,7 @@ namespace Cataloger
             prison.Update(textBoxPrisonName.Text, textBoxPrisonLocation.Text, textBoxPrisonDescription.Text);
             RefreshData();
             PopulatePrisonTreeView();
+            panelPrisonPrisonDetails.Visible = false;
         }
 
         private void buttonResetPrison_Click(object sender, EventArgs e)
@@ -555,6 +559,7 @@ namespace Cataloger
             block.Update(textBoxCellBlockName.Text, textBoxCellBlockDescription.Text);
             RefreshData();
             PopulatePrisonTreeView();
+            panelPrisonCellBlockDetails.Visible = false;
         }
 
         private void buttonResetCellBlock_Click(object sender, EventArgs e)
@@ -588,6 +593,7 @@ namespace Cataloger
             cell.Update(textBoxCellName.Text, textBoxCellDescription.Text);
             RefreshData();
             PopulatePrisonTreeView();
+            panelPrisonCellDetails.Visible = false;
         }
 
         private void buttonResetCell_Click(object sender, EventArgs e)
@@ -725,6 +731,7 @@ namespace Cataloger
                 return;
             }
             System.Diagnostics.Debug.WriteLine("panelOffense visible");
+            listBoxOffenseEditPrisoners.DataSource = null;
             RefreshData();
             PopulateOffenseListView();
             listBoxOffenseEditPrisoners.DataSource = prisoners;
@@ -811,7 +818,7 @@ namespace Cataloger
                 textBoxOffenseEditDescription.Text = o.description;
                 textBoxOffenseEditType.Text = o.type;
                 datePickerOffenseEditDate.Text = o.date;
-                listBoxOffenseEditPrisoners.SelectedValue = o.prisoner.id;
+                listBoxOffenseEditPrisoners.SelectedItem = o.prisoner;
             }
             tabControlOffense.SelectedTab = tabOffenseAddEdit;
         }
