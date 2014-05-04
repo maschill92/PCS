@@ -782,6 +782,7 @@
             this.Controls.Add(this.PanelDBA);
             this.Controls.Add(this.PanelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "DbaInterface";
             this.Text = "Prison Cataloging System";
             this.PanelAccount.ResumeLayout(false);
