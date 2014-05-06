@@ -87,6 +87,12 @@ namespace Cataloger
             panelAccount.Visible = false;
         }
 
+        /// <summary>
+        /// Callback for when the "My Account" button is clicked in the menu. It makes the Account panel visible and
+        /// the other panels not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonMenuAccount_Click(object sender, EventArgs e)
         {
             if (!panelAccount.Visible)
@@ -98,6 +104,12 @@ namespace Cataloger
             panelOffense.Visible = false;
         }
 
+        /// <summary>
+        /// Callback for when the "Logout" menu button is clicked. This button ends the Cataloger user's session with the
+        /// system and returns to the Login screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonMenuLogout_Click(object sender, EventArgs e)
         {
             this.RemoveOwnedForm(this.OwnedForms.ElementAt(0));
@@ -870,6 +882,12 @@ namespace Cataloger
 
         #endregion
 
+        /// <summary>
+        /// Callback for when the Account panel is made visible after clicking the "Account" menu button. This method
+        /// populates the textfields with the Cataloger user's information.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region Account
         void panelAccount_VisibleChanged(object sender, EventArgs e)
         {
@@ -882,6 +900,7 @@ namespace Cataloger
             TextBoxAccountFName.Text = cataloger.fName;
             TextBoxAccountLName.Text = cataloger.lName;
             TextBoxAccountPassword.Text = "";
+            TextBoxAccountConfirmPassword.Text = "";
             TextBoxAccountEmail.Text = cataloger.email;
             DateTimePickerAccountDOB.Text = cataloger.dateOfBirth;
             if (cataloger.sex.Equals("M"))
@@ -894,11 +913,18 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Callback for when the "Reset" button is clicked in the Account panel. This method reverts the information
+        /// in the data fields to their original state.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ButtonAccountReset_Click(object sender, EventArgs e)
         {
             TextBoxAccountFName.Text = cataloger.fName;
             TextBoxAccountLName.Text = cataloger.lName;
             TextBoxAccountPassword.Text = "";
+            TextBoxAccountConfirmPassword.Text = "";
             TextBoxAccountEmail.Text = cataloger.email;
             DateTimePickerAccountDOB.Text = cataloger.dateOfBirth;
             if (cataloger.sex.Equals("M"))
@@ -911,10 +937,17 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Callback for when the "Save" button is clicked in the Account panel that updates the user's information in the database.
+        /// If any of the fields are left empty an error message is displayed for the user. The password must also meet
+        /// the specified password requirements. If the operation was uncessful, another error message is displayed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void ButtonAccountSave_Click(object sender, EventArgs e)
         {
-            if (TextBoxAccountFName.Text.Equals("") || TextBoxAccountLName.Text.Equals("") ||
-                TextBoxAccountPassword.Text.Equals("") || TextBoxAccountEmail.Text.Equals(""))
+            if (TextBoxAccountFName.Text.Equals("") || TextBoxAccountLName.Text.Equals("") || TextBoxAccountPassword.Text.Equals("") ||
+                TextBoxAccountConfirmPassword.Text.Equals("") || TextBoxAccountEmail.Text.Equals(""))
             {
                 MessageBox.Show("Please fill in all of the fields.");
             }
@@ -923,6 +956,12 @@ namespace Cataloger
                 if (!PasswordMeetsRequirements(TextBoxAccountPassword.Text))
                 {
                     MessageBox.Show("Entered passwords do not meet the minimum requirements.\n1 upper case letter, 1 lower case letter, 1 digit, and length of at least 8.");
+                }
+                else if (!TextBoxAccountPassword.Text.Equals(TextBoxAccountConfirmPassword.Text))
+                {
+                    TextBoxAccountPassword.Text = "";
+                    TextBoxAccountConfirmPassword.Text = "";
+                    MessageBox.Show("Passwords do not much.");
                 }
                 else
                 {
@@ -947,12 +986,20 @@ namespace Cataloger
                     else
                     {
                         TextBoxAccountPassword.Text = "";
+                        TextBoxAccountConfirmPassword.Text = "";
                         cataloger = new Cataloger(cataloger.username);
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Method that is used to determine if the password is valid with the system's restrictions. The password must
+        /// contain atleast 1 lower case letter, 1 upper case letter, and 1 number. It also must be longer than 8
+        /// characters. 
+        /// </summary>
+        /// <param name="pWord"></param> the password that needs to be tested for validity
+        /// <returns></returns> returns 'true' if the password meets the requiremetns and 'false' otherwise
         private bool PasswordMeetsRequirements(String pWord)
         {
             bool upper = false;
