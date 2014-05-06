@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cataloger
 {
+    /// <summary>
+    /// Class that represents a CellBlock.  It references the Prison that contains it
+    /// and a list of cells are contained by the CellBlock
+    /// </summary>
     class CellBlock
     {
         public int id { get; set; }
@@ -14,6 +18,13 @@ namespace Cataloger
         public Prison prison;
         public List<Cell> cells;
 
+        /// <summary>
+        /// Constructor that accepts all class fields except prisoners which is generated in the Generate function
+        /// </summary>
+        /// <param name="id">The id of the CellBlock</param>
+        /// <param name="name">The name of the CellBlock</param>
+        /// <param name="description">The description of the CellBlock</param>
+        /// <param name="prison">The prison where the CellBlock is</param>
         public CellBlock(int id, String name, String description, Prison prison)
         {
             this.id = id;
@@ -22,6 +33,12 @@ namespace Cataloger
             this.prison = prison;
         }
 
+        /// <summary>
+        /// Returns of list of CellBlocks contained in a given Prison
+        /// It then generates a list of Cells that each CellBlock contains
+        /// </summary>
+        /// <param name="prison">The Prison that contains each CellBlock generated</param>
+        /// <returns>A list of CellBlock objects that are contained in prison</returns>
         public static List<CellBlock> Generate(Prison prison)
         {
             String str = "select * from cell_block where prisonId='" + prison.id + "'";
@@ -43,6 +60,12 @@ namespace Cataloger
             return list;
         }
 
+        /// <summary>
+        /// Updates the CellBlock's information
+        /// </summary>
+        /// <param name="name">New name</param>
+        /// <param name="description">New description</param>
+        /// <returns>True if update was successful, false otherwise</returns>
         public bool Update(String name, String description)
         {
             String str = "update cell_block set name='" + name + "', description='" + description + "' where id='" + this.id + "'";
@@ -50,6 +73,10 @@ namespace Cataloger
             return ret;
         }
 
+        /// <summary>
+        /// Deletes the CellBlock from the database
+        /// </summary>
+        /// <returns>True if the deletion was successful, false otherwise</returns>
         public bool Delete()
         {
             String str = "delete from cell_block where id='" + this.id + "'";
@@ -57,6 +84,13 @@ namespace Cataloger
             return ret;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">Name</param>
+        /// <param name="description">Description</param>
+        /// <param name="prisonId"></param>
+        /// <returns>True if the deletion was successful, false otherwise</returns>
         public static bool Add(String name, String description, int prisonId)
         {
             String str = "insert into cell_block (name, description, prisonId) values ('" + name + "', '" + description + "', '" + prisonId.ToString() + "')";
