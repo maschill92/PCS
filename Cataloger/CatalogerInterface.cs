@@ -10,11 +10,20 @@ using System.Windows.Forms;
 
 namespace Cataloger
 {
+    /// <summary>
+    /// Class that is the logic for the CatalogerInterface
+    /// </summary>
     public partial class CatalogerInterface : Form
     {
         Cataloger cataloger;
         List<Prison> prisons;
         List<Prisoner> prisoners;
+
+        /// <summary>
+        /// Constructor that creates the cataloger based on a username given along with performing
+        /// some various initialization steps like call backs and gathering initial prison data
+        /// </summary>
+        /// <param name="uName">Username of the cataloger that has been authenticated</param>
         public CatalogerInterface(String uName)
         {
             cataloger = new Cataloger(uName);
@@ -25,6 +34,9 @@ namespace Cataloger
             panelPrisoner.Visible = true;
         }
 
+        /// <summary>
+        /// Custom initalizer for event callbacks and datasource recognitions for listview, listboxes, and comboboxes
+        /// </summary>
         void InitializeAdditional()
         {
             this.panelPrisoner.VisibleChanged += new System.EventHandler(this.panelPrisoner_VisibleChanged);
@@ -54,6 +66,9 @@ namespace Cataloger
         }
 
         #region Menu Button Click Events
+        /// <summary>
+        /// Event when prisoner menu button is selected
+        /// </summary>
         private void buttonMenuPrisoner_Click(object sender, EventArgs e)
         {
             if (!panelPrisoner.Visible)
@@ -65,6 +80,9 @@ namespace Cataloger
             panelAccount.Visible = false;
         }
 
+        /// <summary>
+        /// Event when prison menu button is selected
+        /// </summary>
         private void buttonMenuPrison_Click(object sender, EventArgs e)
         {
             if (!panelPrison.Visible)
@@ -76,6 +94,9 @@ namespace Cataloger
             panelAccount.Visible = false;
         }
 
+        /// <summary>
+        /// Event when offense menu button is selected
+        /// </summary>
         private void buttonMenuOffense_Click(object sender, EventArgs e)
         {
             if (!panelOffense.Visible)
@@ -87,6 +108,9 @@ namespace Cataloger
             panelAccount.Visible = false;
         }
 
+        /// <summary>
+        /// Event when account menu button is selected
+        /// </summary>
         private void buttonMenuAccount_Click(object sender, EventArgs e)
         {
             if (!panelAccount.Visible)
@@ -98,6 +122,9 @@ namespace Cataloger
             panelOffense.Visible = false;
         }
 
+        /// <summary>
+        /// Event when prisoner logout button is selected
+        /// </summary>
         private void buttonMenuLogout_Click(object sender, EventArgs e)
         {
             this.RemoveOwnedForm(this.OwnedForms.ElementAt(0));
@@ -106,6 +133,9 @@ namespace Cataloger
         #endregion
 
         #region Helpers
+        /// <summary>
+        /// Fetches new data from the database and populates a list of prisons and prisoners
+        /// </summary>
         void RefreshData()
         {
             prisoners.Clear();
@@ -129,6 +159,11 @@ namespace Cataloger
             listBoxOffenseEditPrisoners.ValueMember = "id";
         }
 
+        /// <summary>
+        /// Searches local data and finds a prison
+        /// </summary>
+        /// <param name="id">The id of the prison in question</param>
+        /// <returns>The Prison object with a matching id</returns>
         Prison FindPrison(int id)
         {
             foreach (Prison p in prisons)
@@ -141,6 +176,11 @@ namespace Cataloger
             return null;
         }
 
+        /// <summary>
+        /// Seaches local data and finds a cell block
+        /// </summary>
+        /// <param name="id">The id of the cell block in question</param>
+        /// <returns>The CellBlock object with a matching id</returns>
         CellBlock FindCellBlock(int id)
         {
             foreach (Prison p in prisons)
@@ -156,6 +196,11 @@ namespace Cataloger
             return null;
         }
 
+        /// <summary>
+        /// Seaches local data and finds a cell
+        /// </summary>
+        /// <param name="id">The id of the cell in question</param>
+        /// <returns>The Cell object with a matching id</returns>
         Cell FindCell(int id)
         {
             foreach (Prison p in prisons)
@@ -173,6 +218,12 @@ namespace Cataloger
             }
             return null;
         }
+
+        /// <summary>
+        /// Seaches local data and finds an offense
+        /// </summary>
+        /// <param name="id">The id of the offense in question</param>
+        /// <returns>The Offense object with a matching id</returns>
         Offense FindOffense(int id)
         {
             foreach(Prisoner p in prisoners)
@@ -187,6 +238,9 @@ namespace Cataloger
         #endregion
 
         #region Prisoner
+        /// <summary>
+        /// Event that is triggered with the main prison panel's visiblilty is changed
+        /// </summary>
         void panelPrisoner_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelPrisoner.Visible)
@@ -198,6 +252,9 @@ namespace Cataloger
             PopulatePrisonerListView();
         }
 
+        /// <summary>
+        /// Helper that removes all data from the search boxes above the prisoner listview
+        /// </summary>
         void ResetPrisonerSearch()
         {
             RefreshData();
@@ -209,6 +266,10 @@ namespace Cataloger
             textBoxPrisonerCellName.Text = String.Empty;
         }
 
+        /// <summary>
+        /// Populates the listview with the local data retrieved from the database based on what
+        /// is currently in the search boxes
+        /// </summary>
         void PopulatePrisonerListView()
         {
             String id = textBoxPrisonerId.Text.ToLower();
@@ -245,6 +306,9 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Event triggered when a new prisoner is selected in the listbox
+        /// </summary>
         void listViewPrisonerSearch_ItemSelectionChanged(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("listViewPrisonerSearch_ItemSelectionChanged");
@@ -261,6 +325,9 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Event triggered when a tab is changed in the prisoner panel.
+        /// </summary>
         void tabControlPrisoner_TabIndexChanged(object sender, EventArgs e)
         {
             if (tabControlPrisoner.SelectedTab == tabPrisonerSearch)
@@ -271,18 +338,31 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Event triggered when the search button is clicked.
+        /// </summary>
         private void buttonPrisonerSearch_Click(object sender, EventArgs e)
         {
             PopulatePrisonerListView();
         }
 
+        /// <summary>
+        /// Deletes the selected prisoner from the database
+        /// </summary>
         private void buttonPrisonerDelete_Click(object sender, EventArgs e)
         {
             Prisoner.Delete(Convert.ToInt32(listViewPrisonerSearch.SelectedItems[0].Text));
             RefreshData();
             PopulatePrisonerListView();
         }
-
+        /// <summary>
+        /// Triggered when the "New" or "Add" button is clicked on the prisoner view page.
+        /// It the populates are removes data in the add tab datafields appropriated depending on
+        /// if a prisoner is currently is selected or not. Then it switches tabs to the Add/Modify
+        /// tab as to show the newly populated (or depopulated) fields.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonPrisonerNew_Click(object sender, EventArgs e)
         {
             if (buttonPrisonerNew.Text.Equals("New"))
@@ -329,6 +409,10 @@ namespace Cataloger
             comboBoxPrisonerAddCell.ValueMember = "id";
         }
 
+        /// <summary>
+        /// Triggered when a different prison is slected in the add prisoner tab.
+        /// It populates the cell block combobox with cell blocks located in the selected prison
+        /// </summary>
         void comboBoxPrisonerAddPrison_SelectedValueChanged(object sender, EventArgs e)
         {
             Prison p = (Prison)comboBoxPrisonerAddPrison.SelectedItem;
@@ -337,6 +421,11 @@ namespace Cataloger
             comboBoxPrisonerAddBlock.DisplayMember = "name";
             comboBoxPrisonerAddBlock.ValueMember = "id";
         }
+
+        /// <summary>
+        /// Triggered when a different cell block is slected in the add prisoner tab.
+        /// It populates the cell combobox with cells located in the selected cell block
+        /// </summary>
         void comboBoxPrisonerAddBlock_SelectedValueChanged(object sender, EventArgs e)
         {
             CellBlock cb = (CellBlock)comboBoxPrisonerAddBlock.SelectedItem;
@@ -346,16 +435,14 @@ namespace Cataloger
             comboBoxPrisonerAddCell.ValueMember = "id";
         }
 
+        /// <summary>
+        /// Event triggered when the user clicks on the "New" or "Add" button.
+        /// Creates a new prisoner or updates an existing one.
+        /// </summary>
         private void buttonPrisonerAddAdd_Click(object sender, EventArgs e)
         {
             if (listViewPrisonerSearch.SelectedItems.Count == 0)
             {
-                //if (textBoxPrisonerFname.Text.Length == 0 || textBoxPrisonerLname.Text.Length == 0 || (!radioButtonPrisonerAddMale.Checked && !radioButtonPrisonerAddFemale.Checked)
-                //    || comboBoxPrisonerAddPrison.SelectedItem == null || comboBoxPrisonerAddBlock.SelectedItem == null || comboBoxPrisonerAddCell.SelectedItem == null)
-                //{
-                //    MessageBox.Show("All fields are required.");
-                //    return;
-                //}
                 Prisoner.Add(textBoxPrisonerAddFname.Text, textBoxPrisonerAddLname.Text, datePickerAddPrisonerDob.Value.Date.ToString("yyyy-MM-dd"), (radioButtonPrisonerAddMale.Checked) ? "M":"F", Convert.ToInt32(comboBoxPrisonerAddCell.SelectedValue));
                 tabControlPrisoner.SelectedTab = tabPrisonerSearch;
             }
@@ -371,6 +458,11 @@ namespace Cataloger
 
         }
 
+        /// <summary>
+        /// Resets the fields in the Add/Modify tab of the prisoner menu.
+        /// If a prisoner is selected to modify, then the data is set to the original data,
+        /// otherwise the boxes are set to their default empty values.
+        /// </summary>
         private void buttonPrisonerAddReset_Click(object sender, EventArgs e)
         {
             if (listViewPrisonerSearch.SelectedItems.Count == 0)
@@ -415,6 +507,9 @@ namespace Cataloger
         #endregion
 
         #region Prison
+        /// <summary>
+        /// Triggered when a prison panel's visiblity is changed
+        /// </summary>
         void panelPrison_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelPrison.Visible)
@@ -426,6 +521,9 @@ namespace Cataloger
             PopulatePrisonTreeView();
         }
 
+        /// <summary>
+        /// Helper function that poulates the tree of the prisons, blocks, and cells.
+        /// </summary>
         void PopulatePrisonTreeView()
         {
             treeViewPrison.BeginUpdate();
@@ -455,6 +553,10 @@ namespace Cataloger
             treeViewPrison.ExpandAll();
         }
 
+        /// <summary>
+        /// Triggered when an item in the prison tree is selected
+        /// It changes panels and populates data in other locations as needed.
+        /// </summary>
         void treeViewPrison_AfterSelect(object sender, EventArgs e)
         {
             TreeNode node = treeViewPrison.SelectedNode;
@@ -478,24 +580,40 @@ namespace Cataloger
             
         }
 
+        /// <summary>
+        /// Helper functions that populates the cell panel with data from a particular cell.
+        /// </summary>
+        /// <param name="cell">Item when data should be populated from</param>
         void PopulateCellDataPanel(Cell cell)
         {
             textBoxCellDescription.Text = cell.description;
             textBoxCellName.Text = cell.name;
         }
 
+        /// <summary>
+        /// Helper functions that populates the cell block panel with data from a particular cell block.
+        /// </summary>
+        /// <param name="block">Item when data should be populated from</param>
         void PopulateBlockDataPanel(CellBlock block)
         {
             textBoxCellBlockName.Text = block.name;
             textBoxCellBlockDescription.Text = block.description;
         }
 
+        /// <summary>
+        /// Helper functions that populates the prison panel with data from a particular prison.
+        /// </summary>
+        /// <param name="prison">Item when data should be populated from</param>
         void PopulatePrisonDataPanel(Prison prison)
         {
             textBoxPrisonName.Text = prison.name;
             textBoxPrisonLocation.Text = prison.location;
             textBoxPrisonDescription.Text = prison.description;
         }
+
+        /// <summary>
+        /// Triggered when the prison details panel's visiblilty is changed.
+        /// </summary>
         void panelPrisonPrisonDetails_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelPrisonPrisonDetails.Visible) return;
@@ -503,6 +621,9 @@ namespace Cataloger
             panelPrisonCellDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Triggered when the cell block details panel's visiblilty is changed.
+        /// </summary>
         void panelPrisonCellBlockDetails_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelPrisonCellBlockDetails.Visible) return;
@@ -510,6 +631,9 @@ namespace Cataloger
             panelPrisonCellDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Triggered when the cell details panel's visiblilty is changed.
+        /// </summary>
         void panelPrisonCellDetails_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelPrisonCellDetails.Visible) return;
@@ -517,6 +641,10 @@ namespace Cataloger
             panelPrisonCellBlockDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Triggered when the save button for a prison is clicked.
+        /// This updates the database with the newly inserted material.
+        /// </summary>
         private void buttonSavePrison_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -528,6 +656,11 @@ namespace Cataloger
             panelPrisonPrisonDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Triggered when the reset button for a prison is clicked.
+        /// This changes the data in the fields to the original data of the
+        /// item selected in the tree view.
+        /// </summary>
         private void buttonResetPrison_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -536,6 +669,10 @@ namespace Cataloger
             PopulatePrisonDataPanel(prison);
         }
 
+        /// <summary>
+        /// Triggered when the delete button for a prison is clicked.
+        /// This removes it from the database and updates the treeview to show the changes.
+        /// </summary>
         private void buttonDeletePrison_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -551,6 +688,10 @@ namespace Cataloger
             PopulatePrisonTreeView();
         }
 
+        /// <summary>
+        /// Triggered when the save button for a cell is clicked.
+        /// This updates the database with the newly inserted material.
+        /// </summary>
         private void buttonSaveCellBlock_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -562,6 +703,11 @@ namespace Cataloger
             panelPrisonCellBlockDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Triggered when the reset button for a cell block is clicked.
+        /// This changes the data in the fields to the original data of the
+        /// item selected in the tree view.
+        /// </summary>
         private void buttonResetCellBlock_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -570,6 +716,10 @@ namespace Cataloger
             PopulateBlockDataPanel(block);
         }
 
+        /// <summary>
+        /// Triggered when the delete button for a cell block is clicked.
+        /// This removes it from the database and updates the treeview to show the changes.
+        /// </summary>
         private void buttonDeleteCellBlock_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -585,6 +735,10 @@ namespace Cataloger
             PopulatePrisonTreeView();
         }
 
+        /// <summary>
+        /// Triggered when the save button for a cell is clicked.
+        /// This updates the database with the newly inserted material.
+        /// </summary>
         private void buttonSaveCell_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -596,6 +750,11 @@ namespace Cataloger
             panelPrisonCellDetails.Visible = false;
         }
 
+        /// <summary>
+        /// Triggered when the reset button for a cell is clicked.
+        /// This changes the data in the fields to the original data of the
+        /// item selected in the tree view.
+        /// </summary>
         private void buttonResetCell_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -604,6 +763,10 @@ namespace Cataloger
             PopulateCellDataPanel(cell);
         }
 
+        /// <summary>
+        /// Triggered when the delete button for a cell is clicked.
+        /// This removes it from the database and updates the treeview to show the changes.
+        /// </summary>
         private void buttonDeleteCell_Click(object sender, EventArgs e)
         {
             if (treeViewPrison.SelectedNode == null) return;
@@ -619,6 +782,11 @@ namespace Cataloger
             PopulatePrisonTreeView();
         }
 
+        /// <summary>
+        /// Triggered when the type of a newly additing structure is changed.  The options for
+        /// the combobox are 'Prison', 'Cell Block', and 'Cell'.  Depending on the selection,
+        /// new fields are shown and some are removed.
+        /// </summary>
         void comboBoxPrisonType_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch(comboBoxPrisonType.SelectedIndex)
@@ -663,6 +831,10 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Triggered when a new prison is selected in the combobox.
+        /// It populates the data in the cell block combobox based on the selected prison
+        /// </summary>
         void comboBoxPrisonAddPrison_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxPrisonAddCellBlock.DataSource = ((Prison)comboBoxPrisonAddPrison.SelectedItem).blocks;
@@ -670,6 +842,9 @@ namespace Cataloger
             comboBoxPrisonAddCellBlock.ValueMember = "id";
         }
 
+        /// <summary>
+        /// Adds a new prison, cellblock or cell to the database and checks for required fields.
+        /// </summary>
         private void buttonPrisonAddAdd_Click(object sender, EventArgs e)
         {
             if (comboBoxPrisonType.SelectedIndex == 0 && textBoxPrisonAddLocation.Text.Length == 0)
@@ -708,11 +883,20 @@ namespace Cataloger
             ResetPrisonAddTab();
         }
 
+        /// <summary>
+        /// Triggered when the reset button is clicked, it calls the ResetPrisonAddTab() function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonPrisonAddClear_Click(object sender, EventArgs e)
         {
             ResetPrisonAddTab();
         }
 
+        /// <summary>
+        /// Removes all of the data that could be entered into the prison add tab
+        /// by reseting them to their default values.
+        /// </summary>
         void ResetPrisonAddTab()
         {
             comboBoxPrisonType.SelectedIndex = 0;
@@ -724,6 +908,9 @@ namespace Cataloger
         #endregion
 
         #region Offense
+        /// <summary>
+        /// Triggered when the main offense panel's visible is changed.
+        /// </summary>
         void panelOffense_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelOffense.Visible)
@@ -737,6 +924,9 @@ namespace Cataloger
             listBoxOffenseEditPrisoners.DataSource = prisoners;
         }
 
+        /// <summary>
+        /// Populates the data of the listview based on the search criteria of the textboxes above it.
+        /// </summary>
         void PopulateOffenseListView()
         {
             String pId = textBoxOffenseId.Text.ToLower();
@@ -763,6 +953,9 @@ namespace Cataloger
                 }
             }
         }
+        /// <summary>
+        /// Triggered when a new item is selected in the list box.
+        /// </summary>
         void listViewOffenses_ItemSelectionChanged(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("listViewOffenses_ItemSelectionChanged");
@@ -780,11 +973,19 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Repopulates the listbox so that the search criteria may be applied.
+        /// </summary>
         private void buttonOffenseSearch_Click(object sender, EventArgs e)
         {
             PopulateOffenseListView();
         }
 
+        /// <summary>
+        /// Deleted the selected offense  from the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOffenseDelete_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("buttonOffenseDelete_Click");
@@ -800,6 +1001,13 @@ namespace Cataloger
             }
         }
 
+
+        /// <summary>
+        /// Triggered when the "New" or "Add" button is clicked on the offense view page.
+        /// It the populates are removes data in the add tab datafields appropriated depending on
+        /// if an offense is currently is selected or not. Then it switches tabs to the Add/Modify
+        /// tab as to show the newly populated (or depopulated) fields.
+        /// </summary>
         private void buttonOffenseNew_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("buttonOffenseNew_Click");
@@ -823,6 +1031,11 @@ namespace Cataloger
             tabControlOffense.SelectedTab = tabOffenseAddEdit;
         }
 
+        /// <summary>
+        /// Triggered when the reset button is selected in the Add/Modify tab.
+        /// Resets the data in the add tab to empty if there is not an offense selected in the listview,
+        /// or to the selected offense's data.
+        /// </summary>
         private void buttonOffenseEditReset_Click(object sender, EventArgs e)
         {
             if (buttonOffenseNew.Text.Equals("New"))
@@ -843,6 +1056,12 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Triggered when the Add button is selected int he Add/Modify tab.
+        /// Updates exising offenses, add new ones to the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOffenseAddAdd_Click(object sender, EventArgs e)
         {
             if (listBoxOffenseEditPrisoners.SelectedItem == null || textBoxOffenseEditLocation.Text.Length == 0
@@ -871,6 +1090,9 @@ namespace Cataloger
         #endregion
 
         #region Account
+        /// <summary>
+        /// Triggered when the visibilty of the main account panel is changed.
+        /// </summary>
         void panelAccount_VisibleChanged(object sender, EventArgs e)
         {
             if (!panelAccount.Visible)
@@ -894,6 +1116,10 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Triggered when the Reset button is clicked.
+        /// This sets the data fields to the default values of the currently authenticated cataloger
+        /// </summary>
         void ButtonAccountReset_Click(object sender, EventArgs e)
         {
             TextBoxAccountFName.Text = cataloger.fName;
@@ -911,6 +1137,10 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Triggered when the Save button is clicked.
+        /// Updates the authenticated catalogers database entry with the entered data.  Verifies password requirements.
+        /// </summary>
         void ButtonAccountSave_Click(object sender, EventArgs e)
         {
             if (TextBoxAccountFName.Text.Equals("") || TextBoxAccountLName.Text.Equals("") ||
@@ -953,6 +1183,11 @@ namespace Cataloger
             }
         }
 
+        /// <summary>
+        /// Helper function that determines if an inputted password meets the system's minimum requirements.
+        /// </summary>
+        /// <param name="pWord">The password entered</param>
+        /// <returns>True if meets requirements, false otherwise</returns>
         private bool PasswordMeetsRequirements(String pWord)
         {
             bool upper = false;
