@@ -96,6 +96,8 @@
             this.LabelDBAUsername = new System.Windows.Forms.Label();
             this.LabelDBALName = new System.Windows.Forms.Label();
             this.LabelDBAFName = new System.Windows.Forms.Label();
+            this.TextBoxAccountConfirmPassword = new System.Windows.Forms.TextBox();
+            this.LabelAccountConfirmPassword = new System.Windows.Forms.Label();
             this.PanelAccount.SuspendLayout();
             this.GroupBoxAccountSex.SuspendLayout();
             this.PanelMenu.SuspendLayout();
@@ -243,6 +245,8 @@
             // 
             // PanelAccount
             // 
+            this.PanelAccount.Controls.Add(this.LabelAccountConfirmPassword);
+            this.PanelAccount.Controls.Add(this.TextBoxAccountConfirmPassword);
             this.PanelAccount.Controls.Add(this.TextBoxAccountEmail);
             this.PanelAccount.Controls.Add(this.LabelAccountEmail);
             this.PanelAccount.Controls.Add(this.DateTimePickerAccountDOB);
@@ -338,7 +342,7 @@
             // 
             // TextBoxAccountPassword
             // 
-            this.TextBoxAccountPassword.Location = new System.Drawing.Point(262, 198);
+            this.TextBoxAccountPassword.Location = new System.Drawing.Point(262, 174);
             this.TextBoxAccountPassword.Name = "TextBoxAccountPassword";
             this.TextBoxAccountPassword.PasswordChar = '*';
             this.TextBoxAccountPassword.Size = new System.Drawing.Size(191, 20);
@@ -346,14 +350,14 @@
             // 
             // TextBoxAccountLName
             // 
-            this.TextBoxAccountLName.Location = new System.Drawing.Point(262, 171);
+            this.TextBoxAccountLName.Location = new System.Drawing.Point(262, 147);
             this.TextBoxAccountLName.Name = "TextBoxAccountLName";
             this.TextBoxAccountLName.Size = new System.Drawing.Size(191, 20);
             this.TextBoxAccountLName.TabIndex = 47;
             // 
             // TextBoxAccountFName
             // 
-            this.TextBoxAccountFName.Location = new System.Drawing.Point(260, 145);
+            this.TextBoxAccountFName.Location = new System.Drawing.Point(260, 121);
             this.TextBoxAccountFName.Name = "TextBoxAccountFName";
             this.TextBoxAccountFName.Size = new System.Drawing.Size(193, 20);
             this.TextBoxAccountFName.TabIndex = 46;
@@ -361,7 +365,7 @@
             // LabelAccountPassword
             // 
             this.LabelAccountPassword.AutoSize = true;
-            this.LabelAccountPassword.Location = new System.Drawing.Point(200, 204);
+            this.LabelAccountPassword.Location = new System.Drawing.Point(200, 180);
             this.LabelAccountPassword.Name = "LabelAccountPassword";
             this.LabelAccountPassword.Size = new System.Drawing.Size(56, 13);
             this.LabelAccountPassword.TabIndex = 45;
@@ -370,7 +374,7 @@
             // LabelAccountLName
             // 
             this.LabelAccountLName.AutoSize = true;
-            this.LabelAccountLName.Location = new System.Drawing.Point(195, 177);
+            this.LabelAccountLName.Location = new System.Drawing.Point(195, 153);
             this.LabelAccountLName.Name = "LabelAccountLName";
             this.LabelAccountLName.Size = new System.Drawing.Size(61, 13);
             this.LabelAccountLName.TabIndex = 43;
@@ -379,7 +383,7 @@
             // LabelAccountFName
             // 
             this.LabelAccountFName.AutoSize = true;
-            this.LabelAccountFName.Location = new System.Drawing.Point(199, 151);
+            this.LabelAccountFName.Location = new System.Drawing.Point(199, 127);
             this.LabelAccountFName.Name = "LabelAccountFName";
             this.LabelAccountFName.Size = new System.Drawing.Size(60, 13);
             this.LabelAccountFName.TabIndex = 42;
@@ -772,6 +776,22 @@
             this.LabelDBAFName.TabIndex = 28;
             this.LabelDBAFName.Text = "First Name:";
             // 
+            // TextBoxAccountConfirmPassword
+            // 
+            this.TextBoxAccountConfirmPassword.Location = new System.Drawing.Point(262, 199);
+            this.TextBoxAccountConfirmPassword.Name = "TextBoxAccountConfirmPassword";
+            this.TextBoxAccountConfirmPassword.Size = new System.Drawing.Size(191, 20);
+            this.TextBoxAccountConfirmPassword.TabIndex = 56;
+            // 
+            // LabelAccountConfirmPassword
+            // 
+            this.LabelAccountConfirmPassword.AutoSize = true;
+            this.LabelAccountConfirmPassword.Location = new System.Drawing.Point(165, 205);
+            this.LabelAccountConfirmPassword.Name = "LabelAccountConfirmPassword";
+            this.LabelAccountConfirmPassword.Size = new System.Drawing.Size(94, 13);
+            this.LabelAccountConfirmPassword.TabIndex = 57;
+            this.LabelAccountConfirmPassword.Text = "Confirm Password:";
+            // 
             // DbaInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -872,5 +892,7 @@
         private System.Windows.Forms.Label LabelAccountPassword;
         private System.Windows.Forms.Label LabelAccountLName;
         private System.Windows.Forms.Label LabelAccountFName;
+        private System.Windows.Forms.Label LabelAccountConfirmPassword;
+        private System.Windows.Forms.TextBox TextBoxAccountConfirmPassword;
     }
 }

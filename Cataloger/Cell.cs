@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cataloger
 {
+    /// <summary>
+    /// Class that represents a Cell.  It references the CellBlock that contains it
+    /// and a list of prisoners that live in the Cell
+    /// </summary>
     class Cell
     {
         public int id { get; set; }
@@ -14,6 +18,13 @@ namespace Cataloger
         public CellBlock block;
         public List<Prisoner> prisoners;
 
+        /// <summary>
+        /// Constructor that accepts all class fields except prisoners which is generated in the Generate function
+        /// </summary>
+        /// <param name="id">The id of the cell</param>
+        /// <param name="name">The name of the cell</param>
+        /// <param name="description">The description of the cell</param>
+        /// <param name="block">The block of the cell</param>
         public Cell(int id, String name, String description, CellBlock block)
         {
             this.id = id;
@@ -22,6 +33,12 @@ namespace Cataloger
             this.block = block;
         }
 
+        /// <summary>
+        /// Returns of list of Cells contained in a given CellBlock
+        /// It then generates a list of prisoners that live each cell generated
+        /// </summary>
+        /// <param name="cellBlock">The CellBlock that contains the Cells to be generated</param>
+        /// <returns>A list of Cell objects that are contained in cellBlock</returns>
         public static List<Cell> Generate(CellBlock cellBlock)
         {
             String str = "select * from cell where blockId='" + cellBlock.id + "'";
@@ -43,6 +60,12 @@ namespace Cataloger
             return list;
         }
 
+        /// <summary>
+        /// Updates the Cell's information
+        /// </summary>
+        /// <param name="name">New name</param>
+        /// <param name="description">New description</param>
+        /// <returns>True if update was successful, false otherwise</returns>
         public bool Update(String name, String description)
         {
             String str = "update cell set name='" + name + "', description='" + description + "' where id='" + this.id + "'";
@@ -50,6 +73,10 @@ namespace Cataloger
             return ret;
         }
 
+        /// <summary>
+        /// Deletes the Cell from the database
+        /// </summary>
+        /// <returns>True if the deletion was successful, false otherwise</returns>
         public bool Delete()
         {
             String str = "delete from cell where id='" + this.id + "'";
@@ -57,6 +84,13 @@ namespace Cataloger
             return ret;
         }
 
+        /// <summary>
+        /// Adds a new Cell to the database
+        /// </summary>
+        /// <param name="name">Name</param>
+        /// <param name="description">Description</param>
+        /// <param name="blockId">ID of the CellBlock that will contain the new Cell</param>
+        /// <returns>True if the deletion was successful, false otherwise</returns>
         public static bool Add(String name, String description, int blockId)
         {
             String str = "insert into cell (name, description, blockId) values ('" + name + "', '" + description + "', '" + blockId.ToString() + "')";
